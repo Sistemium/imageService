@@ -1,7 +1,7 @@
 var AWS = require('aws-sdk')
     , fs = require('fs');
 
-module.exports = function (image, name) {
+module.exports = function (image, checksum, name) {
   var resizedImageName = image.name.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
       return name + ext;
   });
@@ -12,7 +12,7 @@ module.exports = function (image, name) {
   var s3 = new AWS.S3();
   var params = {
     Bucket: 'sisdev',
-    Key: resizedImageName,
+    Key: checksum + '/' + resizedImageName,
     Body: resizedImageStream
   };
   s3.putObject(params, function(err, data) {

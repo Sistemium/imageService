@@ -1,13 +1,10 @@
 var fs = require('fs')
     , gm = require('gm').subClass({imageMagick: true})
     , config = require('../config/config.json').imageSizes;
-
 /**
- *
  * name size of the image: _small. _medium. _thumbnail.
- *
  **/
-module.exports = function (req, name, callback) {
+module.exports = function (req, checksum, name, callback) {
   var image = req.files.filedata;
   gm(image.path)
   .format(function (err, format) {
@@ -32,7 +29,7 @@ module.exports = function (req, name, callback) {
         .write(imagePath, function (err) {
           if (!err) {
             console.log('Image was resized and written to %s', imagePath);
-            callback(image, name.slice(0, -1));
+            callback(image, checksum, name.slice(0, -1));
           }
         });
         break;
@@ -43,7 +40,7 @@ module.exports = function (req, name, callback) {
         .write(imagePath, function (err) {
           if (!err) {
             console.log('Image was resized and written to %s', imagePath);
-            callback(image, name.slice(0, -1));
+            callback(image, checksum, name.slice(0, -1));
           }
         });
         break;
@@ -52,7 +49,7 @@ module.exports = function (req, name, callback) {
         .thumb(config.thumbnail.width, config.thumbnail.height, imagePath, config.thumbnail.quality, function (err) {
           if (!err) {
             console.log('Thumbnail was successfully saved at %s', imagePath);
-            callback(image, name.slice(0, -1));
+            callback(image, checksum, name.slice(0, -1));
           }
         });
         break;

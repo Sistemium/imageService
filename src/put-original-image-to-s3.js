@@ -1,13 +1,14 @@
 var AWS = require('aws-sdk')
+    , config = require('../config/config.json')
     , fs = require('fs');
 
-module.exports = function (image) {
+module.exports = function (image, checksum) {
   var imageStream = fs.createReadStream(image.path);
 
   var s3 = new AWS.S3();
   var params = {
-    Bucket: 'sisdev',
-    Key: image.name,
+    Bucket: config.s3.Bucket,
+    Key: checksum + '/' + image.name,
     Body: imageStream
   };
   s3.putObject(params, function(err, data) {
