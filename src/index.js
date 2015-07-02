@@ -9,7 +9,7 @@ var express = require('express')
     , app = express()
     , port = config.applicationPort
     , Q = require('q');
-    
+
 var uploadFolder = '../uploads';
 app.use(multer({dest: uploadFolder}));
 app.post('/', function(req, res) {
@@ -28,6 +28,7 @@ app.post('/', function(req, res) {
         console.log(err);
       });
     }, function() {
+      cleanupFiles(uploadFolder);
       getResponse(res, checksum);
     });
   }, function (error) {
