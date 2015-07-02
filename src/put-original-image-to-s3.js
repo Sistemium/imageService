@@ -1,5 +1,4 @@
 var AWS = require('aws-sdk')
-    , config = require('./config/config.json')
     , fs = require('fs');
 
 module.exports = function (image) {

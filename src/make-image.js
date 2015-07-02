@@ -1,6 +1,6 @@
 var fs = require('fs')
     , gm = require('gm').subClass({imageMagick: true})
-    , config = require('./config/config.json');
+    , config = require('../config/config.json').imageSizes;
 
 /**
  *

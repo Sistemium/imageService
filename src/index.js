@@ -1,13 +1,13 @@
 var express = require('express')
     , multer = require('multer')
-    , config = require('./config/config.json')
+    , config = require('../config/config.json')
     , makeImage = require('./make-image')
     , putOriginalImageToS3 = require('./put-original-image-to-s3')
     , putResizedImageToS3 = require('./put-resized-image-to-s3')
     , app = express()
     , port = config.applicationPort;
 
-app.use(multer({dest: './uploads'}));
+app.use(multer({dest: '../uploads'}));
 app.post('/', function(req, res) {
   var image = req.files.filedata;
   putOriginalImageToS3(image);
