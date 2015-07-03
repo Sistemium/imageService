@@ -5,8 +5,9 @@ module.exports = function (dirname) {
     if (err) console.log(err);
     else {
       files.forEach(function(file) {
-        console.log(file);
-        fs.unlink(dirname + '/' + file);
+        fs.unlink(dirname + '/' + file, function () {
+          console.log('Deleted file: ' + file);
+        });
       });
     }
   });

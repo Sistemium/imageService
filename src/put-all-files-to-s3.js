@@ -18,7 +18,7 @@ module.exports = function (req, checksum) {
         deffered.reject(err);
       }
       else {
-        console.log(result);
+        console.log('put-all-files-to-s3.js line:21: ' + result);
         deffered.resolve(result);
       }
   });

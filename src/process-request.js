@@ -24,7 +24,6 @@ module.exports = function() {
       }, function() {
         cleanupFiles(config.uploadFolderPath);
         getResponse(res, checksum);
-        next();
       });
     }, function (error) {
       console.log(error);

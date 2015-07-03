@@ -25,7 +25,6 @@ module.exports = function (req, checksum, name, callback) {
       case '_small.' :
         gm(image.path)
         .resize(config.smallImage.width, config.smallImage.height)
-        .noProfile()
         .write(imagePath, function (err) {
           if (!err) {
             console.log('Image was resized and written to %s', imagePath);
@@ -36,7 +35,6 @@ module.exports = function (req, checksum, name, callback) {
       case '_medium.' :
         gm(image.path)
         .resize(config.mediumImage.width, config.mediumImage.height)
-        .noProfile()
         .write(imagePath, function (err) {
           if (!err) {
             console.log('Image was resized and written to %s', imagePath);
