@@ -19,7 +19,7 @@ module.exports = function(image) {
 
   stream.on('error', function(err) {
     deffered.reject(new Error(err));
-  })
+  });
 
   return deffered.promise;
 }

@@ -1,11 +1,14 @@
 var fs = require('fs')
     , gm = require('gm').subClass({imageMagick: true})
-    , config = require('../config/config.json').imageSizes;
+    , config = require('../config/config.json').imageSizes
+    , logger = require('./logger')
+    , Q = require('q');
 /**
  * name size of the image: _small. _medium. _thumbnail.
  **/
 module.exports = function (req, checksum, name, callback) {
   var image = req.files.filedata;
+  var deffered = Q.defer();
   gm(image.path)
   .format(function (err, format) {
     if (err) return;
@@ -27,8 +30,8 @@ module.exports = function (req, checksum, name, callback) {
         .resize(config.smallImage.width, config.smallImage.height)
         .write(imagePath, function (err) {
           if (!err) {
-            console.log('Image was resized and written to %s', imagePath);
-            callback(image, checksum, name.slice(0, -1));
+            logger.log('info', 'Image was resized and written to %s', imagePath);
+            callback(image, checksum, name.slice(0, -1), deffered);
           }
         });
         break;
@@ -37,8 +40,8 @@ module.exports = function (req, checksum, name, callback) {
         .resize(config.mediumImage.width, config.mediumImage.height)
         .write(imagePath, function (err) {
           if (!err) {
-            console.log('Image was resized and written to %s', imagePath);
-            callback(image, checksum, name.slice(0, -1));
+            logger.log('info', 'Image was resized and written to %s', imagePath);
+            callback(image, checksum, name.slice(0, -1), deffered);
           }
         });
         break;
@@ -46,11 +49,12 @@ module.exports = function (req, checksum, name, callback) {
         gm(image.path)
         .thumb(config.thumbnail.width, config.thumbnail.height, imagePath, config.thumbnail.quality, function (err) {
           if (!err) {
-            console.log('Thumbnail was successfully saved at %s', imagePath);
-            callback(image, checksum, name.slice(0, -1));
+            logger.log('info', 'Thumbnail was successfully saved at %s', imagePath);
+            callback(image, checksum, name.slice(0, -1), deffered);
           }
         });
         break;
     }
   });
+  return deffered.promise;
 };

@@ -1,5 +1,6 @@
 var AWS = require('aws-sdk')
-    , config = require('../config/config.json');
+    , config = require('../config/config.json')
+    , logger = require('./logger');
 
 function formatResponse(data) {
   var imageLinks = data.map(function(item) {
@@ -18,11 +19,11 @@ module.exports = function (res, checksum) {
       };
 
   s3.listObjects(params, function(err, data) {
-    if (err) console.log(err);
+    if (err) logger.log('error', err);
     else {
       var response = formatResponse(data.Contents);
       res.json(response);
-      console.log('Got response: ' + JSON.stringify(response));
+      logger.log('info', 'Got response: ' + JSON.stringify(response));
     }
   });
 };

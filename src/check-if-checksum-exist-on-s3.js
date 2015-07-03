@@ -1,6 +1,7 @@
 var AWS = require('aws-sdk')
     , config = require('../config/config.json')
-    , Q = require('q');
+    , Q = require('q')
+    , logger = require('./logger');
 
 module.exports = function(checksum) {
   var deffered = Q.defer()
@@ -11,13 +12,13 @@ module.exports = function(checksum) {
         };
 
   s3.listObjects(params, function(err, data) {
-    if (err) console.log(err);
+    if (err) logger.log('error', err);
     else {
       if (data.Contents.length > 0) {
-        console.log('Image with checksum %s already uploaded', checksum);
+        logger.log('info', 'Image with checksum %s already uploaded', checksum);
         deffered.reject();
       } else {
-        console.log('No images with checksum %s', checksum);
+        logger.log('info', 'No images with checksum %s', checksum);
         deffered.resolve();
       }
     }

@@ -4,10 +4,16 @@ var config = require('../config/config.json')
     , checksum = require('./generate-checksum')
     , getResponse = require('./get-response')
     , cleanupFiles = require('./cleanup')
+    , logger = require('./logger')
     , Q = require('q');
 
+function cleanupAndGetResponse(res, checksum, folder, imageName) {
+  cleanupFiles(folder, imageName);
+  getResponse(res, checksum);
+}
+
 module.exports = function() {
-  return function(req, res, next) {
+  return function(req, res) {
     var image = req.files.filedata;
     checksum(image.path)
     .then(function(checksum) {
@@ -15,18 +21,15 @@ module.exports = function() {
       .then(function() {
         putAllFilesToS3(req, checksum)
         .then(function() {
-          cleanupFiles(config.uploadFolderPath);
-          getResponse(res, checksum);
-          next();
+          cleanupAndGetResponse(res, checksum, config.uploadFolderPath, image.name);
         }, function(err) {
-          console.log(err);
+          logger.log('error', err);
         });
       }, function() {
-        cleanupFiles(config.uploadFolderPath);
-        getResponse(res, checksum);
+          cleanupAndGetResponse(res, checksum, config.uploadFolderPath, image.name);
       });
     }, function (error) {
-      console.log(error);
+      logger.log('error', error);
     });
   }
 }
