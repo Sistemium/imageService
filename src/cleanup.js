@@ -1,13 +1,16 @@
-var fs = require('fs');
+var fs = require('fs')
+    , logger = require('./logger');
 
-module.exports = function (dirname) {
+module.exports = function (dirname, filename) {
   fs.readdir(dirname, function (err, files) {
-    if (err) console.log(err);
+    if (err) logger.log('error', err);
     else {
       files.forEach(function(file) {
-        fs.unlink(dirname + '/' + file, function () {
-          console.log('Deleted file: ' + file);
-        });
+        if (file.indexOf(filename.slice('.')[0]) === 0) {
+          fs.unlink(dirname + '/' + file, function () {
+            logger.log('info', 'Deleted file: ' + file);
+          });
+        }
       });
     }
   });
