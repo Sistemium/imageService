@@ -5,12 +5,13 @@
 var express = require('express')
     , multer = require('multer')
     , config = require('../config/config.json')
+    , multerConfig = require('../config/multer-config')
     , processRequest = require('./process-request')
     , app = express()
     , port = config.applicationPort;
 
 app.use(express.static('../../client'));
-app.use(multer({dest: config.uploadFolderPath + '/'}));
+app.use(multer(multerConfig));
 app.post('/', function (req, res) {
   processRequest(req, res);
 });

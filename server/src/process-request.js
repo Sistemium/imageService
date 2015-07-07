@@ -39,7 +39,7 @@ module.exports = function(req, res) {
     processImage(req, res, image.path, image.name);
   } else {
     logger.log('info', 'Binary content request in');
-    var imageName = 'original.jpeg';
+    var imageName = config.imageInfo.imageName + '.' + config.imageInfo.imageExtension;
     var imagePath = config.uploadFolderPath + '/' + imageName;
     req.pipe(fs.createWriteStream(imagePath));
     processImage(req, res, imagePath, imageName);

@@ -1,7 +1,9 @@
 var fs = require('fs')
     , gm = require('gm').subClass({imageMagick: true})
-    , config = require('../config/config.json').imageSizes
+    , config = require('../config/config.json').imageInfo
+    , imageSuffixes = require('../config/config.json').imageInfo.imageSuffixes
     , logger = require('./logger')
+    , _ = require('lodash')
     , Q = require('q');
 /**
  * name size of the image: _small. _medium. _thumbnail.
@@ -13,44 +15,45 @@ module.exports = function (req, checksum, name, image, callback) {
     if (err) return;
 
     var imagePath = undefined;
-    if (format === 'PNG' || format === 'JPG') {
-      imagePath = image.path.slice(0, -4) + name + format.toLowerCase();
-    }
-    else if (format === 'JPEG') {
-      imagePath = image.path.slice(0, -5) + name + 'jpeg';
-    }
-    else {
+    var isSupportedFormat = _.some(config.supportedFormats, function (item) {
+      return format.toLowerCase() === item.toLowerCase();
+    });
+    if (isSupportedFormat) {
+      imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
+          return name + ext;
+        });
+    } else {
       throw new Error('Unsupported image format...');
     }
 
     switch (name) {
-      case '_small.' :
+      case imageSuffixes[0]:
         gm(image.path)
         .resize(config.smallImage.width, config.smallImage.height)
         .write(imagePath, function (err) {
           if (!err) {
             logger.log('info', 'Image was resized and written to %s', imagePath);
-            callback(image, checksum, name.slice(0, -1), deffered);
+            callback(image, checksum, name, deffered);
           }
         });
         break;
-      case '_medium.' :
+      case imageSuffixes[1]:
         gm(image.path)
         .resize(config.mediumImage.width, config.mediumImage.height)
         .write(imagePath, function (err) {
           if (!err) {
             logger.log('info', 'Image was resized and written to %s', imagePath);
-            callback(image, checksum, name.slice(0, -1), deffered);
+            callback(image, checksum, name, deffered);
           }
         });
         break;
-      case '_thumbnail.' :
+      case imageSuffixes[2]:
         gm(image.path)
         .resize(config.thumbnail.width, config.thumbnail.height)
         .write(imagePath, function (err) {
           if (!err) {
             logger.log('info', 'Thumbnail was successfully saved at %s', imagePath);
-            callback(image, checksum, name.slice(0, -1), deffered);
+            callback(image, checksum, name, deffered);
           }
         });
         break;

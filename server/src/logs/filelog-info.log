@@ -220,3 +220,572 @@
 2015-07-07T09:36:19.200Z - info: Deleting files
 2015-07-07T09:36:19.202Z - info: Deleted file: 60a773d9f095512d54c64ec6be987dbf.png
 2015-07-07T09:36:19.572Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_thumbnail.png"]}
+2015-07-07T10:44:21.084Z - info:  fieldname=file, originalname=1.jpeg, name=dd63c04be08b80e6f8b36ef483694fd4.jpeg, encoding=7bit, mimetype=image/jpeg, path=../uploads/dd63c04be08b80e6f8b36ef483694fd4.jpeg, extension=jpeg, size=13128, truncated=false, buffer=null
+2015-07-07T10:44:21.770Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-07T10:44:21.771Z - info: Deleting files
+2015-07-07T10:44:21.777Z - info: Deleted file: dd63c04be08b80e6f8b36ef483694fd4.jpeg
+2015-07-07T10:44:22.505Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.jpeg"]}
+2015-07-07T10:47:25.771Z - info: Binary content request in
+2015-07-07T10:47:27.181Z - info: No images with checksum 12841defe694a408aa9be24ba0e58ded
+2015-07-07T10:47:27.516Z - info: Thumbnail was successfully saved at ../uploads/original._thumbnail.png
+2015-07-07T10:47:27.517Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T10:47:27.519Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpeg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T10:47:27.519Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpeg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T10:47:27.732Z - info: Image was resized and written to ../uploads/original._small.png
+2015-07-07T10:47:27.732Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T10:47:27.735Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_small.jpeg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T10:47:28.854Z - info: Image was resized and written to ../uploads/original._medium.png
+2015-07-07T10:47:28.854Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T10:47:28.856Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_medium.jpeg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T10:47:31.838Z - info: {"ETag":"\"fd502baa405cfefe3973b5ce19859ccf\""}
+2015-07-07T10:53:46.665Z - info:  fieldname=file, originalname=images.jpeg, name=4365619b0851ab6e12680c880dbf4ae5.jpeg, encoding=7bit, mimetype=image/jpeg, path=../uploads/4365619b0851ab6e12680c880dbf4ae5.jpeg, extension=jpeg, size=6273, truncated=false, buffer=null
+2015-07-07T10:53:46.919Z - info: No images with checksum 8ed8b93f18434d3ed096e6b8e1575b30
+2015-07-07T10:53:46.947Z - info: Thumbnail was successfully saved at ../uploads/4365619b0851ab6e12680c880dbf4ae5_thumbnail.jpeg
+2015-07-07T10:53:46.947Z - info:  path=../uploads/4365619b0851ab6e12680c880dbf4ae5.jpeg, name=4365619b0851ab6e12680c880dbf4ae5.jpeg
+2015-07-07T10:53:46.969Z - info: Image was resized and written to ../uploads/4365619b0851ab6e12680c880dbf4ae5_small.jpeg
+2015-07-07T10:53:46.969Z - info:  path=../uploads/4365619b0851ab6e12680c880dbf4ae5.jpeg, name=4365619b0851ab6e12680c880dbf4ae5.jpeg
+2015-07-07T10:53:47.078Z - info: Image was resized and written to ../uploads/4365619b0851ab6e12680c880dbf4ae5_medium.jpeg
+2015-07-07T10:53:47.079Z - info:  path=../uploads/4365619b0851ab6e12680c880dbf4ae5.jpeg, name=4365619b0851ab6e12680c880dbf4ae5.jpeg
+2015-07-07T10:53:47.279Z - info: {"ETag":"\"5528861b32960e06d42aa4dc7e9332a1\""}
+2015-07-07T10:53:47.349Z - info: {"ETag":"\"b8cb36f671ed9aae6224df66d182e52f\""}
+2015-07-07T10:53:47.636Z - info: {"ETag":"\"71b6388998ae9090984027f8a4880526\""}
+2015-07-07T10:53:48.328Z - info: {"ETag":"\"8ed8b93f18434d3ed096e6b8e1575b30\""}
+2015-07-07T10:53:48.329Z - info: Deleting files
+2015-07-07T10:53:48.332Z - info: Deleted file: 4365619b0851ab6e12680c880dbf4ae5_medium.jpeg
+2015-07-07T10:53:48.332Z - info: Deleted file: 4365619b0851ab6e12680c880dbf4ae5.jpeg
+2015-07-07T10:53:48.332Z - info: Deleted file: 4365619b0851ab6e12680c880dbf4ae5_small.jpeg
+2015-07-07T10:53:48.332Z - info: Deleted file: 4365619b0851ab6e12680c880dbf4ae5_thumbnail.jpeg
+2015-07-07T10:53:48.706Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/4365619b0851ab6e12680c880dbf4ae5.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/4365619b0851ab6e12680c880dbf4ae5_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/4365619b0851ab6e12680c880dbf4ae5_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/4365619b0851ab6e12680c880dbf4ae5_thumbnail.jpeg"]}
+2015-07-07T11:01:51.071Z - info:  fieldname=file, originalname=tumblr_krjquj5B2C1qzty50o1_500_large.jpg, name=tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg, extension=jpg, size=150600, truncated=false, buffer=null
+2015-07-07T11:01:54.504Z - info: No images with checksum 7ce40b220deb4e78f238b4681e9ffa66
+2015-07-07T11:01:54.552Z - info: Thumbnail was successfully saved at ../uploads/tumblr_krjquj5b2c1qzty50o1_500_large143626691106_thumbnail.jpeg
+2015-07-07T11:01:54.552Z - info:  path=../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg, name=tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg
+2015-07-07T11:01:54.554Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:01:54.555Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:01:54.612Z - info: Image was resized and written to ../uploads/tumblr_krjquj5b2c1qzty50o1_500_large143626691106_small.jpeg
+2015-07-07T11:01:54.612Z - info:  path=../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg, name=tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg
+2015-07-07T11:01:54.615Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063_small.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:01:54.894Z - info: Image was resized and written to ../uploads/tumblr_krjquj5b2c1qzty50o1_500_large143626691106_medium.jpeg
+2015-07-07T11:01:54.894Z - info:  path=../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg, name=tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg
+2015-07-07T11:01:54.895Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063_medium.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:01:55.296Z - info: {"ETag":"\"7ce40b220deb4e78f238b4681e9ffa66\""}
+2015-07-07T11:04:07.121Z - info:  fieldname=file, originalname=tumblr_krjquj5B2C1qzty50o1_500_large.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=150600, truncated=false, buffer=null
+2015-07-07T11:04:07.605Z - info: Image with checksum 7ce40b220deb4e78f238b4681e9ffa66 already uploaded
+2015-07-07T11:04:07.607Z - info: Deleting files
+2015-07-07T11:04:07.612Z - info: Deleted file: original.jpg
+2015-07-07T11:04:08.043Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/7ce40b220deb4e78f238b4681e9ffa66/tumblr_krjquj5b2c1qzty50o1_500_large1436266911063.jpg"]}
+2015-07-07T11:07:09.742Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T11:07:10.007Z - info: No images with checksum ca1d35a9b87ac590f0f3e1b2d01a0014
+2015-07-07T11:07:10.876Z - info: Thumbnail was successfully saved at ../uploads/origina_thumbnail.jpeg
+2015-07-07T11:07:10.876Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T11:07:10.878Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:07:10.879Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:07:10.995Z - info: Image was resized and written to ../uploads/origina_small.jpeg
+2015-07-07T11:07:10.996Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T11:07:10.998Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_small.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:07:11.115Z - info: Image was resized and written to ../uploads/origina_medium.jpeg
+2015-07-07T11:07:11.115Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T11:07:11.117Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_medium.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:07:12.690Z - info: {"ETag":"\"ca1d35a9b87ac590f0f3e1b2d01a0014\""}
+2015-07-07T11:29:41.342Z - info:  fieldname=file, originalname=images.jpg, name=original.png.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.png.jpg, extension=jpg, size=13038, truncated=false, buffer=null
+2015-07-07T11:29:43.007Z - info: No images with checksum 4dda915dde5ff80408c19e69cff6abeb
+2015-07-07T11:29:43.045Z - info: Thumbnail was successfully saved at ../uploads/original.pn_thumbnail.jpeg
+2015-07-07T11:29:43.045Z - info:  path=../uploads/original.png.jpg, name=original.png.jpg
+2015-07-07T11:29:43.047Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original.png_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:29:43.049Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original.png_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:29:43.072Z - info: Image was resized and written to ../uploads/original.pn_small.jpeg
+2015-07-07T11:29:43.072Z - info:  path=../uploads/original.png.jpg, name=original.png.jpg
+2015-07-07T11:29:43.075Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original.png_small.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:29:43.227Z - info: Image was resized and written to ../uploads/original.pn_medium.jpeg
+2015-07-07T11:29:43.227Z - info:  path=../uploads/original.png.jpg, name=original.png.jpg
+2015-07-07T11:29:43.228Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original.png_medium.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:29:47.442Z - info: {"ETag":"\"4dda915dde5ff80408c19e69cff6abeb\""}
+2015-07-07T11:31:37.162Z - info:  fieldname=file, originalname=images-2.jpeg, name=original.jpeg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpeg, extension=jpeg, size=5160, truncated=false, buffer=null
+2015-07-07T11:31:40.826Z - info: No images with checksum fd77148f631063550dfc6f68a593a0a2
+2015-07-07T11:31:40.861Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.jpeg
+2015-07-07T11:31:40.862Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T11:31:40.904Z - info: Image was resized and written to ../uploads/original_small.jpeg
+2015-07-07T11:31:40.904Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T11:31:41.051Z - info: Image was resized and written to ../uploads/original_medium.jpeg
+2015-07-07T11:31:41.051Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T11:31:41.151Z - info: {"ETag":"\"fd77148f631063550dfc6f68a593a0a2\""}
+2015-07-07T11:31:41.205Z - info: {"ETag":"\"1a1e7c85ca4874573752dac4812df47c\""}
+2015-07-07T11:31:41.265Z - info: {"ETag":"\"da615c34b03a7f1f98ff0c5f48afa74c\""}
+2015-07-07T11:31:41.580Z - info: {"ETag":"\"042fbb1cee0e29687c128b578e104fd2\""}
+2015-07-07T11:31:41.581Z - info: Deleting files
+2015-07-07T11:31:41.584Z - info: Deleted file: original.jpeg
+2015-07-07T11:31:41.584Z - info: Deleted file: original_medium.jpeg
+2015-07-07T11:31:41.584Z - info: Deleted file: original_small.jpeg
+2015-07-07T11:31:41.585Z - info: Deleted file: original_thumbnail.jpeg
+2015-07-07T11:31:41.959Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/fd77148f631063550dfc6f68a593a0a2/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/fd77148f631063550dfc6f68a593a0a2/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/fd77148f631063550dfc6f68a593a0a2/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/fd77148f631063550dfc6f68a593a0a2/original_thumbnail.jpeg"]}
+2015-07-07T11:32:41.084Z - info:  fieldname=file, originalname=images.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=13038, truncated=false, buffer=null
+2015-07-07T11:32:41.616Z - info: Image with checksum 4dda915dde5ff80408c19e69cff6abeb already uploaded
+2015-07-07T11:32:41.618Z - info: Deleting files
+2015-07-07T11:32:41.621Z - info: Deleted file: original.jpg
+2015-07-07T11:32:41.981Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/4dda915dde5ff80408c19e69cff6abeb/original.png.jpg"]}
+2015-07-07T11:51:01.280Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T11:51:01.804Z - info: Image with checksum ca1d35a9b87ac590f0f3e1b2d01a0014 already uploaded
+2015-07-07T11:51:01.805Z - info: Deleting files
+2015-07-07T11:51:01.814Z - info: Deleted file: original.jpg
+2015-07-07T11:51:02.174Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original.jpg"]}
+2015-07-07T11:51:57.467Z - info:  fieldname=file, originalname=1.jpeg, name=original.jpeg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpeg, extension=jpeg, size=13128, truncated=false, buffer=null
+2015-07-07T11:51:57.741Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T11:51:57.773Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.jpeg
+2015-07-07T11:51:57.773Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T11:51:57.800Z - info: Image was resized and written to ../uploads/original_small.jpeg
+2015-07-07T11:51:57.800Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T11:51:57.936Z - info: Image was resized and written to ../uploads/original_medium.jpeg
+2015-07-07T11:51:57.936Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T11:51:58.106Z - info: {"ETag":"\"4214321e12287eeaf3f51e3094ae1fec\""}
+2015-07-07T11:51:58.141Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-07T11:51:58.328Z - info: {"ETag":"\"601a7fb6f99d833eeff8a7508c297e70\""}
+2015-07-07T11:51:58.512Z - info: {"ETag":"\"1f3dd1187f483ebf455fc2c032255e63\""}
+2015-07-07T11:51:58.513Z - info: Deleting files
+2015-07-07T11:51:58.515Z - info: Deleted file: original.jpeg
+2015-07-07T11:51:58.516Z - info: Deleted file: original_medium.jpeg
+2015-07-07T11:51:58.516Z - info: Deleted file: original_small.jpeg
+2015-07-07T11:51:58.516Z - info: Deleted file: original_thumbnail.jpeg
+2015-07-07T11:51:58.771Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.jpeg"]}
+2015-07-07T11:52:19.886Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T11:52:20.240Z - info: No images with checksum ca1d35a9b87ac590f0f3e1b2d01a0014
+2015-07-07T11:52:21.121Z - info: Thumbnail was successfully saved at ../uploads/origina_thumbnail.jpeg
+2015-07-07T11:52:21.121Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T11:52:21.124Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:52:21.124Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:52:21.202Z - info: Image was resized and written to ../uploads/origina_small.jpeg
+2015-07-07T11:52:21.202Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T11:52:21.203Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_small.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:52:21.340Z - info: Image was resized and written to ../uploads/origina_medium.jpeg
+2015-07-07T11:52:21.340Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T11:52:21.342Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_medium.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T11:52:23.414Z - info: {"ETag":"\"ca1d35a9b87ac590f0f3e1b2d01a0014\""}
+2015-07-07T12:05:17.291Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T12:09:56.094Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T12:13:09.907Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T12:13:10.556Z - info: Image with checksum ca1d35a9b87ac590f0f3e1b2d01a0014 already uploaded
+2015-07-07T12:13:10.557Z - info: Deleting files
+2015-07-07T12:13:10.563Z - info: Deleted file: original.jpg
+2015-07-07T12:13:10.929Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original.jpg"]}
+2015-07-07T12:18:30.747Z - info:  fieldname=file, originalname=images.jpeg, name=original.jpeg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpeg, extension=jpeg, size=6273, truncated=false, buffer=null
+2015-07-07T12:18:31.077Z - info: No images with checksum 8ed8b93f18434d3ed096e6b8e1575b30
+2015-07-07T12:18:31.100Z - info: Format: JPEG
+2015-07-07T12:18:31.103Z - info: Format: JPEG
+2015-07-07T12:18:31.105Z - info: Format: JPEG
+2015-07-07T12:18:31.115Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.jpeg
+2015-07-07T12:18:31.115Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T12:18:31.136Z - info: Image was resized and written to ../uploads/original_small.jpeg
+2015-07-07T12:18:31.136Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T12:18:31.249Z - info: Image was resized and written to ../uploads/original_medium.jpeg
+2015-07-07T12:18:31.249Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T12:18:31.555Z - info: {"ETag":"\"b8cb36f671ed9aae6224df66d182e52f\""}
+2015-07-07T12:18:31.616Z - info: {"ETag":"\"5528861b32960e06d42aa4dc7e9332a1\""}
+2015-07-07T12:18:31.786Z - info: {"ETag":"\"71b6388998ae9090984027f8a4880526\""}
+2015-07-07T12:18:36.623Z - info: {"ETag":"\"8ed8b93f18434d3ed096e6b8e1575b30\""}
+2015-07-07T12:18:36.623Z - info: Deleting files
+2015-07-07T12:18:36.627Z - info: Deleted file: original.jpeg
+2015-07-07T12:18:36.627Z - info: Deleted file: original_medium.jpeg
+2015-07-07T12:18:36.628Z - info: Deleted file: original_small.jpeg
+2015-07-07T12:18:36.628Z - info: Deleted file: original_thumbnail.jpeg
+2015-07-07T12:18:37.025Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/8ed8b93f18434d3ed096e6b8e1575b30/original_thumbnail.jpeg"]}
+2015-07-07T12:19:30.045Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T12:19:30.323Z - info: No images with checksum ca1d35a9b87ac590f0f3e1b2d01a0014
+2015-07-07T12:19:30.342Z - info: Format: JPEG
+2015-07-07T12:19:30.344Z - info: Format: JPEG
+2015-07-07T12:19:30.347Z - info: Format: JPEG
+2015-07-07T12:19:31.168Z - info: Thumbnail was successfully saved at ../uploads/origina_thumbnail.jpeg
+2015-07-07T12:19:31.168Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T12:19:31.171Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T12:19:31.172Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T12:19:31.280Z - info: Image was resized and written to ../uploads/origina_small.jpeg
+2015-07-07T12:19:31.281Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T12:19:31.282Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_small.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T12:19:31.401Z - info: Image was resized and written to ../uploads/origina_medium.jpeg
+2015-07-07T12:19:31.401Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T12:19:31.403Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_medium.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T12:19:35.711Z - info: {"ETag":"\"ca1d35a9b87ac590f0f3e1b2d01a0014\""}
+2015-07-07T13:15:46.540Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T13:15:46.945Z - info: No images with checksum ca1d35a9b87ac590f0f3e1b2d01a0014
+2015-07-07T13:15:46.978Z - info: Format: JPEG
+2015-07-07T13:15:46.985Z - info: Format: JPEG
+2015-07-07T13:15:46.988Z - info: Format: JPEG
+2015-07-07T13:15:49.122Z - info: {"ETag":"\"ca1d35a9b87ac590f0f3e1b2d01a0014\""}
+2015-07-07T13:16:55.571Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T13:16:56.057Z - info: Image with checksum ca1d35a9b87ac590f0f3e1b2d01a0014 already uploaded
+2015-07-07T13:16:56.058Z - info: Deleting files
+2015-07-07T13:16:56.064Z - info: Deleted file: original.jpg
+2015-07-07T13:16:56.428Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original.jpg"]}
+2015-07-07T13:18:15.528Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T13:18:16.238Z - info: No images with checksum ca1d35a9b87ac590f0f3e1b2d01a0014
+2015-07-07T13:18:16.262Z - info: Format: JPEG
+2015-07-07T13:18:16.268Z - info: Format: JPEG
+2015-07-07T13:18:16.270Z - info: Format: JPEG
+2015-07-07T13:18:17.066Z - info: Thumbnail was successfully saved at original_thumbnail..jpg
+2015-07-07T13:18:17.067Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:18:17.069Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:18:17.070Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnail.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:18:17.199Z - info: Image was resized and written to original_small..jpg
+2015-07-07T13:18:17.199Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:18:17.201Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_small.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:18:17.325Z - info: Image was resized and written to original_medium..jpg
+2015-07-07T13:18:17.325Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:18:17.327Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_medium.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:18:18.208Z - info: {"ETag":"\"ca1d35a9b87ac590f0f3e1b2d01a0014\""}
+2015-07-07T13:30:53.075Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T13:30:53.416Z - info: No images with checksum ca1d35a9b87ac590f0f3e1b2d01a0014
+2015-07-07T13:30:53.447Z - info: Format: JPEG
+2015-07-07T13:30:53.450Z - info: Format: JPEG
+2015-07-07T13:30:53.453Z - info: Format: JPEG
+2015-07-07T13:30:54.288Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.jpg
+2015-07-07T13:30:54.289Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:30:54.292Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnai.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:30:54.293Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_thumbnai.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:30:54.394Z - info: Image was resized and written to ../uploads/original_small.jpg
+2015-07-07T13:30:54.394Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:30:54.398Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_smal.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:30:54.530Z - info: Image was resized and written to ../uploads/original_medium.jpg
+2015-07-07T13:30:54.530Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:30:54.531Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/original_mediu.jpg'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-07T13:30:57.027Z - info: {"ETag":"\"ca1d35a9b87ac590f0f3e1b2d01a0014\""}
+2015-07-07T13:33:40.869Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T13:33:41.199Z - info: No images with checksum ca1d35a9b87ac590f0f3e1b2d01a0014
+2015-07-07T13:33:42.069Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.jpg
+2015-07-07T13:33:42.070Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:33:42.172Z - info: Image was resized and written to ../uploads/original_small.jpg
+2015-07-07T13:33:42.172Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:33:42.334Z - info: Image was resized and written to ../uploads/original_medium.jpg
+2015-07-07T13:33:42.335Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:33:42.677Z - info: {"ETag":"\"a4788068a90892a7e46c27385334ae72\""}
+2015-07-07T13:33:42.709Z - info: {"ETag":"\"cb9af523232963839e3fcc868f909bd5\""}
+2015-07-07T13:33:43.686Z - info: {"ETag":"\"18fb4e20328b78456e19e2d138bb31b3\""}
+2015-07-07T13:33:43.953Z - info: {"ETag":"\"ca1d35a9b87ac590f0f3e1b2d01a0014\""}
+2015-07-07T13:33:43.953Z - info: Deleting files
+2015-07-07T13:33:43.957Z - info: Deleted file: original.jpg
+2015-07-07T13:33:43.957Z - info: Deleted file: original_medium.jpg
+2015-07-07T13:33:43.957Z - info: Deleted file: original_small.jpg
+2015-07-07T13:33:43.957Z - info: Deleted file: original_thumbnail.jpg
+2015-07-07T13:33:44.318Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_medium.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_small.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_thumbnail.jpg"]}
+2015-07-07T13:37:50.047Z - info:  fieldname=file, originalname=tumblr_static_dsc06473.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=2490368, truncated=false, buffer=null
+2015-07-07T13:37:50.581Z - info: Image with checksum ca1d35a9b87ac590f0f3e1b2d01a0014 already uploaded
+2015-07-07T13:37:50.582Z - info: Deleting files
+2015-07-07T13:37:50.586Z - info: Deleted file: original.jpg
+2015-07-07T13:37:50.947Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_medium.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_small.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_thumbnail.jpg"]}
