@@ -4,6 +4,7 @@ var AWS = require('aws-sdk')
     , logger = require('./logger');
 
 module.exports = function (image, checksum, name, deffered) {
+  logger.log('info', image);
   var resizedImageName = image.name.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
       return name + ext;
   });

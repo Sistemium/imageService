@@ -6,8 +6,7 @@ var fs = require('fs')
 /**
  * name size of the image: _small. _medium. _thumbnail.
  **/
-module.exports = function (req, checksum, name, callback) {
-  var image = req.files.filedata;
+module.exports = function (req, checksum, name, image, callback) {
   var deffered = Q.defer();
   gm(image.path)
   .format(function (err, format) {
@@ -47,7 +46,8 @@ module.exports = function (req, checksum, name, callback) {
         break;
       case '_thumbnail.' :
         gm(image.path)
-        .thumb(config.thumbnail.width, config.thumbnail.height, imagePath, config.thumbnail.quality, function (err) {
+        .resize(config.thumbnail.width, config.thumbnail.height)
+        .write(imagePath, function (err) {
           if (!err) {
             logger.log('info', 'Thumbnail was successfully saved at %s', imagePath);
             callback(image, checksum, name.slice(0, -1), deffered);

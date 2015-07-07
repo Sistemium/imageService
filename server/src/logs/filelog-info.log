@@ -1,0 +1,222 @@
+2015-07-03T12:40:12.749Z - info: Thumbnail was successfully saved at ../uploads/71abe1c64fb5734b77209e2e07e848bf_thumbnail.png
+2015-07-03T12:40:12.843Z - info: Image was resized and written to ../uploads/71abe1c64fb5734b77209e2e07e848bf_small.png
+2015-07-03T12:40:13.045Z - info: Image was resized and written to ../uploads/71abe1c64fb5734b77209e2e07e848bf_medium.png
+2015-07-03T12:40:15.265Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf_thumbnail.png"]}
+2015-07-03T13:23:17.530Z - info: Image with checksum 17556abfcf34e8c34336abfea071e81b already uploaded
+2015-07-03T13:23:17.538Z - info: Deleted file: 6a751db17fe6a236b7d81410ca9a25cf.png
+2015-07-03T13:23:17.911Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/71abe1c64fb5734b77209e2e07e848bf_thumbnail.png"]}
+2015-07-03T13:48:53.782Z - info: No images with checksum 17556abfcf34e8c34336abfea071e81b
+2015-07-03T13:48:53.920Z - info: Thumbnail was successfully saved at ../uploads/978b068a6a1302ca9d04d02db45bf5b6_thumbnail.png
+2015-07-03T13:48:53.923Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/978b068a6a1302ca9d04d02db45bf5b6_thumbnail.png'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-03T13:48:53.924Z - error:  ENOENT: ENOENT, no such file or directory '../uploads/978b068a6a1302ca9d04d02db45bf5b6_thumbnail.png'
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:107:43)
+    at callNextListener (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:95:12)
+    at Request.COMPUTE_SHA256 (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/event_listeners.js:106:9)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:101:18)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+2015-07-03T13:48:54.009Z - info: Image was resized and written to ../uploads/978b068a6a1302ca9d04d02db45bf5b6_small.png
+2015-07-03T13:48:54.214Z - info: Image was resized and written to ../uploads/978b068a6a1302ca9d04d02db45bf5b6_medium.png
+2015-07-03T13:48:54.583Z - info: {"ETag":"\"d57974a2d386a650e90d4a6830a6af6b\""}
+2015-07-03T13:48:55.202Z - info: {"ETag":"\"b3ab424af59ac2de41f6c721f95d3b3b\""}
+2015-07-03T13:51:35.968Z - error:  RequestTimeout: Your socket connection to the server was not read from or written to within the timeout period. Idle connections will be closed.
+    at Request.extractError (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/services/s3.js:321:35)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:105:20)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:77:10)
+    at Request.emit (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:595:14)
+    at Request.transition (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:21:10)
+    at AcceptorStateMachine.runTo (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:37:9)
+    at Request.<anonymous> (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/request.js:597:12)
+    at Request.callListeners (/Users/albertkovalevskij/work/imageService/node_modules/aws-sdk/lib/sequential_executor.js:115:18)
+2015-07-03T14:04:39.355Z - info: Image with checksum 17556abfcf34e8c34336abfea071e81b already uploaded
+2015-07-03T14:04:39.363Z - info: Deleted file: 742a8ed8a8978542b111ed930babed2e.png
+2015-07-03T14:04:39.733Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/978b068a6a1302ca9d04d02db45bf5b6_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/978b068a6a1302ca9d04d02db45bf5b6_small.png"]}
+2015-07-03T14:04:51.591Z - info: No images with checksum 42092f929161dae9c08a21bfb46ece4d
+2015-07-03T14:04:51.629Z - info: Thumbnail was successfully saved at ../uploads/6a329a9cc3f7d69772196126714bfc66_thumbnail.png
+2015-07-03T14:04:51.797Z - info: Image was resized and written to ../uploads/6a329a9cc3f7d69772196126714bfc66_small.png
+2015-07-03T14:04:51.924Z - info: {"ETag":"\"8dafbd8401f9ab78018a16e738d259dc\""}
+2015-07-03T14:04:51.964Z - info: {"ETag":"\"42092f929161dae9c08a21bfb46ece4d\""}
+2015-07-03T14:04:52.418Z - info: {"ETag":"\"24d2a4668f62c5b3a9b33c2b56ae4f64\""}
+2015-07-03T14:04:52.527Z - info: Image was resized and written to ../uploads/6a329a9cc3f7d69772196126714bfc66_medium.png
+2015-07-03T14:04:53.949Z - info: {"ETag":"\"e230cbc82b2354cf22093b5fd2694b9c\""}
+2015-07-03T14:04:53.953Z - info: Deleted file: 6a329a9cc3f7d69772196126714bfc66.png
+2015-07-03T14:04:53.953Z - info: Deleted file: 6a329a9cc3f7d69772196126714bfc66_medium.png
+2015-07-03T14:04:53.953Z - info: Deleted file: 6a329a9cc3f7d69772196126714bfc66_small.png
+2015-07-03T14:04:53.953Z - info: Deleted file: 6a329a9cc3f7d69772196126714bfc66_thumbnail.png
+2015-07-03T14:04:54.318Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_thumbnail.png"]}
+2015-07-03T14:27:39.939Z - info: No images with checksum fd502baa405cfefe3973b5ce19859ccf
+2015-07-03T14:27:40.329Z - info: Thumbnail was successfully saved at ../uploads/a27b1481772397a3c48cec9559939120_thumbnail.png
+2015-07-03T14:27:40.471Z - info: Image was resized and written to ../uploads/a27b1481772397a3c48cec9559939120_small.png
+2015-07-03T14:27:40.668Z - info: {"ETag":"\"56b394944b96dfb32ffa5e6fc75d8888\""}
+2015-07-03T14:27:41.482Z - info: {"ETag":"\"f2347b864c6c599f89e210f1cabd8943\""}
+2015-07-03T14:27:41.594Z - info: Image was resized and written to ../uploads/a27b1481772397a3c48cec9559939120_medium.png
+2015-07-03T14:27:44.181Z - info: {"ETag":"\"fcdf9c5f1a2542df51c641810ee42371\""}
+2015-07-03T14:27:45.142Z - info: {"ETag":"\"fd502baa405cfefe3973b5ce19859ccf\""}
+2015-07-03T14:27:45.144Z - info: Deleted file: a27b1481772397a3c48cec9559939120.png
+2015-07-03T14:27:45.145Z - info: Deleted file: a27b1481772397a3c48cec9559939120_medium.png
+2015-07-03T14:27:45.145Z - info: Deleted file: a27b1481772397a3c48cec9559939120_small.png
+2015-07-03T14:27:45.145Z - info: Deleted file: a27b1481772397a3c48cec9559939120_thumbnail.png
+2015-07-03T14:27:45.514Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_thumbnail.png"]}
+2015-07-03T14:28:31.763Z - info: Image with checksum fd502baa405cfefe3973b5ce19859ccf already uploaded
+2015-07-03T14:28:31.767Z - info: Deleted file: 17e9072ceebd55fb8376c071c68505d7.png
+2015-07-03T14:28:32.119Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_thumbnail.png"]}
+2015-07-03T14:45:32.742Z - info: Image with checksum fd502baa405cfefe3973b5ce19859ccf already uploaded
+2015-07-03T14:45:32.747Z - info: Deleted file: 644ebcafba07da886bbc7f0a8a22821f.png
+2015-07-03T14:45:33.113Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_thumbnail.png"]}
+2015-07-03T14:46:35.623Z - info: Image with checksum fd502baa405cfefe3973b5ce19859ccf already uploaded
+2015-07-03T14:46:35.627Z - info: Deleted file: 9c2714844c77f8b780e5149eea769c78.png
+2015-07-03T14:46:35.979Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/a27b1481772397a3c48cec9559939120_thumbnail.png"]}
+2015-07-07T06:03:19.120Z - info: Binary content request in
+2015-07-07T06:03:19.125Z - info: The file was saved to: ../uploads/original.jpeg
+2015-07-07T06:10:50.874Z - info: Binary content request in
+2015-07-07T06:21:45.865Z - info: Binary content request in
+2015-07-07T06:21:46.604Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T06:34:54.173Z - info: Binary content request in
+2015-07-07T06:34:54.599Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T06:36:11.932Z - info: Binary content request in
+2015-07-07T06:36:12.400Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T06:38:29.362Z - info: Binary content request in
+2015-07-07T06:38:29.797Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T06:48:04.034Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-07T06:51:57.649Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-07T06:57:06.372Z - info:  fieldName=file, originalFilename=im.png, path=/var/folders/1w/lxvzkhsx3776x0zrf51kz6xh0000gn/T/2727-1gtqwo9.png, content-disposition=form-data; name="file"; filename="im.png", objectMode=false, highWaterMark=16384, needDrain=false, ending=true, ended=true, finished=true, decodeStrings=true, defaultEncoding=utf8, length=0, writing=false, corked=0, sync=false, bufferProcessing=false, onwrite=function (er) {
+    onwrite(stream, er);
+  }, writecb=null, writelen=0, bufferedRequest=null, lastBufferedRequest=null, pendingcb=0, prefinished=true, errorEmitted=false, writable=true, domain=null, error=[function (err) {
+    if (!self.error) self.handleError(err);
+  }], close=[function () {
+    if (hash) file.hash = hash.digest('hex');
+    file.size = counter.bytes;
+    self.emit('file', fileStream.name, file);
+    endFlush(self);
+  }], _maxListeners=undefined, path=/var/folders/1w/lxvzkhsx3776x0zrf51kz6xh0000gn/T/2727-1gtqwo9.png, fd=null, flags=w, mode=438, start=undefined, pos=undefined, bytesWritten=13501, closed=true, size=13501, name=im.png, type=null
+2015-07-07T06:57:06.890Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-07T07:05:38.829Z - info:  fieldname=file, originalname=im.png, name=0a6ca0d59e9d93f59c9c6a2af2e4982b.png, encoding=7bit, mimetype=text/plain, path=../uploads/0a6ca0d59e9d93f59c9c6a2af2e4982b.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-07T07:05:39.803Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-07T07:11:18.363Z - info:  fieldname=file, originalname=im.png, name=c42c2970c68a57bdad49ac96fba176b4.png, encoding=7bit, mimetype=text/plain, path=../uploads/c42c2970c68a57bdad49ac96fba176b4.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-07T07:11:19.185Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-07T07:13:19.106Z - info:  fieldname=file, originalname=im.png, name=9944f5fc57ec805ed6855ffee75e2f44.png, encoding=7bit, mimetype=text/plain, path=../uploads/9944f5fc57ec805ed6855ffee75e2f44.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-07T07:14:05.817Z - info:  fieldname=file, originalname=im.png, name=85afeaf42ee4e81b7dd0454a88c190e3.png, encoding=7bit, mimetype=text/plain, path=../uploads/85afeaf42ee4e81b7dd0454a88c190e3.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-07T07:14:06.647Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-07T07:14:06.648Z - info: Deleting files
+2015-07-07T07:14:06.654Z - info: Deleted file: 85afeaf42ee4e81b7dd0454a88c190e3.png
+2015-07-07T07:14:07.365Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_thumbnail.png"]}
+2015-07-07T07:14:49.287Z - info:  fieldname=file, originalname=im.png, name=4c23995531ac86bd4073a0e3a6f18290.png, encoding=7bit, mimetype=text/plain, path=../uploads/4c23995531ac86bd4073a0e3a6f18290.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-07T07:14:49.650Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-07T07:14:49.650Z - info: Deleting files
+2015-07-07T07:14:49.655Z - info: Deleted file: 4c23995531ac86bd4073a0e3a6f18290.png
+2015-07-07T07:14:53.792Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/6a329a9cc3f7d69772196126714bfc66_thumbnail.png"]}
+2015-07-07T07:16:02.436Z - info: Binary content request in
+2015-07-07T07:16:02.873Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T07:17:57.393Z - info: Binary content request in
+2015-07-07T07:17:58.143Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T07:17:58.143Z - info: {"path":"../uploads/original.jpeg","name":"original.jpeg"}
+2015-07-07T07:17:58.484Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-07T07:22:02.671Z - info: Binary content request in
+2015-07-07T07:22:03.339Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-07T07:22:03.340Z - info: Deleting files
+2015-07-07T07:22:03.347Z - info: Deleted file: original.jpeg
+2015-07-07T07:22:04.726Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.jpeg"]}
+2015-07-07T07:27:18.014Z - info: Binary content request in
+2015-07-07T07:27:20.147Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-07T07:27:20.217Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.jpeg
+2015-07-07T07:27:20.218Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T07:27:20.243Z - info: Image was resized and written to ../uploads/original_small.jpeg
+2015-07-07T07:27:20.243Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T07:27:20.386Z - info: Image was resized and written to ../uploads/original_medium.jpeg
+2015-07-07T07:27:20.386Z - info:  path=../uploads/original.jpeg, name=original.jpeg
+2015-07-07T07:27:20.920Z - info: {"ETag":"\"4214321e12287eeaf3f51e3094ae1fec\""}
+2015-07-07T07:27:20.921Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-07T07:27:21.573Z - info: {"ETag":"\"601a7fb6f99d833eeff8a7508c297e70\""}
+2015-07-07T07:27:21.891Z - info: {"ETag":"\"1f3dd1187f483ebf455fc2c032255e63\""}
+2015-07-07T07:27:21.891Z - info: Deleting files
+2015-07-07T07:27:21.895Z - info: Deleted file: original.jpeg
+2015-07-07T07:27:21.895Z - info: Deleted file: original_medium.jpeg
+2015-07-07T07:27:21.895Z - info: Deleted file: original_small.jpeg
+2015-07-07T07:27:21.895Z - info: Deleted file: original_thumbnail.jpeg
+2015-07-07T07:27:22.602Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.jpeg"]}
+2015-07-07T07:40:15.327Z - info: Binary content request in
+2015-07-07T07:40:16.064Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-07T07:40:16.065Z - info: Deleting files
+2015-07-07T07:40:16.071Z - info: Deleted file: original.jpeg
+2015-07-07T07:40:16.437Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.jpeg"]}
+2015-07-07T08:55:39.758Z - info: Binary content request in
+2015-07-07T08:55:39.816Z - info: Binary content request in
+2015-07-07T08:55:39.817Z - info: Binary content request in
+2015-07-07T08:55:40.337Z - info: No images with checksum d41d8cd98f00b204e9800998ecf8427e
+2015-07-07T08:55:40.355Z - info: No images with checksum d41d8cd98f00b204e9800998ecf8427e
+2015-07-07T08:55:40.363Z - info: No images with checksum d41d8cd98f00b204e9800998ecf8427e
+2015-07-07T08:55:40.629Z - info: {"ETag":"\"d41d8cd98f00b204e9800998ecf8427e\""}
+2015-07-07T08:55:40.630Z - info: {"ETag":"\"d41d8cd98f00b204e9800998ecf8427e\""}
+2015-07-07T08:55:40.634Z - info: {"ETag":"\"d41d8cd98f00b204e9800998ecf8427e\""}
+2015-07-07T09:31:21.326Z - info:  fieldname=file, originalname=1.jpeg, name=6fb7ae7bc248f82fb1d8f9e2058b9305.jpeg, encoding=7bit, mimetype=image/jpeg, path=../uploads/6fb7ae7bc248f82fb1d8f9e2058b9305.jpeg, extension=jpeg, size=13128, truncated=false, buffer=null
+2015-07-07T09:31:21.821Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-07T09:31:21.822Z - info: Deleting files
+2015-07-07T09:31:21.827Z - info: Deleted file: 6fb7ae7bc248f82fb1d8f9e2058b9305.jpeg
+2015-07-07T09:31:22.192Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.jpeg"]}
+2015-07-07T09:31:59.594Z - info:  fieldname=file, originalname=i.png, name=739ee24185af3c69beb9352fa0efa08e.png, encoding=7bit, mimetype=image/png, path=../uploads/739ee24185af3c69beb9352fa0efa08e.png, extension=png, size=656779, truncated=false, buffer=null
+2015-07-07T09:31:59.874Z - info: No images with checksum 17556abfcf34e8c34336abfea071e81b
+2015-07-07T09:32:00.017Z - info: Thumbnail was successfully saved at ../uploads/739ee24185af3c69beb9352fa0efa08e_thumbnail.png
+2015-07-07T09:32:00.017Z - info:  path=../uploads/739ee24185af3c69beb9352fa0efa08e.png, name=739ee24185af3c69beb9352fa0efa08e.png
+2015-07-07T09:32:00.103Z - info: Image was resized and written to ../uploads/739ee24185af3c69beb9352fa0efa08e_small.png
+2015-07-07T09:32:00.103Z - info:  path=../uploads/739ee24185af3c69beb9352fa0efa08e.png, name=739ee24185af3c69beb9352fa0efa08e.png
+2015-07-07T09:32:00.284Z - info: {"ETag":"\"5181bcf27e09b327ddb51dd5f2ee1c5f\""}
+2015-07-07T09:32:00.316Z - info: Image was resized and written to ../uploads/739ee24185af3c69beb9352fa0efa08e_medium.png
+2015-07-07T09:32:00.316Z - info:  path=../uploads/739ee24185af3c69beb9352fa0efa08e.png, name=739ee24185af3c69beb9352fa0efa08e.png
+2015-07-07T09:32:00.622Z - info: {"ETag":"\"293ffa30c3f61e3a14f8d4c585c5a88a\""}
+2015-07-07T09:32:00.988Z - info: {"ETag":"\"17556abfcf34e8c34336abfea071e81b\""}
+2015-07-07T09:32:02.042Z - info: {"ETag":"\"428db2e81cad0c81d7bd9b354ee16545\""}
+2015-07-07T09:32:02.042Z - info: Deleting files
+2015-07-07T09:32:02.045Z - info: Deleted file: 739ee24185af3c69beb9352fa0efa08e.png
+2015-07-07T09:32:02.045Z - info: Deleted file: 739ee24185af3c69beb9352fa0efa08e_medium.png
+2015-07-07T09:32:02.046Z - info: Deleted file: 739ee24185af3c69beb9352fa0efa08e_small.png
+2015-07-07T09:32:02.046Z - info: Deleted file: 739ee24185af3c69beb9352fa0efa08e_thumbnail.png
+2015-07-07T09:32:02.410Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_thumbnail.png"]}
+2015-07-07T09:32:39.786Z - info:  fieldname=file, originalname=im.png, name=ec9627598f45b5f2537aad3ced77d49b.png, encoding=7bit, mimetype=image/png, path=../uploads/ec9627598f45b5f2537aad3ced77d49b.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-07T09:32:40.056Z - info: No images with checksum 42092f929161dae9c08a21bfb46ece4d
+2015-07-07T09:32:40.083Z - info: Thumbnail was successfully saved at ../uploads/ec9627598f45b5f2537aad3ced77d49b_thumbnail.png
+2015-07-07T09:32:40.084Z - info:  path=../uploads/ec9627598f45b5f2537aad3ced77d49b.png, name=ec9627598f45b5f2537aad3ced77d49b.png
+2015-07-07T09:32:40.255Z - info: Image was resized and written to ../uploads/ec9627598f45b5f2537aad3ced77d49b_small.png
+2015-07-07T09:32:40.255Z - info:  path=../uploads/ec9627598f45b5f2537aad3ced77d49b.png, name=ec9627598f45b5f2537aad3ced77d49b.png
+2015-07-07T09:32:40.386Z - info: {"ETag":"\"42092f929161dae9c08a21bfb46ece4d\""}
+2015-07-07T09:32:40.398Z - info: {"ETag":"\"a7d9768581472487f0c189954cccdc85\""}
+2015-07-07T09:32:40.950Z - info: Image was resized and written to ../uploads/ec9627598f45b5f2537aad3ced77d49b_medium.png
+2015-07-07T09:32:40.950Z - info:  path=../uploads/ec9627598f45b5f2537aad3ced77d49b.png, name=ec9627598f45b5f2537aad3ced77d49b.png
+2015-07-07T09:32:41.083Z - info: {"ETag":"\"52e2065192aa3e1862e4d50b905cdbeb\""}
+2015-07-07T09:32:42.648Z - info: {"ETag":"\"2674a8fa2c08ddfe0d01cb3565dacc3f\""}
+2015-07-07T09:32:42.649Z - info: Deleting files
+2015-07-07T09:32:42.653Z - info: Deleted file: ec9627598f45b5f2537aad3ced77d49b.png
+2015-07-07T09:32:42.653Z - info: Deleted file: ec9627598f45b5f2537aad3ced77d49b_medium.png
+2015-07-07T09:32:42.653Z - info: Deleted file: ec9627598f45b5f2537aad3ced77d49b_small.png
+2015-07-07T09:32:42.653Z - info: Deleted file: ec9627598f45b5f2537aad3ced77d49b_thumbnail.png
+2015-07-07T09:32:43.035Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/ec9627598f45b5f2537aad3ced77d49b.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/ec9627598f45b5f2537aad3ced77d49b_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/ec9627598f45b5f2537aad3ced77d49b_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/ec9627598f45b5f2537aad3ced77d49b_thumbnail.png"]}
+2015-07-07T09:35:26.852Z - info:  fieldname=file, originalname=1.jpeg, name=4dee3b1d7080c07c0be5bfe64ca86206.jpeg, encoding=7bit, mimetype=image/jpeg, path=../uploads/4dee3b1d7080c07c0be5bfe64ca86206.jpeg, extension=jpeg, size=13128, truncated=false, buffer=null
+2015-07-07T09:35:27.343Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-07T09:35:27.344Z - info: Deleting files
+2015-07-07T09:35:27.350Z - info: Deleted file: 4dee3b1d7080c07c0be5bfe64ca86206.jpeg
+2015-07-07T09:35:27.707Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.jpeg","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.jpeg"]}
+2015-07-07T09:35:44.010Z - info:  fieldname=file, originalname=i.png, name=6bfd2d7d5e26652325f37bdaa97c49f8.png, encoding=7bit, mimetype=image/png, path=../uploads/6bfd2d7d5e26652325f37bdaa97c49f8.png, extension=png, size=656779, truncated=false, buffer=null
+2015-07-07T09:35:44.517Z - info: Image with checksum 17556abfcf34e8c34336abfea071e81b already uploaded
+2015-07-07T09:35:44.518Z - info: Deleting files
+2015-07-07T09:35:44.520Z - info: Deleted file: 6bfd2d7d5e26652325f37bdaa97c49f8.png
+2015-07-07T09:35:44.774Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_thumbnail.png"]}
+2015-07-07T09:36:18.825Z - info:  fieldname=file, originalname=i.png, name=60a773d9f095512d54c64ec6be987dbf.png, encoding=7bit, mimetype=image/png, path=../uploads/60a773d9f095512d54c64ec6be987dbf.png, extension=png, size=656779, truncated=false, buffer=null
+2015-07-07T09:36:19.200Z - info: Image with checksum 17556abfcf34e8c34336abfea071e81b already uploaded
+2015-07-07T09:36:19.200Z - info: Deleting files
+2015-07-07T09:36:19.202Z - info: Deleted file: 60a773d9f095512d54c64ec6be987dbf.png
+2015-07-07T09:36:19.572Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/17556abfcf34e8c34336abfea071e81b/739ee24185af3c69beb9352fa0efa08e_thumbnail.png"]}
