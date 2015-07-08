@@ -33,16 +33,25 @@ function processImage(req, res, image) {
   });
 }
 
+function checkFormatAndStartProcessing(req, res, image) {
+  checkFormat(image).then(function(image) {
+      logger.log('info', 'Strarting processing image');
+      processImage(req, res, image);
+  }, function(err) {
+      logger.log('error', err);
+      throw new Error(err);
+  });
+}
+
 module.exports = function(req, res) {
   if (req.files.file !== undefined) {
     var image = req.files.file;
     logger.log('info', image);
-    checkFormat(image).then(function(image) {
-      processRequest(req, res, image);
-    }, function(err) {
-        logger.log('error', err);
-        throw new Error(err);
-    });
+    image = {
+      path: image.path,
+      name: image.name
+    };
+    checkFormatAndStartProcessing(req, res, image);
   } else {
     logger.log('info', 'Binary content request in');
     var imageName = config.imageName + '.' + config.imageExtension;
@@ -52,11 +61,6 @@ module.exports = function(req, res) {
       path: imagePath,
       name: imageName
     };
-    checkFormat(image).then(function(image) {
-        processImage(req, res, image);
-    }, function(err) {
-        logger.log('error', err);
-        throw new Error(err);
-    });
+    checkFormatAndStartProcessing(req, res, image);
   }
 }

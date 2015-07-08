@@ -7,7 +7,7 @@ var AWS = require('aws-sdk')
 module.exports = function (image, checksum) {
   var imageStream = fs.createReadStream(image.path);
   var deffered = Q.defer();
-
+  
   var s3 = new AWS.S3();
   var params = {
     Bucket: config.s3.Bucket,
