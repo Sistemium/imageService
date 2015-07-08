@@ -56,7 +56,7 @@ module.exports = function(req, res) {
     checkFormatAndStartProcessing(req, res, image);
   } else {
     logger.log('info', 'Binary content request in');
-    var imageName = config.imageName + '.' + config.imageExtension;
+    var imageName = config.originalName + '.' + config.imageExtension;
     var imagePath = config.uploadFolderPath + '/' + imageName;
     req.pipe(fs.createWriteStream(imagePath));
     var image = {

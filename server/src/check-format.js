@@ -1,5 +1,4 @@
-var supportedFormats = require('../config/config.json').supportedFormats
-    , config = require('../config/config.json')
+var config = require('../config/config.json')
     , gm = require('gm').subClass({imageMagick: true})
     , _ = require('lodash')
     , logger = require('./logger')
@@ -15,10 +14,7 @@ module.exports = function(image) {
       throw new Error(err);
     };
 
-    var isSupportedFormat = _.some(supportedFormats, function (item) {
-      return format.toLowerCase() === item.toLowerCase();
-    });
-    if (isSupportedFormat) {
+    if (config.contentTypeFor[format.toLowerCase()]) {
       image.contentType = config.contentTypeFor[format.toLowerCase()];
       logger.log('info', 'Format is supported, contentType: %s', image.contentType);
       deffered.resolve(image);

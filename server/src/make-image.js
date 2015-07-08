@@ -5,9 +5,7 @@ var fs = require('fs')
     , config = require('../config/config.json')
     , logger = require('./logger')
     , Q = require('q');
-/**
- * name size of the image: _small. _medium. _thumbnail.
- **/
+
 module.exports = function (req, checksum, name, image, callback) {
   var deffered = Q.defer();
   imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {

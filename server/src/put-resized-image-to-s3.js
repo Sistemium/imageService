@@ -5,7 +5,8 @@ var AWS = require('aws-sdk')
 
 module.exports = function (image, checksum, name, deffered) {
   logger.log('info', image);
-  var resizedImageName = image.name.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
+  var imageName = image.name.replace(new RegExp(config.orignalName), '');
+  var resizedImageName = imageName.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
       return name + ext;
   });
   var resizedImageStream = fs.createReadStream(image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
