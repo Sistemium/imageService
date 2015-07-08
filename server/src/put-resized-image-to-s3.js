@@ -16,7 +16,8 @@ module.exports = function (image, checksum, name, deffered) {
   var params = {
     Bucket: config.s3.Bucket,
     Key: checksum + '/' + resizedImageName,
-    Body: resizedImageStream
+    Body: resizedImageStream,
+    ContentType: image.contentType
   };
   s3.putObject(params, function(err, data) {
     if (err) {

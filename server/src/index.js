@@ -12,10 +12,17 @@ var express = require('express')
 
 app.use(express.static('../../client'));
 app.use(multer(multerConfig));
-app.post('/', function (req, res) {
+app.use(function(err, req, res, next) {
+  if (err) {
+    res.status(500).send({error: 'Something went wrong...'});
+  } else {
+    next();
+  }
+});
+app.post('/api/image/', function (req, res) {
   processRequest(req, res);
 });
-app.get('/', function (req, res) {
+app.get('/api/image', function (req, res) {
   res.send();
 })
 

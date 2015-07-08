@@ -1,21 +1,17 @@
 var makeImage = require('./make-image')
     , putOriginalImageToS3 = require('./put-original-image-to-s3')
     , putResizedImageToS3 = require('./put-resized-image-to-s3')
-    , imageSuffixes = require('../config/config.json').imageInfo.imageSuffixes
+    , imageInfo = require('../config/config.json').imageInfo
     , Q = require('q');
 
-module.exports = function (req, checksum, imagePath, imageName) {
+module.exports = function (req, checksum, image) {
   var deffered = Q.defer();
-  var image = {
-    path: imagePath,
-    name: imageName
-  };
 
   Q.all([
     putOriginalImageToS3(image, checksum),
-    makeImage(req, checksum, imageSuffixes[0], image, putResizedImageToS3),
-    makeImage(req, checksum, imageSuffixes[1], image, putResizedImageToS3),
-    makeImage(req, checksum, imageSuffixes[2], image, putResizedImageToS3)
+    makeImage(req, checksum, imageInfo.smallImage.suffix, image, putResizedImageToS3),
+    makeImage(req, checksum, imageInfo.mediumImage.suffix, image, putResizedImageToS3),
+    makeImage(req, checksum, imageInfo.thumbnail.suffix, image, putResizedImageToS3)
   ]).then(function () {
     deffered.resolve();
   }, function (err) {

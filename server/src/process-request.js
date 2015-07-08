@@ -1,4 +1,5 @@
 var config = require('../config/config.json')
+    , checkFormat = require('./check-format')
     , putAllFilesToS3 = require('./put-all-files-to-s3')
     , notAlreadyUploaded = require('./check-if-checksum-exist-on-s3')
     , checksum = require('./generate-checksum')
@@ -8,24 +9,24 @@ var config = require('../config/config.json')
     , fs = require('fs')
     , Q = require('q');
 
-function cleanupAndGetResponse(res, checksum, folder, imageName) {
-  cleanupFiles(folder, imageName);
+function cleanupAndGetResponse(res, checksum, imageName) {
+  cleanupFiles(imageName);
   getResponse(res, checksum);
 }
 
-function processImage(req, res, imagePath, imageName) {
-  checksum(imagePath)
+function processImage(req, res, image) {
+  checksum(image.path)
   .then(function(checksum) {
     notAlreadyUploaded(checksum)
     .then(function() {
-      putAllFilesToS3(req, checksum, imagePath, imageName)
+      putAllFilesToS3(req, checksum, image)
       .then(function() {
-        cleanupAndGetResponse(res, checksum, config.uploadFolderPath, imageName);
+        cleanupAndGetResponse(res, checksum, image.name);
       }, function(err) {
         logger.log('error', err);
       });
     }, function() {
-        cleanupAndGetResponse(res, checksum, config.uploadFolderPath, imageName);
+        cleanupAndGetResponse(res, checksum, image.name);
     });
   }, function (error) {
     logger.log('error', error);
@@ -36,12 +37,26 @@ module.exports = function(req, res) {
   if (req.files.file !== undefined) {
     var image = req.files.file;
     logger.log('info', image);
-    processImage(req, res, image.path, image.name);
+    checkFormat(image).then(function(image) {
+      processRequest(req, res, image);
+    }, function(err) {
+        logger.log('error', err);
+        throw new Error(err);
+    });
   } else {
     logger.log('info', 'Binary content request in');
-    var imageName = config.imageInfo.imageName + '.' + config.imageInfo.imageExtension;
+    var imageName = config.imageName + '.' + config.imageExtension;
     var imagePath = config.uploadFolderPath + '/' + imageName;
     req.pipe(fs.createWriteStream(imagePath));
-    processImage(req, res, imagePath, imageName);
+    var image = {
+      path: imagePath,
+      name: imageName
+    };
+    checkFormat(image).then(function(image) {
+        processImage(req, res, image);
+    }, function(err) {
+        logger.log('error', err);
+        throw new Error(err);
+    });
   }
 }

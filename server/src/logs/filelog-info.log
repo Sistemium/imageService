@@ -789,3 +789,160 @@
 2015-07-07T13:37:50.582Z - info: Deleting files
 2015-07-07T13:37:50.586Z - info: Deleted file: original.jpg
 2015-07-07T13:37:50.947Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_medium.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_small.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/ca1d35a9b87ac590f0f3e1b2d01a0014/original_thumbnail.jpg"]}
+2015-07-07T13:46:15.447Z - info: Binary content request in
+2015-07-07T13:46:15.807Z - info: No images with checksum 12841defe694a408aa9be24ba0e58ded
+2015-07-07T13:46:18.523Z - info: {"ETag":"\"1a945c9f7059017c503d3c1591ff15e2\""}
+2015-07-07T13:53:12.297Z - info:  fieldname=file, originalname=images.jpg, name=original.jpg, encoding=7bit, mimetype=image/jpeg, path=../uploads/original.jpg, extension=jpg, size=13038, truncated=false, buffer=null
+2015-07-07T13:53:12.613Z - info: No images with checksum 4dda915dde5ff80408c19e69cff6abeb
+2015-07-07T13:53:12.646Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.jpg
+2015-07-07T13:53:12.646Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:53:12.673Z - info: Image was resized and written to ../uploads/original_small.jpg
+2015-07-07T13:53:12.673Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:53:12.845Z - info: Image was resized and written to ../uploads/original_medium.jpg
+2015-07-07T13:53:12.845Z - info:  path=../uploads/original.jpg, name=original.jpg
+2015-07-07T13:53:12.936Z - info: {"ETag":"\"4dda915dde5ff80408c19e69cff6abeb\""}
+2015-07-07T13:53:12.977Z - info: {"ETag":"\"81d318ee8c72f1319a5af6a729d6ede1\""}
+2015-07-07T13:53:13.098Z - info: {"ETag":"\"8e217545d950803be652e6fbcd45f3c1\""}
+2015-07-07T13:53:13.805Z - info: {"ETag":"\"ce6d3607379b6d9d237af5152eea9053\""}
+2015-07-07T13:53:13.805Z - info: Deleting files
+2015-07-07T13:53:13.809Z - info: Deleted file: original.jpg
+2015-07-07T13:53:13.809Z - info: Deleted file: original.png
+2015-07-07T13:53:13.809Z - info: Deleted file: original_medium.jpg
+2015-07-07T13:53:13.810Z - info: Deleted file: original_thumbnail.jpg
+2015-07-07T13:53:13.810Z - info: Deleted file: original_small.jpg
+2015-07-07T13:53:14.247Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/4dda915dde5ff80408c19e69cff6abeb/original.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/4dda915dde5ff80408c19e69cff6abeb/original_medium.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/4dda915dde5ff80408c19e69cff6abeb/original_small.jpg","https://s3-eu-west-1.amazonaws.com/sisdev/4dda915dde5ff80408c19e69cff6abeb/original_thumbnail.jpg"]}
+2015-07-07T13:53:44.396Z - info:  fieldname=file, originalname=ae1e4e28-5fc4-40d7-adef-7faaab10195e.png, name=original.png, encoding=7bit, mimetype=image/png, path=../uploads/original.png, extension=png, size=5168960, truncated=false, buffer=null
+2015-07-07T13:53:44.684Z - info: No images with checksum fd502baa405cfefe3973b5ce19859ccf
+2015-07-07T13:53:45.052Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.png
+2015-07-07T13:53:45.052Z - info:  path=../uploads/original.png, name=original.png
+2015-07-07T13:53:45.211Z - info: Image was resized and written to ../uploads/original_small.png
+2015-07-07T13:53:45.211Z - info:  path=../uploads/original.png, name=original.png
+2015-07-07T13:53:45.376Z - info: {"ETag":"\"8daef117da05f7d4826a5e2bdc55a5cc\""}
+2015-07-07T13:53:46.263Z - info: {"ETag":"\"51d142bdb9507e54b163b1906589abfd\""}
+2015-07-07T13:53:46.382Z - info: Image was resized and written to ../uploads/original_medium.png
+2015-07-07T13:53:46.382Z - info:  path=../uploads/original.png, name=original.png
+2015-07-07T13:53:50.085Z - info: {"ETag":"\"aff406b4145777ca613aea2889f7f8c7\""}
+2015-07-07T13:53:51.541Z - info: {"ETag":"\"fd502baa405cfefe3973b5ce19859ccf\""}
+2015-07-07T13:53:51.541Z - info: Deleting files
+2015-07-07T13:53:51.544Z - info: Deleted file: original.png
+2015-07-07T13:53:51.544Z - info: Deleted file: original_medium.png
+2015-07-07T13:53:51.544Z - info: Deleted file: original_small.png
+2015-07-07T13:53:51.544Z - info: Deleted file: original_thumbnail.png
+2015-07-07T13:53:51.906Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/original.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/original_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/original_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/fd502baa405cfefe3973b5ce19859ccf/original_thumbnail.png"]}
+2015-07-08T05:33:33.767Z - info: Binary content request in
+2015-07-08T05:33:37.596Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-08T05:33:38.455Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-08T05:52:20.428Z - info: Binary content request in
+2015-07-08T05:52:20.802Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-08T05:52:21.140Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-08T05:55:21.762Z - info: Binary content request in
+2015-07-08T05:55:22.263Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-08T05:55:22.264Z - info: Deleting files
+2015-07-08T05:55:22.270Z - info: Deleted file: original.png
+2015-07-08T05:55:22.635Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.png"]}
+2015-07-08T05:56:01.402Z - info: Binary content request in
+2015-07-08T05:56:01.661Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-08T05:56:01.704Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.png
+2015-07-08T05:56:01.705Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T05:56:01.910Z - info: Image was resized and written to ../uploads/original_small.png
+2015-07-08T05:56:01.910Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T05:56:01.981Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-08T05:56:02.046Z - info: {"ETag":"\"c94776289f45ae7aa0da2aee141f95c9\""}
+2015-07-08T05:56:03.280Z - info: Image was resized and written to ../uploads/original_medium.png
+2015-07-08T05:56:03.280Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T05:56:04.220Z - info: {"ETag":"\"9b63c8661fb876b9547bef9ddf54e788\""}
+2015-07-08T05:56:05.797Z - info: {"ETag":"\"c5a93676af5f3960a76b533ed7035262\""}
+2015-07-08T05:56:05.798Z - info: Deleting files
+2015-07-08T05:56:05.801Z - info: Deleted file: original.png
+2015-07-08T05:56:05.803Z - info: Deleted file: original_medium.png
+2015-07-08T05:56:05.803Z - info: Deleted file: original_small.png
+2015-07-08T05:56:05.803Z - info: Deleted file: original_thumbnail.png
+2015-07-08T05:56:06.181Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.png"]}
+2015-07-08T05:59:59.192Z - info:  fieldname=file, originalname=im.png, name=undefined.png, encoding=7bit, mimetype=text/plain, path=../uploads/undefined.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-08T05:59:59.615Z - info: No images with checksum 42092f929161dae9c08a21bfb46ece4d
+2015-07-08T05:59:59.650Z - info: Thumbnail was successfully saved at ../uploads/undefined_thumbnail.png
+2015-07-08T05:59:59.650Z - info:  path=../uploads/undefined.png, name=undefined.png, contentType=image/png
+2015-07-08T05:59:59.915Z - info: Image was resized and written to ../uploads/undefined_small.png
+2015-07-08T05:59:59.915Z - info:  path=../uploads/undefined.png, name=undefined.png, contentType=image/png
+2015-07-08T05:59:59.936Z - info: {"ETag":"\"42092f929161dae9c08a21bfb46ece4d\""}
+2015-07-08T05:59:59.964Z - info: {"ETag":"\"fa90bde4dc8565063e4bf3881f9e2c8f\""}
+2015-07-08T06:00:00.497Z - info: {"ETag":"\"f1a170ae54aa353f20cb4d7595ab8b59\""}
+2015-07-08T06:00:00.680Z - info: Image was resized and written to ../uploads/undefined_medium.png
+2015-07-08T06:00:00.681Z - info:  path=../uploads/undefined.png, name=undefined.png, contentType=image/png
+2015-07-08T06:00:02.182Z - info: {"ETag":"\"4163a022f0f20b59da855448b7a3a2a9\""}
+2015-07-08T06:00:02.183Z - info: Deleting files
+2015-07-08T06:00:02.186Z - info: Deleted file: undefined.png
+2015-07-08T06:00:02.186Z - info: Deleted file: undefined_medium.png
+2015-07-08T06:00:02.186Z - info: Deleted file: undefined_thumbnail.png
+2015-07-08T06:00:02.187Z - info: Deleted file: undefined_small.png
+2015-07-08T06:00:02.637Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined_thumbnail.png"]}
+2015-07-08T06:02:24.404Z - info:  fieldname=file, originalname=im.png, name=original.png, encoding=7bit, mimetype=text/plain, path=../uploads/original.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-08T06:02:26.945Z - info: Image with checksum 42092f929161dae9c08a21bfb46ece4d already uploaded
+2015-07-08T06:02:26.946Z - info: Deleting files
+2015-07-08T06:02:26.952Z - info: Deleted file: original.png
+2015-07-08T06:02:27.318Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/undefined_thumbnail.png"]}
+2015-07-08T06:03:16.527Z - info:  fieldname=file, originalname=im.png, name=original.png, encoding=7bit, mimetype=text/plain, path=../uploads/original.png, extension=png, size=13501, truncated=false, buffer=null
+2015-07-08T06:03:17.839Z - info: No images with checksum 42092f929161dae9c08a21bfb46ece4d
+2015-07-08T06:03:17.871Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.png
+2015-07-08T06:03:17.871Z - info:  path=../uploads/original.png, name=original.png, contentType=image/png
+2015-07-08T06:03:18.039Z - info: Image was resized and written to ../uploads/original_small.png
+2015-07-08T06:03:18.039Z - info:  path=../uploads/original.png, name=original.png, contentType=image/png
+2015-07-08T06:03:18.187Z - info: {"ETag":"\"42092f929161dae9c08a21bfb46ece4d\""}
+2015-07-08T06:03:18.211Z - info: {"ETag":"\"8ab441384f1bf807f92072cd0e0944c7\""}
+2015-07-08T06:03:18.666Z - info: {"ETag":"\"4193d9d755caa742b842426a6e45bbbd\""}
+2015-07-08T06:03:18.740Z - info: Image was resized and written to ../uploads/original_medium.png
+2015-07-08T06:03:18.740Z - info:  path=../uploads/original.png, name=original.png, contentType=image/png
+2015-07-08T06:03:21.355Z - info: {"ETag":"\"d95c7125ab3814e192fd5cbc61bc208f\""}
+2015-07-08T06:03:21.355Z - info: Deleting files
+2015-07-08T06:03:21.359Z - info: Deleted file: original.png
+2015-07-08T06:03:21.359Z - info: Deleted file: original_medium.png
+2015-07-08T06:03:21.359Z - info: Deleted file: original_small.png
+2015-07-08T06:03:21.360Z - info: Deleted file: original_thumbnail.png
+2015-07-08T06:03:21.741Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/original.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/original_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/original_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/42092f929161dae9c08a21bfb46ece4d/original_thumbnail.png"]}
+2015-07-08T06:57:30.927Z - info: Binary content request in
+2015-07-08T06:59:10.365Z - info: Binary content request in
+2015-07-08T07:00:48.399Z - info: Binary content request in
+2015-07-08T07:00:48.922Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-08T07:00:48.946Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.png
+2015-07-08T07:00:48.947Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T07:00:49.153Z - info: Image was resized and written to ../uploads/original_thumbnail.png
+2015-07-08T07:00:49.153Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T07:00:49.248Z - info: {"ETag":"\"cbdd5a69b093f77fbf601d0a823abbde\""}
+2015-07-08T07:00:49.253Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-08T07:00:50.356Z - info: {"ETag":"\"b1f9a7007225704144694f7c5aa7c15d\""}
+2015-07-08T07:00:50.520Z - info: Image was resized and written to ../uploads/original_thumbnail.png
+2015-07-08T07:00:50.520Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T07:00:53.247Z - info: {"ETag":"\"18040fce093bb54e0a8ee4c992a1f0a2\""}
+2015-07-08T07:00:53.248Z - info: Deleting files
+2015-07-08T07:00:53.691Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.png"]}
+2015-07-08T07:04:35.804Z - info: Binary content request in
+2015-07-08T07:04:36.436Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-08T07:04:36.438Z - info: Deleting files
+2015-07-08T07:04:36.444Z - info: Deleted file: original.png
+2015-07-08T07:04:36.444Z - info: Deleted file: original_medium.png
+2015-07-08T07:04:36.444Z - info: Deleted file: original_small.png
+2015-07-08T07:04:36.444Z - info: Deleted file: original_thumbnail.png
+2015-07-08T07:04:36.891Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.png"]}
+2015-07-08T07:10:01.519Z - info: Binary content request in
+2015-07-08T07:10:02.110Z - info: Image with checksum c133ded5472c55e646eafe3536c19053 already uploaded
+2015-07-08T07:10:02.111Z - info: Deleting files
+2015-07-08T07:10:02.117Z - info: Deleted file: original.png
+2015-07-08T07:10:02.509Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.png"]}
+2015-07-08T07:10:32.242Z - info: Binary content request in
+2015-07-08T07:10:32.514Z - info: No images with checksum c133ded5472c55e646eafe3536c19053
+2015-07-08T07:10:32.534Z - info: Thumbnail was successfully saved at ../uploads/original_thumbnail.png
+2015-07-08T07:10:32.535Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T07:10:32.744Z - info: Image was resized and written to ../uploads/original_thumbnail.png
+2015-07-08T07:10:32.744Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T07:10:32.835Z - info: {"ETag":"\"c133ded5472c55e646eafe3536c19053\""}
+2015-07-08T07:10:32.870Z - info: {"ETag":"\"df0d853d649603663a764f8c5f0716f4\""}
+2015-07-08T07:10:34.141Z - info: Image was resized and written to ../uploads/original_thumbnail.png
+2015-07-08T07:10:34.141Z - info:  path=../uploads/original.png, name=original.png, contentType=image/jpeg
+2015-07-08T07:10:34.161Z - info: {"ETag":"\"20ed0709b10b1260951ab653e4e8a44a\""}
+2015-07-08T07:10:37.133Z - info: {"ETag":"\"7a29e035cbc37ded70d8faf4eaa5bb9d\""}
+2015-07-08T07:10:37.133Z - info: Deleting files
+2015-07-08T07:10:37.137Z - info: Deleted file: original.png
+2015-07-08T07:10:37.139Z - info: Deleted file: original_medium.png
+2015-07-08T07:10:37.139Z - info: Deleted file: original_small.png
+2015-07-08T07:10:37.140Z - info: Deleted file: original_thumbnail.png
+2015-07-08T07:10:37.496Z - info: Got response: {"pictures":["https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_medium.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_small.png","https://s3-eu-west-1.amazonaws.com/sisdev/c133ded5472c55e646eafe3536c19053/original_thumbnail.png"]}

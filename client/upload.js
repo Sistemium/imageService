@@ -12,7 +12,7 @@ app.controller('MyCtrl', ['$scope', 'Upload', '$timeout', function ($scope, Uplo
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 Upload.upload({
-                    url: 'http://localhost:8080',
+                    url: '/api/image/',
                     fields: {
                         'username': $scope.username
                     },
