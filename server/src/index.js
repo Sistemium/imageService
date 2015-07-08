@@ -20,7 +20,11 @@ app.use(function(err, req, res, next) {
   }
 });
 app.post('/api/image/', function (req, res) {
-  processRequest(req, res);
+  try {
+    processRequest(req, res);
+  } catch(err) {
+    res.status(500).send({error: 'Something went wrong...'});
+  }
 });
 app.get('/api/image', function (req, res) {
   res.send();

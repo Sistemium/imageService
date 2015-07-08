@@ -5,7 +5,10 @@ var fs = require('fs')
 module.exports = function (filename) {
   logger.log('info', 'Deleting files');
   fs.readdir(config.uploadFolderPath, function (err, files) {
-    if (err) logger.log('error', err);
+    if (err) {
+      logger.log('error', err);
+      throw new Error(err);
+    }
     else {
       files.forEach(function(file) {
         if (file.indexOf(filename.slice('.')[0]) === 0) {

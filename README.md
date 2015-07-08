@@ -5,30 +5,33 @@ In config/config.json configuration for application:
   "imageInfo": {
      "smallImage": {
        "width": 800,
-       "height": 800
+       "height": 800,
+       "suffix": "_small"
      },
      "mediumImage": {
        "width": 2000,
-       "height": 2000
+       "height": 2000,
+       "suffix": "_medium"
      },
      "thumbnail": {
         "width": 64,
         "height": 64,
-        "quality": 100
-     },
-     "imageName": "original",
-     "imageExtension": "png",
-     "supportedFormats": [
-       "PNG",
-       "JPG",
-       "JPEG"
-     ],
-     "imageSuffixes": [
-       "_small",
-       "_medium",
-       "_thumbnail"
-     ]
+        "quality": 100,
+        "suffix": "_thumbnail"
+     }
   },
+  "contentTypeFor": {
+    "jpeg": "image/jpeg",
+    "jpg": "image/jpeg",
+    "png": "image/png"
+  },
+  "imageName": "original",
+  "imageExtension": "png",
+  "supportedFormats": [
+    "PNG",
+    "JPG",
+    "JPEG"
+  ],
   "uploadFolderPath": "../uploads",
   "s3": {
     "Bucket": "sisdev",

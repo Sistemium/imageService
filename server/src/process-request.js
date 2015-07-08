@@ -24,12 +24,14 @@ function processImage(req, res, image) {
         cleanupAndGetResponse(res, checksum, image.name);
       }, function(err) {
         logger.log('error', err);
+        throw new Error(err);
       });
     }, function() {
         cleanupAndGetResponse(res, checksum, image.name);
     });
   }, function (error) {
     logger.log('error', error);
+    throw new Error(err);
   });
 }
 

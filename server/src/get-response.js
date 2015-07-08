@@ -19,8 +19,10 @@ module.exports = function (res, checksum) {
       };
 
   s3.listObjects(params, function(err, data) {
-    if (err) logger.log('error', err);
-    else {
+    if (err) {
+      logger.log('error', err);
+      throw new Error(err);
+    } else {
       var response = formatResponse(data.Contents);
       res.json(response);
       logger.log('info', 'Got response: ' + JSON.stringify(response));
