@@ -12,6 +12,7 @@
     "multer": "^0.1.8",
     "nodetime": "^0.8.15",
     "q": "^1.4.1",
+    "request": "^2.58.0",
     "winston": "^1.0.1"
   },
   "devDependencies": {},

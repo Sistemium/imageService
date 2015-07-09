@@ -3,6 +3,7 @@
 //     appName: 'Image service'
 //   })
 var express = require('express')
+    , auth = require('./auth')
     , multer = require('multer')
     , config = require('../config/config.json')
     , multerConfig = require('../config/multer-config')
@@ -11,6 +12,7 @@ var express = require('express')
     , port = config.applicationPort;
 
 app.use(express.static('../../client'));
+app.use(auth());
 app.use(multer(multerConfig));
 app.use(function(err, req, res, next) {
   if (err) {
@@ -26,9 +28,9 @@ app.post('/api/image/', function (req, res) {
     res.status(500).send({error: 'Something went wrong...'});
   }
 });
-app.get('/api/image', function (req, res) {
-  res.send();
-})
+app.get('/api/image/', function (req, res) {
+  res.send('hello');
+});
 
 app.listen(port, function() {
   console.log('Server listening on port %d', port);
