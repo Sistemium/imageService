@@ -13,17 +13,8 @@ var express = require('express')
     , port = config.applicationPort;
 
 app.use(express.static('../../client'));
-app.use(auth());
-app.use(multer(multerConfig));
-app.use(logErrors);
-app.use(function(err, req, res, next) {
-  if (err) {
-    res.status(500).send({error: 'Something went wrong...'});
-  } else {
-    next();
-  }
-});
-app.post('/api/image/', function (req, res) {
+
+app.post('/api/image/', auth(), multer(multerConfig), function (req, res) {
   try {
     processRequest(req, res);
   } catch(err) {
@@ -31,7 +22,16 @@ app.post('/api/image/', function (req, res) {
   }
 });
 app.get('/api/image/', function (req, res) {
-  res.send('hello');
+  res.send('/api/image/');
+});
+
+app.use(logErrors);
+app.use(function(err, req, res, next) {
+  if (err) {
+    res.status(500).send({error: 'Something went wrong...'});
+  } else {
+    next();
+  }
 });
 
 app.listen(port, function() {
