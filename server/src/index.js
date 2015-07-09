@@ -8,12 +8,14 @@ var express = require('express')
     , config = require('../config/config.json')
     , multerConfig = require('../config/multer-config')
     , processRequest = require('./process-request')
+    , logErrors = require('./log-errors')
     , app = express()
     , port = config.applicationPort;
 
 app.use(express.static('../../client'));
 app.use(auth());
 app.use(multer(multerConfig));
+app.use(logErrors);
 app.use(function(err, req, res, next) {
   if (err) {
     res.status(500).send({error: 'Something went wrong...'});
