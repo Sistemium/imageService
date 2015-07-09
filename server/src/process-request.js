@@ -2,7 +2,7 @@ var config = require('../config/config.json')
     , checkFormat = require('./check-format')
     , putAllFilesToS3 = require('./put-all-files-to-s3')
     , notAlreadyUploaded = require('./check-if-checksum-exist-on-s3')
-    , checksum = require('./generate-checksum')
+    , generateChecksum = require('./generate-checksum')
     , getResponse = require('./get-response')
     , cleanupFiles = require('./cleanup')
     , logger = require('./logger')
@@ -15,7 +15,7 @@ function cleanupAndGetResponse(res, checksum, imageName) {
 }
 
 function processImage(req, res, image) {
-  checksum(image.path)
+  generateChecksum(image.path)
   .then(function(checksum) {
     notAlreadyUploaded(checksum)
     .then(function() {
@@ -38,6 +38,7 @@ function processImage(req, res, image) {
 function checkFormatAndStartProcessing(req, res, image) {
   checkFormat(image).then(function(image) {
       logger.log('info', 'Strarting processing image');
+      logger.log('info', image);
       processImage(req, res, image);
   }, function(err) {
       logger.log('error', err);

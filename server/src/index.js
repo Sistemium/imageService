@@ -14,7 +14,7 @@ var express = require('express')
 
 app.use(express.static('../../client'));
 
-app.post('/api/image/', auth(), multer(multerConfig), function (req, res) {
+app.post('/api/image/', multer(multerConfig), function (req, res) {
   try {
     processRequest(req, res);
   } catch(err) {

@@ -11,7 +11,7 @@ module.exports = function (image, checksum) {
   var s3 = new AWS.S3();
   var params = {
     Bucket: config.s3.Bucket,
-    Key: checksum + '/' + image.name,
+    Key: checksum + '/' + image.name.replace(new RegExp(checksum), ''),
     Body: imageStream,
     ContentType: image.contentType
   };
