@@ -6,21 +6,26 @@ var makeImage = require('./make-image')
     , fs = require('fs')
     , Q = require('q');
 
-module.exports = function (req, checksum, image) {
+module.exports = function (req, checksum, image, body) {
   var deffered = Q.defer();
   var imageNameWithoutExt = image.name.split('.')[0];
-  var imageName = image.name.replace(new RegExp(imageNameWithoutExt), config.originalName+checksum);
+  var imageName = image.name.replace(new RegExp(imageNameWithoutExt), config.imageInfo.original.name+checksum);
   var imagePath = image.path.replace(new RegExp(image.name), imageName);
   fs.renameSync(image.path, imagePath);
   image.name = imageName;
   image.path = imagePath;
-
+  var dataForUrlFormation = {
+    checksum: checksum,
+    folder: body.folder,
+    org: body.org,
+    time: body.time
+  };
 
   Q.all([
-    putOriginalImageToS3(image, checksum),
-    makeImage(req, checksum, imageInfo.smallImage.suffix, image, putResizedImageToS3),
-    makeImage(req, checksum, imageInfo.mediumImage.suffix, image, putResizedImageToS3),
-    makeImage(req, checksum, imageInfo.thumbnail.suffix, image, putResizedImageToS3)
+    putOriginalImageToS3(image, dataForUrlFormation),
+    makeImage(req, dataForUrlFormation, imageInfo.smallImage.suffix, image, putResizedImageToS3),
+    makeImage(req, dataForUrlFormation, imageInfo.mediumImage.suffix, image, putResizedImageToS3),
+    makeImage(req, dataForUrlFormation, imageInfo.thumbnail.suffix, image, putResizedImageToS3)
   ]).then(function () {
     deffered.resolve();
   }, function (err) {

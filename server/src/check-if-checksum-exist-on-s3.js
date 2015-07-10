@@ -5,7 +5,7 @@ var AWS = require('aws-sdk')
 
 module.exports = function(checksum) {
   var deffered = Q.defer()
-      , s3 = new AWS.S3()
+      , s3 = new AWS.S3(config.awsCredentials)
       , params = {
           Bucket: config.s3.Bucket,
           Prefix: checksum + '/'
