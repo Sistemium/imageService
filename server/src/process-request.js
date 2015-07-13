@@ -26,14 +26,14 @@ function processImage(req, res, image, body) {
     notAlreadyUploaded(checksum,body)
     .then(function() {
       putAllFilesToS3(req, checksum, image, body)
-      .then(function(imagesMetadata) {
-        getResponseAndCleanup(res, checksum, body, image.name, imagesMetadata);
+      .then(function() {
+        getResponseAndCleanup(res, checksum, body, image.name);
       }, function(err) {
         logger.log('error', err);
         throw new Error(err);
       });
     }, function() {
-        getResponseAndCleanup(res, checksum, body, image.name, imagesMetadata);
+        getResponseAndCleanup(res, checksum, body, image.name);
     });
   }, function (error) {
     logger.log('error', error);

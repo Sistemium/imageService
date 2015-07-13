@@ -3,7 +3,7 @@ var AWS = require('aws-sdk')
     , getFileInfo = require('./get-file-info')
     , logger = require('./logger');
 
-function formatResponse(data, imagesMetadata) {
+function formatResponse(data) {
   var imageInfoObject = {
     links: {}
   };
@@ -13,33 +13,22 @@ function formatResponse(data, imagesMetadata) {
       , key = undefined;
 
   data.forEach(function(item) {
-    var imageMetadata = undefined;
-
-    imagesMetadata.forEach(function (metadata) {
-      if (metadata.bucketKey === item.Key) imageMetadata = metadata;
-    });
-    var suffix = item.Key.split('/').splice(-1)[0].split('.')[0];
-    logger.log('info', item);
+    var fileName = item.Key.split('/').splice(-1)[0];
+    var suffix = fileName.split('.')[0];
     var imageInfo = config.imageInfo;
     switch(suffix) {
       case imageInfo.smallImage.suffix:
-        width = imageMetadata.width;
-        height = imageMetadata.height;
         key = "smallImage";
         break;
       case imageInfo.mediumImage.suffix:
-        width = imageMetadata.width;
-        height = imageMetadata.height;
         key = "mediumImage";
         break;
       case imageInfo.thumbnail.suffix:
-        width = imageMetadata.width;
-        height = imageMetadata.height;
         key = "thumbnail";
         break;
+      case config.picturesInfoFileName.split('.')[0]:
+        break;
       case imageInfo.original.name:
-        width = imageMetadata.width;
-        height = imageMetadata.height;
         key = "original";
         imageInfoObject.original = {
           src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
@@ -48,9 +37,7 @@ function formatResponse(data, imagesMetadata) {
       default: throw new Error('No such key...');
     }
     imageInfoObject.links[key] = {
-        src: config.s3.Domain + config.s3.Bucket + '/' + item.Key,
-        width: width,
-        height: height
+        src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
     };
   });
 
@@ -74,9 +61,28 @@ module.exports = function (res, dataForUrlFormation, imagesMetadata) {
       logger.log('error', err);
       throw new Error(err);
     } else {
-      var response = formatResponse(data.Contents, imagesMetadata);
-      res.json(response);
-      logger.log('info', 'Got response: ' + JSON.stringify(response));
+      var contents = data.Contents;
+      data.Contents.forEach(function(item) {
+        var fileName = item.Key.split('/').splice(-1)[0];
+        if (fileName === config.picturesInfoFileName) {
+          params = {
+            Bucket: config.s3.Bucket,
+            Key: prefix + config.picturesInfoFileName
+          };
+          s3.getObject(params, function (err, data) {
+            if (err) {
+              logger.log('info', 'Error occured.... %s', err);
+              throw new Error(err);
+            } else {
+              var response = formatResponse(contents);
+              var metadata = JSON.stringify(data.Body.toString());
+              response.metadata = metadata;
+              res.json(response);
+              logger.log('info', 'Got response: ' + JSON.stringify(response));
+            }
+          });
+        }
+      });
     }
   });
 };
