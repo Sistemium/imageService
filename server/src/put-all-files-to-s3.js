@@ -26,8 +26,8 @@ module.exports = function (req, checksum, image, body) {
     makeImage(req, dataForUrlFormation, imageInfo.smallImage.suffix, image, putResizedImageToS3),
     makeImage(req, dataForUrlFormation, imageInfo.mediumImage.suffix, image, putResizedImageToS3),
     makeImage(req, dataForUrlFormation, imageInfo.thumbnail.suffix, image, putResizedImageToS3)
-  ]).then(function () {
-    deffered.resolve();
+  ]).then(function (data) {
+    deffered.resolve(data);
   }, function (err) {
     deffered.reject(err);
   });

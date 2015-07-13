@@ -9,25 +9,31 @@ var config = require('../config/config.json')
     , fs = require('fs')
     , Q = require('q');
 
-function getResponseAndCleanup(res, checksum, imageName) {
-  getResponse(res, checksum);
+function getResponseAndCleanup(res, checksum, body, imageName, imagesMetadata) {
+  var dataForUrlFormation = {
+    checksum: checksum,
+    folder: body.folder,
+    org: body.org,
+    time: body.time
+  };
+  getResponse(res, dataForUrlFormation, imagesMetadata);
   cleanupFiles(imageName);
 }
 
 function processImage(req, res, image, body) {
   generateChecksum(image.path)
   .then(function(checksum) {
-    notAlreadyUploaded(checksum)
+    notAlreadyUploaded(checksum,body)
     .then(function() {
       putAllFilesToS3(req, checksum, image, body)
-      .then(function() {
-        getResponseAndCleanup(res, checksum, image.name);
+      .then(function(imagesMetadata) {
+        getResponseAndCleanup(res, checksum, body, image.name, imagesMetadata);
       }, function(err) {
         logger.log('error', err);
         throw new Error(err);
       });
     }, function() {
-        getResponseAndCleanup(res, checksum, image.name);
+        getResponseAndCleanup(res, checksum, body, image.name, imagesMetadata);
     });
   }, function (error) {
     logger.log('error', error);

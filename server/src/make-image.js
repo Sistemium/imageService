@@ -6,7 +6,7 @@ var fs = require('fs')
     , logger = require('./logger')
     , Q = require('q');
 
-module.exports = function (req, checksum, name, image, callback) {
+module.exports = function (req, dataForUrlFormation, name, image, callback) {
   var deffered = Q.defer();
   imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
           return name + ext;
@@ -19,7 +19,7 @@ module.exports = function (req, checksum, name, image, callback) {
       .write(imagePath, function (err) {
         if (!err) {
           logger.log('info', 'Image was resized and written to %s', imagePath);
-          callback(image, checksum, name, deffered);
+          callback(image, dataForUrlFormation, name, deffered);
         }
       });
       break;
@@ -29,7 +29,7 @@ module.exports = function (req, checksum, name, image, callback) {
       .write(imagePath, function (err) {
         if (!err) {
           logger.log('info', 'Image was resized and written to %s', imagePath);
-          callback(image, checksum, name, deffered);
+          callback(image, dataForUrlFormation, name, deffered);
         }
       });
       break;
@@ -39,7 +39,7 @@ module.exports = function (req, checksum, name, image, callback) {
       .write(imagePath, function (err) {
         if (!err) {
           logger.log('info', 'Thumbnail was successfully saved at %s', imagePath);
-          callback(image, checksum, name, deffered);
+          callback(image, dataForUrlFormation, name, deffered);
         }
       });
       break;
