@@ -9,14 +9,14 @@ var config = require('../config/config.json')
     , fs = require('fs')
     , Q = require('q');
 
-function getResponseAndCleanup(res, checksum, body, imageName, imagesMetadata) {
+function getResponseAndCleanup(res, checksum, body, imageName) {
   var dataForUrlFormation = {
     checksum: checksum,
     folder: body.folder,
     org: body.org,
     time: body.time
   };
-  getResponse(res, dataForUrlFormation, imagesMetadata);
+  getResponse(res, dataForUrlFormation);
   cleanupFiles(imageName);
 }
 

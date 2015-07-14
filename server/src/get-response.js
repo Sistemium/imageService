@@ -3,7 +3,7 @@ var AWS = require('aws-sdk')
     , getFileInfo = require('./get-file-info')
     , logger = require('./logger');
 
-function formatResponse(data) {
+function formResponse(data) {
   var imageInfoObject = {
     links: {}
   };
@@ -27,12 +27,10 @@ function formatResponse(data) {
         key = "thumbnail";
         break;
       case config.picturesInfoFileName.split('.')[0]:
+        key = "imageInfoJsonFile"
         break;
       case imageInfo.original.name:
         key = "original";
-        imageInfoObject.original = {
-          src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
-        };
         break;
       default: throw new Error('No such key...');
     }
@@ -44,7 +42,7 @@ function formatResponse(data) {
   return imageInfoObject;
 };
 
-module.exports = function (res, dataForUrlFormation, imagesMetadata) {
+module.exports = function (res, dataForUrlFormation) {
   var prefix = dataForUrlFormation.folder + '/'
              + dataForUrlFormation.org + '/'
              + dataForUrlFormation.time
@@ -74,8 +72,8 @@ module.exports = function (res, dataForUrlFormation, imagesMetadata) {
               logger.log('info', 'Error occured.... %s', err);
               throw new Error(err);
             } else {
-              var response = formatResponse(contents);
-              var metadata = JSON.stringify(data.Body.toString());
+              var response = formResponse(contents);
+              var metadata = JSON.parse(data.Body.toString());
               response.metadata = metadata;
               res.json(response);
               logger.log('info', 'Got response: ' + JSON.stringify(response));

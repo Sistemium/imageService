@@ -40,9 +40,11 @@ module.exports = function (image, dataForUrlFormation, name, deffered) {
       deffered.reject(err);
     }
     else {
-      data.width = fileInfo.width;
-      data.height = fileInfo.height;
-      data.bucketKey = key;
+      data[name] = {
+        width: fileInfo.width,
+        height: fileInfo.height,
+        bucketKey: key
+      };
       logger.log('info', JSON.stringify(data));
       deffered.resolve(data);
     }
