@@ -6,18 +6,18 @@ In config/config.json configuration for application:
      "smallImage": {
        "width": 800,
        "height": 800,
-       "suffix": "_small"
+       "suffix": "small"
      },
-     "mediumImage": {
+     "3000x3000": {
        "width": 2000,
        "height": 2000,
-       "suffix": "_medium"
+       "suffix": "medium"
      },
      "thumbnail": {
         "width": 64,
         "height": 64,
         "quality": 100,
-        "suffix": "_thumbnail"
+        "suffix": "thumbnail"
      }
   },
   "contentTypeFor": {
@@ -27,11 +27,6 @@ In config/config.json configuration for application:
   },
   "imageName": "original",
   "imageExtension": "png",
-  "supportedFormats": [
-    "PNG",
-    "JPG",
-    "JPEG"
-  ],
   "uploadFolderPath": "../uploads",
   "s3": {
     "Bucket": "sisdev",
