@@ -12,12 +12,14 @@ var config = require('../config/config.json')
 function getResponseAndCleanup(res, checksum, body, imageName) {
   var dataForUrlFormation = {
     checksum: checksum,
-    folder: body.folder,
-    org: body.org,
-    time: body.time
+    folder: body.folder
   };
-  getResponse(res, dataForUrlFormation);
-  cleanupFiles(imageName);
+  getResponse(res, dataForUrlFormation)
+  .then(function () {
+    cleanupFiles(imageName);
+  }, function (err) {
+    throw new Error(err);
+  });
 }
 
 function processImage(req, res, image, body) {

@@ -1,7 +1,8 @@
 var AWS = require('aws-sdk')
     , config = require('../config/config.json')
     , getFileInfo = require('./get-file-info')
-    , logger = require('./logger');
+    , logger = require('./logger')
+    , Q = require('q');
 
 function formResponse(data) {
   var imageInfoObject = {
@@ -44,9 +45,8 @@ function formResponse(data) {
 
 module.exports = function (res, dataForUrlFormation) {
   var prefix = dataForUrlFormation.folder + '/'
-             + dataForUrlFormation.org + '/'
-             + dataForUrlFormation.time
              + dataForUrlFormation.checksum + '/';
+  var deffered = Q.defer();
 
   var s3 = new AWS.S3(config.awsCredentials)
       , params = {
@@ -76,6 +76,7 @@ module.exports = function (res, dataForUrlFormation) {
               var metadata = JSON.parse(data.Body.toString());
               response.metadata = metadata;
               res.json(response);
+              deffered.resolve();
               logger.log('info', 'Got response: ' + JSON.stringify(response));
             }
           });
@@ -83,4 +84,5 @@ module.exports = function (res, dataForUrlFormation) {
       });
     }
   });
+  return deffered.promise;
 };

@@ -14,8 +14,6 @@ module.exports = function (image, dataForUrlFormation, name, deffered) {
           return name + ext;
         }))
       , key = dataForUrlFormation.folder + '/'
-            + dataForUrlFormation.org + '/'
-            + dataForUrlFormation.time
             + dataForUrlFormation.checksum + '/'
             + resizedImageName;
 

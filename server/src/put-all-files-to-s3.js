@@ -18,9 +18,7 @@ module.exports = function (req, checksum, image, body) {
   image.path = imagePath;
   var dataForUrlFormation = {
     checksum: checksum,
-    folder: body.folder,
-    org: body.org,
-    time: body.time
+    folder: body.folder
   };
 
   Q.all([

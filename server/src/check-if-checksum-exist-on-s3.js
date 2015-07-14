@@ -9,8 +9,6 @@ module.exports = function(checksum, body) {
       , params = {
           Bucket: config.s3.Bucket,
           Prefix: body.folder + '/'
-                  + body.org + '/'
-                  + body.time
                   + checksum + '/'
         };
 

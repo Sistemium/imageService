@@ -9,8 +9,6 @@ module.exports = function (image, dataForUrlFormation) {
   var imageStream = fs.createReadStream(image.path)
       , deffered = Q.defer()
       , key = dataForUrlFormation.folder + '/'
-            + dataForUrlFormation.org + '/'
-            + dataForUrlFormation.time
             + dataForUrlFormation.checksum + '/'
             + image.name.replace(new RegExp(dataForUrlFormation.checksum), '');
 

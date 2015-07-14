@@ -5,8 +5,6 @@ var AWS = require('aws-sdk')
 
 module.exports = function (metadata, dataForUrlFormation) {
   var key = dataForUrlFormation.folder + '/'
-          + dataForUrlFormation.org + '/'
-          + dataForUrlFormation.time
           + dataForUrlFormation.checksum + '/' + config.picturesInfoFileName;
   var deffered = Q.defer();
   var s3 = new AWS.S3(config.awsCredentials)
