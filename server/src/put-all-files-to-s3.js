@@ -29,7 +29,7 @@ module.exports = function (req, checksum, image, body) {
   ]).then(function (data) {
     putJSONWithPicturesInfo(data, dataForUrlFormation)
     .then(function(data) {
-      logger.log('info', 'Data was putted on s3: %s', data);
+      logger.log('info', 'Data is put on s3: ' + data);
       deffered.resolve(data);
     }, function(err) {
       logger.log('error', 'Error occured %s', err);
