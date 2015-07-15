@@ -6,45 +6,27 @@ var fs = require('fs')
     , logger = require('./logger')
     , Q = require('q');
 
-module.exports = function (req, dataForUrlFormation, name, image, callback) {
+module.exports = function (req, options, callback) {
+  logger.log('info', 'Options: %s', JSON.stringify(options));
+  var name = options.imageInfo.suffix || ''
+      , width = options.imageInfo.width || 100
+      , height = options.imageInfo.height || 100
+      , image = options.image || {}
+      , dataForUrlFormation = options.dataForUrlFormation || {};
+
   var deffered = Q.defer();
   imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
           return name + ext;
         });
 
-  switch (name) {
-    case imageInfo.smallImage.suffix:
-      gm(image.path)
-      .resize(imageInfo.smallImage.width, imageInfo.smallImage.height)
-      .write(imagePath, function (err) {
-        if (!err) {
-          logger.log('info', 'Image was resized and written to %s', imagePath);
-          callback(image, dataForUrlFormation, name, deffered);
-        }
-      });
-      break;
-    case imageInfo.mediumImage.suffix:
-      gm(image.path)
-      .resize(imageInfo.mediumImage.width, imageInfo.mediumImage.height)
-      .write(imagePath, function (err) {
-        if (!err) {
-          logger.log('info', 'Image was resized and written to %s', imagePath);
-          callback(image, dataForUrlFormation, name, deffered);
-        }
-      });
-      break;
-    case imageInfo.thumbnail.suffix:
-      gm(image.path)
-      .resize(imageInfo.thumbnail.width, imageInfo.thumbnail.height)
-      .write(imagePath, function (err) {
-        if (!err) {
-          logger.log('info', 'Thumbnail was successfully saved at %s', imagePath);
-          callback(image, dataForUrlFormation, name, deffered);
-        }
-      });
-      break;
-    default: throw new Error('No such option');
-  }
+  gm(image.path)
+  .resize(width, height)
+  .write(imagePath, function (err) {
+    if (!err) {
+      logger.log('info', 'Image is resized and written to %s', imagePath);
+      callback(options, deffered);
+    }
+  });
 
   return deffered.promise;
 };

@@ -33,7 +33,7 @@ function formResponse(data) {
       case imageInfo.original.name:
         key = "original";
         break;
-      default: throw new Error('No such key...');
+      default: throw new Error('No such key, ' + suffix);
     }
     imageInfoObject.links[key] = {
         src: config.s3.Domain + config.s3.Bucket + '/' + item.Key

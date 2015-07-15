@@ -6,30 +6,46 @@ var makeImage = require('./make-image')
     , logger = require('./logger')
     , putJSONWithPicturesInfo = require('./put-json-to-s3-with-pictures-info')
     , fs = require('fs')
-    , Q = require('q');
+    , Q = require('q')
+    , _ = require('lodash');
 
 module.exports = function (req, checksum, image, body) {
-  var deffered = Q.defer();
-  var imageNameWithoutExt = image.name.split('.')[0];
-  var imageName = image.name.replace(new RegExp(imageNameWithoutExt), config.imageInfo.original.name+checksum);
-  var imagePath = image.path.replace(new RegExp(image.name), imageName);
+  var deffered = Q.defer()
+      , imageNameWithoutExt = image.name.split('.')[0]
+      , imageName = image.name.replace(new RegExp(imageNameWithoutExt), config.imageInfo.original.name+checksum)
+      , imagePath = image.path.replace(new RegExp(image.name), imageName)
+      , dataForUrlFormation = {
+          checksum: checksum,
+          folder: body.folder
+      }
+      , promises = [];
+
   fs.renameSync(image.path, imagePath);
   image.name = imageName;
   image.path = imagePath;
-  var dataForUrlFormation = {
-    checksum: checksum,
-    folder: body.folder
+
+  function makeImageAndPutToS3(req, options, cb) {
+    _.each(imageInfo, function(n, key) {
+      if (key === 'original') {
+        promises.push(putOriginalImageToS3(options.image, options.dataForUrlFormation));
+      } else {
+        options.imageInfo = n;
+        promises.push(makeImage(req, options, cb));
+      }
+    });
+    return promises;
+  }
+
+  var options = {
+    dataForUrlFormation: dataForUrlFormation,
+    image: image
   };
 
-  Q.all([
-    putOriginalImageToS3(image, dataForUrlFormation),
-    makeImage(req, dataForUrlFormation, imageInfo.smallImage.suffix, image, putResizedImageToS3),
-    makeImage(req, dataForUrlFormation, imageInfo.mediumImage.suffix, image, putResizedImageToS3),
-    makeImage(req, dataForUrlFormation, imageInfo.thumbnail.suffix, image, putResizedImageToS3)
-  ]).then(function (data) {
+  Q.all(makeImageAndPutToS3(req, options, putResizedImageToS3))
+  .then(function (data) {
     putJSONWithPicturesInfo(data, dataForUrlFormation)
     .then(function(data) {
-      logger.log('info', 'Data is put on s3: ',  data);
+      logger.log('info', 'Data is put on s3: ', data);
       deffered.resolve(data);
     }, function(err) {
       logger.log('error', 'Error occured %s', err);

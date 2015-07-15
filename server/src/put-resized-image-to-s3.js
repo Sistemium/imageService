@@ -4,7 +4,11 @@ var AWS = require('aws-sdk')
     , getFileInfo = require('./get-file-info')
     , logger = require('./logger');
 
-module.exports = function (image, dataForUrlFormation, name, deffered) {
+module.exports = function (options, deffered) {
+  var image = options.image || {}
+      , dataForUrlFormation = options.dataForUrlFormation || {}
+      , name = options.imageInfo.suffix || '';
+
   logger.log('info', image);
   var imageName = image.name.replace(new RegExp(config.imageInfo.original.name+dataForUrlFormation.checksum), '')
       , resizedImageName = imageName.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
