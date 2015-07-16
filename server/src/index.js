@@ -23,24 +23,15 @@ app.use(express.static('../../client'));
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
-app.post('/api/image/', multer(multerConfig), function (req, res) {
-  try {
-    processRequest(req, res);
-  } catch(err) {
-    res.status(500).send({error: 'Something went wrong...'});
-  }
-});
-app.get('/api/image/', function (req, res) {
-  res.send('/api/image/');
-});
-
-app.use(logErrors);
-app.use(function(err, req, res, next) {
+app.post('/api/image/', auth(), multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
   if (err) {
     res.status(500).send({error: 'Something went wrong...'});
   } else {
     next();
   }
+});
+app.get('/api/image/', function (req, res) {
+  res.send('/api/image/');
 });
 
 app.listen(port, function() {

@@ -4,7 +4,7 @@ var AWS = require('aws-sdk')
     , logger = require('./logger')
     , Q = require('q');
 
-function formResponse(data) {
+function formResponse(data, next) {
   var imageInfoObject = {
     links: {}
   };
@@ -12,38 +12,40 @@ function formResponse(data) {
       , height = undefined
       , fileInfo = undefined
       , key = undefined;
-
-  data.forEach(function(item) {
-    var fileName = item.Key.split('/').splice(-1)[0];
-    var suffix = fileName.split('.')[0];
-    var imageInfo = config.imageInfo;
-    switch(suffix) {
-      case imageInfo.smallImage.suffix:
-        key = "smallImage";
-        break;
-      case imageInfo.mediumImage.suffix:
-        key = "mediumImage";
-        break;
-      case imageInfo.thumbnail.suffix:
-        key = "thumbnail";
-        break;
-      case config.picturesInfoFileName.split('.')[0]:
-        key = "imageInfoJsonFile"
-        break;
-      case imageInfo.original.name:
-        key = "original";
-        break;
-      default: throw new Error('No such key, ' + suffix);
-    }
-    imageInfoObject.links[key] = {
-        src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
-    };
-  });
-
+  try {
+    data.forEach(function(item) {
+      var fileName = item.Key.split('/').splice(-1)[0];
+      var suffix = fileName.split('.')[0];
+      var imageInfo = config.imageInfo;
+      switch(suffix) {
+        case imageInfo.smallImage.suffix:
+          key = "smallImage";
+          break;
+        case imageInfo.mediumImage.suffix:
+          key = "mediumImage";
+          break;
+        case imageInfo.thumbnail.suffix:
+          key = "thumbnail";
+          break;
+        case config.picturesInfoFileName.split('.')[0]:
+          key = "imageInfoJsonFile"
+          break;
+        case imageInfo.original.name:
+          key = "original";
+          break;
+        default: throw new Error('No such key, ' + suffix);
+      }
+      imageInfoObject.links[key] = {
+          src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
+      };
+    });
+  } catch (err) {
+    next(err);
+  }
   return imageInfoObject;
-};
+}
 
-module.exports = function (res, dataForUrlFormation) {
+module.exports = function (res, next, dataForUrlFormation) {
   var prefix = dataForUrlFormation.folder + '/'
              + dataForUrlFormation.checksum + '/';
   var deffered = Q.defer();
@@ -57,32 +59,36 @@ module.exports = function (res, dataForUrlFormation) {
   s3.listObjects(params, function(err, data) {
     if (err) {
       logger.log('error', err);
-      throw new Error(err);
+      next(err);
     } else {
-      var contents = data.Contents;
-      data.Contents.forEach(function(item) {
-        var fileName = item.Key.split('/').splice(-1)[0];
-        if (fileName === config.picturesInfoFileName) {
-          params = {
-            Bucket: config.s3.Bucket,
-            Key: prefix + config.picturesInfoFileName
-          };
-          s3.getObject(params, function (err, data) {
-            if (err) {
-              logger.log('info', 'Error occured.... %s', err);
-              throw new Error(err);
-            } else {
-              var response = formResponse(contents);
-              var metadata = JSON.parse(data.Body.toString());
-              response.metadata = metadata;
-              res.json(response);
-              deffered.resolve();
-              logger.log('info', 'Got response: ' + JSON.stringify(response));
-            }
-          });
-        }
-      });
+      try {
+        var contents = data.Contents;
+        data.Contents.forEach(function(item) {
+          var fileName = item.Key.split('/').splice(-1)[0];
+          if (fileName === config.picturesInfoFileName) {
+            params = {
+              Bucket: config.s3.Bucket,
+              Key: prefix + config.picturesInfoFileName
+            };
+            s3.getObject(params, function (err, data) {
+              if (err) {
+                logger.log('info', 'Error occured.... %s', err);
+                next(err);
+              } else {
+                var response = formResponse(contents, next);
+                var metadata = JSON.parse(data.Body.toString());
+                response.metadata = metadata;
+                res.json(response);
+                deffered.resolve();
+                logger.log('info', 'Got response: ' + JSON.stringify(response));
+              }
+            });
+          }
+        });
+    } catch (err) {
+      next(err);
     }
+  }
   });
   return deffered.promise;
 };

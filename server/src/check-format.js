@@ -17,7 +17,7 @@ module.exports = function(image) {
     if (config.contentTypeFor[format.toLowerCase()]) {
       image.contentType = config.contentTypeFor[format.toLowerCase()];
       logger.log('info', 'Format is supported, contentType: %s', image.contentType);
-      deffered.resolve(image);
+      deffered.resolve();
     } else {
       deffered.reject('Unsupported format..');
     }

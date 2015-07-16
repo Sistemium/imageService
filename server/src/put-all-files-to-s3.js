@@ -9,8 +9,10 @@ var makeImage = require('./make-image')
     , Q = require('q')
     , _ = require('lodash');
 
-module.exports = function (req, checksum, image, body) {
+module.exports = function (req, checksum) {
   var deffered = Q.defer()
+      , image = req.image
+      , body = req.body
       , imageNameWithoutExt = image.name.split('.')[0]
       , imageName = image.name.replace(new RegExp(imageNameWithoutExt), config.imageInfo.original.name+checksum)
       , imagePath = image.path.replace(new RegExp(image.name), imageName)

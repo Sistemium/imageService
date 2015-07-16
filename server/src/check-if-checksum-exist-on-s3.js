@@ -3,9 +3,11 @@ var AWS = require('aws-sdk')
     , Q = require('q')
     , logger = require('./logger');
 
-module.exports = function(checksum, body) {
+module.exports = function(req) {
   var deffered = Q.defer()
       , s3 = new AWS.S3(config.awsCredentials)
+      , body = req.body
+      , checksum = req.checksum
       , params = {
           Bucket: config.s3.Bucket,
           Prefix: body.folder + '/'

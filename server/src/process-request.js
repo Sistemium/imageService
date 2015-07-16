@@ -9,67 +9,62 @@ var config = require('../config/config.json')
     , fs = require('fs')
     , Q = require('q');
 
-function getResponseAndCleanup(res, checksum, body, imageName) {
+function getResponseAndCleanup(req, res, checksum, next) {
   var dataForUrlFormation = {
     checksum: checksum,
-    folder: body.folder
+    folder: req.body.folder
   };
-  getResponse(res, dataForUrlFormation)
+  getResponse(res, next, dataForUrlFormation)
   .then(function () {
-    cleanupFiles(imageName);
+    cleanupFiles(req.image.name, next);
   }, function (err) {
-    throw new Error(err);
+    next(err);
   });
 }
 
-function processImage(req, res, image, body) {
-  generateChecksum(image.path)
-  .then(function(checksum) {
-    notAlreadyUploaded(checksum,body)
-    .then(function() {
-      putAllFilesToS3(req, checksum, image, body)
+function processImage(req, res, next) {
+    generateChecksum(req.image.path)
+    .then(function(checksum) {
+      req.checksum = checksum;
+      notAlreadyUploaded(req)
       .then(function() {
-        getResponseAndCleanup(res, checksum, body, image.name);
-      }, function(err) {
-        logger.log('error', err);
-        throw new Error(err);
+        putAllFilesToS3(req, checksum, next)
+        .then(function() {
+          getResponseAndCleanup(req, res, checksum, next);
+        }, function(err) {
+          logger.log('error', err);
+          next(err);
+        });
+      }, function() {
+          getResponseAndCleanup(req, res, checksum, next);
       });
-    }, function() {
-        getResponseAndCleanup(res, checksum, body, image.name);
+    }, function (error) {
+      logger.log('error', error);
+      next(error);
     });
-  }, function (error) {
-    logger.log('error', error);
-    throw new Error(err);
-  });
 }
 
-function checkFormatAndStartProcessing(req, res, image, body) {
-  checkFormat(image).then(function(image) {
+function checkFormatAndStartProcessing(req, res, next) {
+  checkFormat(req.image).then(function(image) {
       logger.log('info', 'Strarting processing image');
-      processImage(req, res, image, body);
+      processImage(req, res, next);
   }, function(err) {
       logger.log('error', err);
-      throw new Error(err);
+      next(err);
   });
 }
 
-module.exports = function(req, res) {
-  if (req.files.file !== undefined) {
-    var image = req.files.file;
-    var body = req.body;
-    image = {
-      path: image.path,
-      name: image.name
-    };
-    checkFormatAndStartProcessing(req, res, image, body);
-  } else {
-    var imageName = config.imageInfo.original.name + '.' + config.imageInfo.original.extension;
-    var imagePath = config.uploadFolderPath + '/' + imageName;
-    req.pipe(fs.createWriteStream(imagePath));
-    var image = {
-      path: imagePath,
-      name: imageName
-    };
-    checkFormatAndStartProcessing(req, res, image);
+module.exports = function() {
+  return function (req, res, next) {
+    if (req.files.file !== undefined) {
+      var image = req.files.file;
+      image = {
+        path: image.path,
+        name: image.name
+      };
+      req.image = image;
+      checkFormatAndStartProcessing(req, res, next);
+    } else {
+    }
   }
 }
