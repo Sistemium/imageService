@@ -46,7 +46,6 @@ function processImage(req, res, image, body) {
 function checkFormatAndStartProcessing(req, res, image, body) {
   checkFormat(image).then(function(image) {
       logger.log('info', 'Strarting processing image');
-      logger.log('info', image);
       processImage(req, res, image, body);
   }, function(err) {
       logger.log('error', err);
@@ -58,14 +57,12 @@ module.exports = function(req, res) {
   if (req.files.file !== undefined) {
     var image = req.files.file;
     var body = req.body;
-    logger.log('info', image);
     image = {
       path: image.path,
       name: image.name
     };
     checkFormatAndStartProcessing(req, res, image, body);
   } else {
-    logger.log('info', 'Binary content request in');
     var imageName = config.imageInfo.original.name + '.' + config.imageInfo.original.extension;
     var imagePath = config.uploadFolderPath + '/' + imageName;
     req.pipe(fs.createWriteStream(imagePath));

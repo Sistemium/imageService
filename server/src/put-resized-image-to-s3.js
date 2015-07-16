@@ -9,7 +9,6 @@ module.exports = function (options, deffered) {
       , dataForUrlFormation = options.dataForUrlFormation || {}
       , name = options.imageInfo.suffix || '';
 
-  logger.log('info', image);
   var imageName = image.name.replace(new RegExp(config.imageInfo.original.name+dataForUrlFormation.checksum), '')
       , resizedImageName = imageName.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
           return name + ext;
@@ -47,7 +46,7 @@ module.exports = function (options, deffered) {
         height: fileInfo.height,
         bucketKey: key
       };
-      logger.log('info', JSON.stringify(data));
+
       deffered.resolve(data);
     }
   });

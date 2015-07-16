@@ -35,7 +35,6 @@ module.exports = function (image, dataForUrlFormation) {
         height: fileInfo.height,
         bucketKey: key
       }
-      logger.log('info', JSON.stringify(data));
       deffered.resolve(data);
     }
   });
