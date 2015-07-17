@@ -5,12 +5,15 @@ var AWS = require('aws-sdk')
     , getFileInfo = require('./get-file-info')
     , logger = require('./logger');
 
-module.exports = function (image, dataForUrlFormation) {
-  var imageStream = fs.createReadStream(image.path)
-      , deffered = Q.defer()
-      , key = dataForUrlFormation.folder + '/'
-            + dataForUrlFormation.checksum + '/'
-            + image.name.replace(new RegExp(dataForUrlFormation.checksum), '');
+module.exports = function (options) {
+
+  var image = options.image
+    , imageStream = fs.createReadStream(image.path)
+    , deffered = Q.defer()
+    , dataForUrlFormation = options.dataForUrlFormation
+    , key = dataForUrlFormation.folder + '/'
+          + dataForUrlFormation.checksum + '/'
+          + options.key + '.' + options.extension;
 
   var fileInfo = getFileInfo(image.path);
   var s3 = new AWS.S3(config.awsCredentials);

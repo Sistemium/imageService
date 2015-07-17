@@ -18,7 +18,7 @@ module.exports = function (options, deffered) {
         }))
       , key = dataForUrlFormation.folder + '/'
             + dataForUrlFormation.checksum + '/'
-            + resizedImageName;
+            + options.key + '.' + options.extension;
 
   var filePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
           return name + ext;

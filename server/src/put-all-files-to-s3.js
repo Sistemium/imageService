@@ -9,41 +9,48 @@ var makeImage = require('./make-image')
     , Q = require('q')
     , _ = require('lodash');
 
-module.exports = function (req, checksum) {
+function makeImageAndPutToS3(req, next, options, cb) {
+  var promises = [];
+  try {
+    _.each(imageInfo, function(n, key) {
+      options.key = key;
+      if (key === 'original') {
+        promises.push(putOriginalImageToS3(options));
+      } else {
+        options.imageInfo = n;
+        promises.push(makeImage(req, options, cb));
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+  return promises;
+}
+
+module.exports = function (req, next) {
   var deffered = Q.defer()
       , image = req.image
       , body = req.body
+      , checksum = image.checksum
       , imageNameWithoutExt = image.name.split('.')[0]
       , imageName = image.name.replace(new RegExp(imageNameWithoutExt), config.imageInfo.original.name+checksum)
       , imagePath = image.path.replace(new RegExp(image.name), imageName)
       , dataForUrlFormation = {
           checksum: checksum,
           folder: body.folder
-      }
-      , promises = [];
+      };
 
   fs.renameSync(image.path, imagePath);
   image.name = imageName;
   image.path = imagePath;
 
-  function makeImageAndPutToS3(req, options, cb) {
-    _.each(imageInfo, function(n, key) {
-      if (key === 'original') {
-        promises.push(putOriginalImageToS3(options.image, options.dataForUrlFormation));
-      } else {
-        options.imageInfo = n;
-        promises.push(makeImage(req, options, cb));
-      }
-    });
-    return promises;
-  }
-
   var options = {
     dataForUrlFormation: dataForUrlFormation,
-    image: image
+    image: image,
+    extension: image.name.split('.')[image.name.split('.').length - 1]
   };
 
-  Q.all(makeImageAndPutToS3(req, options, putResizedImageToS3))
+  Q.all(makeImageAndPutToS3(req, next, options, putResizedImageToS3))
   .then(function (data) {
     putJSONWithPicturesInfo(data, dataForUrlFormation)
     .then(function(data) {

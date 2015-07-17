@@ -1,7 +1,7 @@
 var config = require('../config/config.json')
     , checkFormat = require('./check-format')
     , putAllFilesToS3 = require('./put-all-files-to-s3')
-    , notAlreadyUploaded = require('./check-if-checksum-exist-on-s3')
+    , notAlreadyUploadedOrBadData = require('./check-if-checksum-exist-on-s3')
     , generateChecksum = require('./generate-checksum')
     , getResponse = require('./get-response')
     , cleanupFiles = require('./cleanup')
@@ -9,12 +9,12 @@ var config = require('../config/config.json')
     , fs = require('fs')
     , Q = require('q');
 
-function getResponseAndCleanup(req, res, checksum, next) {
+function getResponseAndCleanup(req, res, next) {
   var dataForUrlFormation = {
-    checksum: checksum,
+    checksum: req.image.checksum,
     folder: req.body.folder
   };
-  getResponse(res, next, dataForUrlFormation)
+  getResponse(req, res, next, dataForUrlFormation)
   .then(function () {
     cleanupFiles(req.image.name, next);
   }, function (err) {
@@ -25,18 +25,19 @@ function getResponseAndCleanup(req, res, checksum, next) {
 function processImage(req, res, next) {
     generateChecksum(req.image.path)
     .then(function(checksum) {
-      req.checksum = checksum;
-      notAlreadyUploaded(req)
+      req.image.checksum = checksum;
+      // check if already exist on amazon s3 and if it correct
+      notAlreadyUploadedOrBadData(req)
       .then(function() {
-        putAllFilesToS3(req, checksum, next)
+        putAllFilesToS3(req, next)
         .then(function() {
-          getResponseAndCleanup(req, res, checksum, next);
+          getResponseAndCleanup(req, res, next);
         }, function(err) {
           logger.log('error', err);
           next(err);
         });
       }, function() {
-          getResponseAndCleanup(req, res, checksum, next);
+          getResponseAndCleanup(req, res, next);
       });
     }, function (error) {
       logger.log('error', error);

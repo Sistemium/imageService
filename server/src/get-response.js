@@ -2,42 +2,30 @@ var AWS = require('aws-sdk')
     , config = require('../config/config.json')
     , getFileInfo = require('./get-file-info')
     , logger = require('./logger')
+    , _ = require('lodash')
+    , imageInfo = config.imageInfo
     , Q = require('q');
 
 function formResponse(data, next) {
   var imageInfoObject = {
     links: {}
   };
-  var width = undefined
-      , height = undefined
-      , fileInfo = undefined
-      , key = undefined;
+
   try {
-    data.forEach(function(item) {
-      var fileName = item.Key.split('/').splice(-1)[0];
-      var suffix = fileName.split('.')[0];
-      var imageInfo = config.imageInfo;
-      switch(suffix) {
-        case imageInfo.smallImage.suffix:
-          key = "smallImage";
-          break;
-        case imageInfo.mediumImage.suffix:
-          key = "mediumImage";
-          break;
-        case imageInfo.thumbnail.suffix:
-          key = "thumbnail";
-          break;
-        case config.picturesInfoFileName.split('.')[0]:
-          key = "imageInfoJsonFile"
-          break;
-        case imageInfo.original.name:
-          key = "original";
-          break;
-        default: throw new Error('No such key, ' + suffix);
+    _.each(imageInfo, function(n, key) {
+      var existInConfig = false;
+      data.forEach(function(item) {
+        var filename = item.Key.split('/').splice(-1)[0].split('.')[0];
+        if (key === filename) {
+          existInConfig = true;
+          imageInfoObject.links[key] = {
+            src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
+          };
+        }
+      });
+      if (!existInConfig) {
+          throw new Error('No such key \"' + key + '\" in config file...')
       }
-      imageInfoObject.links[key] = {
-          src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
-      };
     });
   } catch (err) {
     next(err);
@@ -45,7 +33,7 @@ function formResponse(data, next) {
   return imageInfoObject;
 }
 
-module.exports = function (res, next, dataForUrlFormation) {
+module.exports = function (req, res, next, dataForUrlFormation) {
   var prefix = dataForUrlFormation.folder + '/'
              + dataForUrlFormation.checksum + '/';
   var deffered = Q.defer();
@@ -62,14 +50,20 @@ module.exports = function (res, next, dataForUrlFormation) {
       next(err);
     } else {
       try {
+        if (data && data.Contents === undefined) {
+          next(new Error('data.Contents ' + data.Contents + '... Data have not been sent from amazon service s3'));
+        }
         var contents = data.Contents;
+        //search json file
         data.Contents.forEach(function(item) {
           var fileName = item.Key.split('/').splice(-1)[0];
+          //json file name must be the same as in config
           if (fileName === config.picturesInfoFileName) {
             params = {
               Bucket: config.s3.Bucket,
               Key: prefix + config.picturesInfoFileName
             };
+            //get json file with info about pictures
             s3.getObject(params, function (err, data) {
               if (err) {
                 logger.log('info', 'Error occured.... %s', err);
