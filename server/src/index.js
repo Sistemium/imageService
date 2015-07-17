@@ -23,7 +23,7 @@ app.use(express.static('../../client'));
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
-app.post('/api/image/', multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
+app.post('/api/image/', auth(), multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
   if (err) {
     res.status(500).send({error: 'Something went wrong...'});
   } else {
