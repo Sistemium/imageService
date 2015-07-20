@@ -20,7 +20,7 @@ function formResponse(data, metadata, next) {
     var imageInfoObject = {
       folder: folder,
       name: name,
-      pictures: {}
+      pictures: []
     };
 
     try {
@@ -31,11 +31,13 @@ function formResponse(data, metadata, next) {
           if (key === filename) {
             existInConfig = true;
             // TODO: check if not type error, if is, upload new json file to s3
-            imageInfoObject.pictures[key] = {
+            var searchMetadata = _.findWhere(metadata, {name: key});
+            imageInfoObject.pictures.push({
+              name: key,
               src: config.s3.Domain + config.s3.Bucket + '/' + item.Key,
-              height: metadata[key].height,
-              width: metadata[key].width
-            };
+              height: searchMetadata.height,
+              width: searchMetadata.width
+            });
           }
         });
         if (!existInConfig) {
@@ -70,11 +72,13 @@ module.exports = function (req, res, next, dataForUrlFormation) {
           next(new Error('data.Contents ' + data.Contents + '... Data have not been sent from amazon service s3'));
         }
         var contents = data.Contents;
+        var matchConfigFileName = false;
         //search json file
         data.Contents.forEach(function(item) {
           var fileName = item.Key.split('/').splice(-1)[0];
           //json file name must be the same as in config
           if (fileName === config.picturesInfoFileName) {
+            matchConfigFileName = true;
             params = {
               Bucket: config.s3.Bucket,
               Key: prefix + config.picturesInfoFileName
@@ -94,6 +98,9 @@ module.exports = function (req, res, next, dataForUrlFormation) {
             });
           }
         });
+        if (!matchConfigFileName) {
+          throw new Error('Cannot find \"' + config.picturesInfoFileName + '\"');
+        }
     } catch (err) {
       next(err);
     }

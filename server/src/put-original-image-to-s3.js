@@ -33,7 +33,8 @@ module.exports = function (options) {
       deffered.reject(err);
     }
     else {
-      data.original = {
+      data = {
+        name: config.imageInfo.original.name,
         width: fileInfo.width,
         height: fileInfo.height,
         bucketKey: key

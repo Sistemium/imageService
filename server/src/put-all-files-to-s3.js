@@ -30,14 +30,14 @@ function makeImageAndPutToS3(req, next, options, cb) {
 module.exports = function (req, next) {
   var deffered = Q.defer()
       , image = req.image
-      , body = req.body
+      , folder = req.body.folder || req.query.folder
       , checksum = image.checksum
       , imageNameWithoutExt = image.name.split('.')[0]
       , imageName = image.name.replace(new RegExp(imageNameWithoutExt), config.imageInfo.original.name+checksum)
       , imagePath = image.path.replace(new RegExp(image.name), imageName)
       , dataForUrlFormation = {
           checksum: checksum,
-          folder: body.folder
+          folder: folder
       };
 
   fs.renameSync(image.path, imagePath);

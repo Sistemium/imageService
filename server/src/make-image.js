@@ -10,7 +10,7 @@ var fs = require('fs')
 module.exports = function (req, options, callback) {
 
   var opt = extend({}, options);
-  var name = opt.imageInfo.suffix || ''
+  var name = options.key || ''
       , width = opt.imageInfo.width || 100
       , height = opt.imageInfo.height || 100
       , image = opt.image || {}

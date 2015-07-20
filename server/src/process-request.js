@@ -12,7 +12,7 @@ var config = require('../config/config.json')
 function getResponseAndCleanup(req, res, next) {
   var dataForUrlFormation = {
     checksum: req.image.checksum,
-    folder: req.body.folder
+    folder: req.body.folder || req.query.folder
   };
   getResponse(req, res, next, dataForUrlFormation)
   .then(function () {
@@ -66,6 +66,16 @@ module.exports = function() {
       req.image = image;
       checkFormatAndStartProcessing(req, res, next);
     } else {
+        logger.log('info', 'Binary content request in');
+        var imageName = config.imageInfo.original.name + '.' + config.imageInfo.original.extension;
+        var imagePath = config.uploadFolderPath + '/' + imageName;
+        var image = {
+            path: imagePath,
+            name: imageName
+        };
+        req.image = image;
+        req.pipe(fs.createWriteStream(imagePath));
+        checkFormatAndStartProcessing(req, res, next);
     }
   }
 }

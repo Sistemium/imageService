@@ -41,7 +41,8 @@ module.exports = function (options, deffered) {
       deffered.reject(err);
     }
     else {
-      data[name] = {
+      data = {
+        name: name,
         width: fileInfo.width,
         height: fileInfo.height,
         bucketKey: key

@@ -8,11 +8,11 @@ var AWS = require('aws-sdk')
 module.exports = function(req, next) {
   var deffered = Q.defer()
       , s3 = new AWS.S3(config.awsCredentials)
-      , body = req.body
+      , folder = req.body.folder || req.query.folder
       , checksum = req.image.checksum
       , params = {
           Bucket: config.s3.Bucket,
-          Prefix: body.folder + '/'
+          Prefix: folder  + '/'
                   + checksum + '/'
         };
 

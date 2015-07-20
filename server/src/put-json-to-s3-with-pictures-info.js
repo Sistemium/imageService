@@ -11,7 +11,7 @@ module.exports = function (metadata, dataForUrlFormation) {
       , params = {
         Bucket: config.s3.Bucket,
         Key: key,
-        Body: JSON.stringify({"picturesInfo": metadata}),
+        Body: JSON.stringify(metadata),
         ContentType: 'json'
       };
   s3.putObject(params, function (err, data) {
