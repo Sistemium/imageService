@@ -6,31 +6,47 @@ var AWS = require('aws-sdk')
     , imageInfo = config.imageInfo
     , Q = require('q');
 
-function formResponse(data, next) {
-  var imageInfoObject = {
-    links: {}
-  };
+/**
+ * @param {Array} data - array of objects with keys: ETag, Key, LastModified, Owner, Size, StorageClass
+ * @param {Object} metadata - object picturesInfo: Array, object of array example: small: { bucketKey: '...', height: 11, width: 12}
+ * @param {Function} next
+ **/
+function formResponse(data, metadata, next) {
+  if (data.length > 0) {
+    var splitedKey = data[0].Key.split('/');
+    var folder = splitedKey[0];
+    var name = splitedKey[1];
 
-  try {
-    _.each(imageInfo, function(n, key) {
-      var existInConfig = false;
-      data.forEach(function(item) {
-        var filename = item.Key.split('/').splice(-1)[0].split('.')[0];
-        if (key === filename) {
-          existInConfig = true;
-          imageInfoObject.links[key] = {
-            src: config.s3.Domain + config.s3.Bucket + '/' + item.Key
-          };
+    var imageInfoObject = {
+      folder: folder,
+      name: name,
+      pictures: {}
+    };
+
+    try {
+      _.each(imageInfo, function (n, key) {
+        var existInConfig = false;
+        data.forEach(function (item) {
+          var filename = item.Key.split('/').splice(-1)[0].split('.')[0];
+          if (key === filename) {
+            existInConfig = true;
+            // TODO: check if not type error, if is, upload new json file to s3
+            imageInfoObject.pictures[key] = {
+              src: config.s3.Domain + config.s3.Bucket + '/' + item.Key,
+              height: metadata[key].height,
+              width: metadata[key].width
+            };
+          }
+        });
+        if (!existInConfig) {
+          throw new Error('No such key \"' + key + '\" in config file...')
         }
       });
-      if (!existInConfig) {
-          throw new Error('No such key \"' + key + '\" in config file...')
-      }
-    });
-  } catch (err) {
-    next(err);
+    } catch (err) {
+      next(err);
+    }
+    return imageInfoObject;
   }
-  return imageInfoObject;
 }
 
 module.exports = function (req, res, next, dataForUrlFormation) {
@@ -69,9 +85,8 @@ module.exports = function (req, res, next, dataForUrlFormation) {
                 logger.log('info', 'Error occured.... %s', err);
                 next(err);
               } else {
-                var response = formResponse(contents, next);
                 var metadata = JSON.parse(data.Body.toString());
-                response.metadata = metadata;
+                var response = formResponse(contents, metadata, next);
                 res.json(response);
                 deffered.resolve();
                 logger.log('info', 'Got response: ' + JSON.stringify(response));

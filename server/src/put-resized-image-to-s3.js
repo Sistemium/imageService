@@ -7,7 +7,7 @@ var AWS = require('aws-sdk')
 module.exports = function (options, deffered) {
   var image = options.image || {}
       , dataForUrlFormation = options.dataForUrlFormation || {}
-      , name = options.imageInfo.suffix || '';
+      , name = options.key;
 
   var imageName = image.name.replace(new RegExp(config.imageInfo.original.name+dataForUrlFormation.checksum), '')
       , resizedImageName = imageName.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
