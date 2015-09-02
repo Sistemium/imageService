@@ -3,7 +3,6 @@ var fs = require('fs')
     , supportedFormats = require('../config/config.json').supportedFormats
     , imageInfo = require('../config/config.json').imageInfo
     , config = require('../config/config.json')
-    , logger = require('./logger')
     , Q = require('q')
     , extend = require('util')._extend;
 

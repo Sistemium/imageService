@@ -1,9 +1,9 @@
 var AWS = require('aws-sdk')
     , config = require('../config/config.json')
-    , logger = require('./logger')
     , Q = require('q');
 
 module.exports = function (metadata, dataForUrlFormation) {
+  var timestamp = Date.now();
   var key = dataForUrlFormation.folder + '/'
           + dataForUrlFormation.checksum + '/' + config.picturesInfoFileName;
   var deffered = Q.defer();
@@ -16,11 +16,13 @@ module.exports = function (metadata, dataForUrlFormation) {
       };
   s3.putObject(params, function (err, data) {
     if (err) {
-      logger.log('error', 'Rejected!');
+      timestamp = Date.now();
+      console.log(timestamp + ' error: Rejected!');
       deffered.reject(err);
     }
     else {
-      logger.log('info', 'Resolved!');
+      timestamp = Date.now();
+      console.log(timestamp + ' info: Resolved!');
       deffered.resolve(data);
     }
   });

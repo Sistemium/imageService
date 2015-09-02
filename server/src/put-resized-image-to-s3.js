@@ -1,10 +1,10 @@
 var AWS = require('aws-sdk')
     , fs = require('fs')
     , config = require('../config/config.json')
-    , getFileInfo = require('./get-file-info')
-    , logger = require('./logger');
+    , getFileInfo = require('./get-file-info');
 
 module.exports = function (options, deffered) {
+  var timestamp = Date.now();
   var image = options.image || {}
       , dataForUrlFormation = options.dataForUrlFormation || {}
       , name = options.key;
@@ -37,7 +37,8 @@ module.exports = function (options, deffered) {
   };
   s3.putObject(params, function(err, data) {
     if (err) {
-      logger.log('error', err);
+      timestamp = Date.now();
+      console.log(timestamp + ' error: %s', err);
       deffered.reject(err);
     }
     else {

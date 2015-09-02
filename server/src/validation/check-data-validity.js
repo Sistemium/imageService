@@ -1,4 +1,4 @@
-var config = require('../config/config.json')
+var config = require('../../config/config.json')
     , imageInfo = config.imageInfo
     , _ = require('lodash');
 

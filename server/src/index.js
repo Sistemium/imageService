@@ -1,15 +1,14 @@
-// require('nodetime').profile({
-//     accountKey: '12fc76f030d3c5ab00596f1f5648ff30e8affd95',
-//     appName: 'Image service'
-//   })
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 var express = require('express')
-    , auth = require('./auth')
+    , auth = require('./validation/auth')
     , bodyParser = require('body-parser')
     , multer = require('multer')
     , config = require('../config/config.json')
     , multerConfig = require('../config/multer-config')
     , processRequest = require('./process-request')
     , logErrors = require('./log-errors')
+    , sendImage = require('./imageByUrl/sendPostRequest')
     , app = express()
     , port = config.applicationPort
     , allowCrossDomain = function(req, res, next) {
@@ -19,19 +18,18 @@ var express = require('express')
         next();
     };
 
-app.use(express.static('../../client'));
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
-app.post('/api/image/', auth(), multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
+app.post('/api/image/', multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
   if (err) {
     res.status(500).send({error: 'Something went wrong...'});
   } else {
     next();
   }
 });
-app.get('/api/image/', function (req, res) {
-  res.send('/api/image/');
+app.get('/api/image/', function (req) {
+    sendImage(req);
 });
 
 app.listen(port, function() {

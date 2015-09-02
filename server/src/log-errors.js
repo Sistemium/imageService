@@ -1,7 +1,7 @@
-var logger = require('./logger');
-
 module.exports = function(err, req, res, next) {
-  logger.log('error', err);
-  logger.log('error', err.stack);
+  var timestamp = Date.now();
+  console.log(timestamp + ' error: %s', err);
+  timestamp = Date.now();
+  console.log(timestamp+' error: %s', err.stack);
   next(err);
 }

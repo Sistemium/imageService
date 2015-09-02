@@ -3,7 +3,6 @@ var makeImage = require('./make-image')
     , putResizedImageToS3 = require('./put-resized-image-to-s3')
     , imageInfo = require('../config/config.json').imageInfo
     , config = require('../config/config.json')
-    , logger = require('./logger')
     , putJSONWithPicturesInfo = require('./put-json-to-s3-with-pictures-info')
     , fs = require('fs')
     , Q = require('q')
@@ -28,6 +27,7 @@ function makeImageAndPutToS3(req, next, options, cb) {
 }
 
 module.exports = function (req, next) {
+  var timestamp = Date.now();
   var deffered = Q.defer()
       , image = req.image
       , folder = req.body.folder || req.query.folder
@@ -54,14 +54,17 @@ module.exports = function (req, next) {
   .then(function (data) {
     putJSONWithPicturesInfo(data, dataForUrlFormation)
     .then(function(data) {
-      logger.log('info', 'Data is put on s3: ', data);
+      timestamp = Date.now();
+      console.log(timestamp + ' info: Data is put on s3: %s', data);
       deffered.resolve(data);
     }, function(err) {
-      logger.log('error', 'Error occured %s', err);
+      timestamp = Date.now();
+      console.log(timestamp + ' error: Error occured %s', err);
       deffered.reject(err);
     });
   }, function (err) {
-    logger.log('error', 'Error occured %s', err);
+    timestamp = Date.now();
+    console.log(timestamp + ' error: Error occured %s', err);
     deffered.reject(err);
   });
 

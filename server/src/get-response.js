@@ -1,7 +1,6 @@
 var AWS = require('aws-sdk')
     , config = require('../config/config.json')
     , getFileInfo = require('./get-file-info')
-    , logger = require('./logger')
     , _ = require('lodash')
     , imageInfo = config.imageInfo
     , Q = require('q');
@@ -61,10 +60,11 @@ module.exports = function (req, res, next, dataForUrlFormation) {
         Bucket: config.s3.Bucket,
         Prefix: prefix
       };
+  var timestamp = Date.now();
 
   s3.listObjects(params, function(err, data) {
     if (err) {
-      logger.log('error', err);
+      console.log(timestamp + ' error: %s', err);
       next(err);
     } else {
       try {
@@ -86,14 +86,16 @@ module.exports = function (req, res, next, dataForUrlFormation) {
             //get json file with info about pictures
             s3.getObject(params, function (err, data) {
               if (err) {
-                logger.log('info', 'Error occured.... %s', err);
+                timestamp = Date.now();
+                console.log(timestamp + ' info: Error occured.... %s', err);
                 next(err);
               } else {
                 var metadata = JSON.parse(data.Body.toString());
                 var response = formResponse(contents, metadata, next);
                 res.json(response);
                 deffered.resolve();
-                logger.log('info', 'Got response: ' + JSON.stringify(response));
+                timestamp = Date.now();
+                console.log(timestamp + ' info: Got response: %s', JSON.stringify(response));
               }
             });
           }

@@ -2,11 +2,11 @@ var AWS = require('aws-sdk')
     , config = require('../config/config.json')
     , fs = require('fs')
     , Q = require('q')
-    , getFileInfo = require('./get-file-info')
-    , logger = require('./logger');
+    , getFileInfo = require('./get-file-info');
 
 module.exports = function (options) {
 
+  var timestamp = Date.now();
   var image = options.image
     , imageStream = fs.createReadStream(image.path)
     , deffered = Q.defer()
@@ -29,7 +29,8 @@ module.exports = function (options) {
   };
   s3.putObject(params, function(err, data) {
     if (err) {
-      logger.log('error', err)
+      timestamp = Date.now();
+      console.log(timestamp+' error: %s', err)
       deffered.reject(err);
     }
     else {
@@ -38,7 +39,7 @@ module.exports = function (options) {
         width: fileInfo.width,
         height: fileInfo.height,
         bucketKey: key
-      }
+      };
       deffered.resolve(data);
     }
   });
