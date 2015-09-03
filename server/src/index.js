@@ -1,3 +1,5 @@
+'use strict';
+
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express')
@@ -8,7 +10,7 @@ var express = require('express')
     , multerConfig = require('../config/multer-config')
     , processRequest = require('./process-request')
     , logErrors = require('./log-errors')
-    , sendImage = require('./imageByUrl/sendPostRequest')
+    , getImageByUrl = require('./imageByUrl/get-image-by-url')
     , app = express()
     , port = config.applicationPort
     , allowCrossDomain = function(req, res, next) {
@@ -28,8 +30,12 @@ app.post('/api/image/', multer(multerConfig), processRequest(), logErrors, funct
     next();
   }
 });
-app.get('/api/image/', function (req) {
-    sendImage(req);
+app.get('/api/image/', getImageByUrl(), multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
+    if (err) {
+        res.status(500).send({error: 'Something went wrong...'});
+    } else {
+        next();
+    }
 });
 
 app.listen(port, function() {
