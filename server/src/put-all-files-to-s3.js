@@ -1,3 +1,5 @@
+'use strict';
+
 var makeImage = require('./make-image')
     , putOriginalImageToS3 = require('./put-original-image-to-s3')
     , putResizedImageToS3 = require('./put-resized-image-to-s3')

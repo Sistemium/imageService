@@ -1,3 +1,5 @@
+'use strict';
+
 var AWS = require('aws-sdk')
     , config = require('../config/config.json')
     , fs = require('fs')

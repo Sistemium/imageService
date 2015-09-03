@@ -1,3 +1,5 @@
+'use strict';
+
 var config = require('../../config/config.json')
     , gm = require('gm').subClass({imageMagick: true})
     , _ = require('lodash')
@@ -13,7 +15,7 @@ module.exports = function(image) {
       timestamp = Date.now();
       console.log(timestamp + ' error: %s', err);
       throw new Error(err);
-    };
+    }
 
     if (config.contentTypeFor[format.toLowerCase()]) {
       image.contentType = config.contentTypeFor[format.toLowerCase()];

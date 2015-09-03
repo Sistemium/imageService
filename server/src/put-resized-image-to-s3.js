@@ -1,3 +1,5 @@
+'use strict';
+
 var AWS = require('aws-sdk')
     , fs = require('fs')
     , config = require('../config/config.json')
@@ -9,11 +11,7 @@ module.exports = function (options, deffered) {
       , dataForUrlFormation = options.dataForUrlFormation || {}
       , name = options.key;
 
-  var imageName = image.name.replace(new RegExp(config.imageInfo.original.name+dataForUrlFormation.checksum), '')
-      , resizedImageName = imageName.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
-          return name + ext;
-        })
-      , resizedImageStream = fs.createReadStream(image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
+  var resizedImageStream = fs.createReadStream(image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
           return name + ext;
         }))
       , key = dataForUrlFormation.folder + '/'

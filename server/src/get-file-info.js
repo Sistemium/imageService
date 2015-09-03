@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs')
     , imageSize = require('image-size')
     , config = require('../config/config.json');
@@ -6,4 +8,4 @@ var fs = require('fs')
 module.exports = function (filePath) {
   var content = fs.readFileSync(filePath);
   return imageSize(content);
-}
+};

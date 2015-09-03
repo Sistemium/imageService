@@ -1,6 +1,7 @@
+'use strict';
+
 var AWS = require('aws-sdk')
     , config = require('../config/config.json')
-    , getFileInfo = require('./get-file-info')
     , _ = require('lodash')
     , imageInfo = config.imageInfo
     , Q = require('q');

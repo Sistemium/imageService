@@ -1,3 +1,5 @@
+'use strict';
+
 var crypto = require('crypto')
     , fs = require('fs')
     , Q = require('q');

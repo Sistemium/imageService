@@ -1,3 +1,5 @@
+'use strict';
+
 var AWS = require('aws-sdk')
     , config = require('../config/config.json')
     , Q = require('q');

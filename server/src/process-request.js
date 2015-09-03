@@ -1,3 +1,5 @@
+'use strict';
+
 var config = require('../config/config.json')
     , checkFormat = require('./validation/check-format')
     , putAllFilesToS3 = require('./put-all-files-to-s3')

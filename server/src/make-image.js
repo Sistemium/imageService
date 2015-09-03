@@ -1,6 +1,7 @@
+'use strict';
+
 var fs = require('fs')
     , gm = require('gm').subClass({imageMagick: true})
-    , supportedFormats = require('../config/config.json').supportedFormats
     , imageInfo = require('../config/config.json').imageInfo
     , config = require('../config/config.json')
     , Q = require('q')
@@ -12,10 +13,10 @@ module.exports = function (req, options, callback) {
   var name = options.key || ''
       , width = opt.imageInfo.width || 100
       , height = opt.imageInfo.height || 100
-      , image = opt.image || {}
-      , dataForUrlFormation = opt.dataForUrlFormation || {};
-  var deffered = Q.defer();
-  imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
+      , image = opt.image || {};
+
+  var deffered = Q.defer()
+      , imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
           return name + ext;
         });
 
