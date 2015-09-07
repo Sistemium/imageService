@@ -6,6 +6,6 @@ var fs = require('fs')
 
 
 module.exports = function (filePath) {
-  var content = fs.readFileSync(filePath);
-  return imageSize(content);
+    var content = fs.readFileSync(filePath);
+    return imageSize(content);
 };

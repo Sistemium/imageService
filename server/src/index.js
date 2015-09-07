@@ -13,7 +13,7 @@ var express = require('express')
     , getImageByUrl = require('./imageByUrl/get-image-by-url')
     , app = express()
     , port = config.applicationPort
-    , allowCrossDomain = function(req, res, next) {
+    , allowCrossDomain = function (req, res, next) {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'HEAD,GET,PUT,DELETE,POST,OPTIONS,PATCH');
         res.header('Access-Control-Allow-Headers', 'Authorization, Start-Page, Page-Size, Content-Type');
@@ -23,14 +23,14 @@ var express = require('express')
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
-app.post('/api/image/', auth(), multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
-  if (err) {
-    res.status(500).send({error: 'Something went wrong...'});
-  } else {
-    next();
-  }
+app.post('/api/image/', multer(multerConfig), processRequest(), logErrors, function (err, req, res, next) {
+    if (err) {
+        res.status(500).send({error: 'Something went wrong...'});
+    } else {
+        next();
+    }
 });
-app.get('/api/image/', auth(), getImageByUrl(), multer(multerConfig), processRequest(), logErrors, function(err, req, res, next) {
+app.get('/api/image/', getImageByUrl(), multer(multerConfig), processRequest(), logErrors, function (err, req, res, next) {
     if (err) {
         res.status(500).send({error: 'Something went wrong...'});
     } else {
@@ -38,6 +38,6 @@ app.get('/api/image/', auth(), getImageByUrl(), multer(multerConfig), processReq
     }
 });
 
-app.listen(port, function() {
-  console.log('Server listening on port %d', port);
+app.listen(port, function () {
+    console.log('Server listening on port %d', port);
 });
