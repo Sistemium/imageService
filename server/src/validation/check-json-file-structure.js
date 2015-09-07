@@ -1,21 +1,25 @@
+'use strict';
+
 var AWS = require('aws-sdk')
-    , config = require('../config/config.json')
-    , logger = require('./logger')
+    , config = require('../../config/config.json')
     , _ = require('lodash')
     , Q = require('q');
 
 module.exports = function (prefix) {
+
     var s3 = new AWS.S3(config.awsCredentials)
         , key = prefix + config.picturesInfoFileName
         , params = {
             Bucket: config.s3.Bucket,
             Key: key
-        },
-        deffered = Q.defer();
-    logger.log('info', 'Key: %s', key);
+        }
+        , deffered = Q.defer()
+        , timestamp = Date.now();
+    console.log(timestamp + ' info: Key: %s', key);
     s3.getObject(params, function (err, data) {
         if (err) {
-            logger.log('error', 'Error occurred... %s', err);
+            timestamp = Date.now();
+            console.log(timestamp + ' error: Error occurred... %s', err);
             throw new Error(err);
             deffered.reject(err);
         } else {

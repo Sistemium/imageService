@@ -1,7 +1,7 @@
 var chai = require('chai')
     , expect = require('chai').expect
     , _ = require('lodash')
-    , checkJsonFileStructure = require('../server/src/check-json-file-structure');
+    , checkJsonFileStructure = require('../server/src/validation/check-json-file-structure');
 
 //TODO: rewrite using stubs
 describe('Check json file structure', function () {
