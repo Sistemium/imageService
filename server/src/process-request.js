@@ -73,13 +73,17 @@ module.exports = function () {
             };
             req.image = image;
             checkFormatAndStartProcessing(req, res, next);
+        } else if (req.imageFromSrc) {
+            timestamp = Date.now();
+            console.log(timestamp + ' info: image from src');
+            checkFormatAndStartProcessing(req, res, next);
         } else {
             timestamp = Date.now();
             console.log(timestamp + ' info: Binary content request in');
             var folder = config.uploadFolderPath + '/' + uuid.v4();
             var imageName = config.imageInfo.original.name + '.' + config.format;
             var imagePath = folder + '/' + imageName;
-            mkdirp(config.uploadFolderPath + '/' + folder, function () {
+            mkdirp(folder, function () {
                 var image = {
                     path: imagePath,
                     name: imageName,

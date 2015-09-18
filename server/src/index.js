@@ -22,6 +22,7 @@ var express = require('express')
 
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
+//app.use(auth());
 
 app.post('/api/image/', multer(multerConfig), processRequest(), logErrors, function (err, req, res, next) {
     if (err) {
@@ -30,7 +31,7 @@ app.post('/api/image/', multer(multerConfig), processRequest(), logErrors, funct
         next();
     }
 });
-app.get('/api/image/', getImageByUrl(), multer(multerConfig), processRequest(), logErrors, function (err, req, res, next) {
+app.get('/api/image/',  getImageByUrl(), multer(multerConfig), processRequest(), logErrors, function (err, req, res, next) {
     if (err) {
         res.status(500).send({error: 'Something went wrong...'});
     } else {
