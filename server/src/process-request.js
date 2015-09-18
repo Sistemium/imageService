@@ -8,7 +8,9 @@ var config = require('../config/config.json')
     , getResponse = require('./get-response')
     , cleanupFiles = require('./cleanup')
     , fs = require('fs')
-    , Q = require('q');
+    , Q = require('q')
+    , mkdirp = require('mkdirp')
+    , uuid = require('node-uuid');
 
 var timestamp = Date.now();
 function getResponseAndCleanup(req, res, next) {
@@ -18,7 +20,7 @@ function getResponseAndCleanup(req, res, next) {
     };
     getResponse(req, res, next, dataForUrlFormation)
         .then(function () {
-            cleanupFiles(req.image.name, next);
+            cleanupFiles(req.image.folder ,req.image.name, next);
         }, function (err) {
             next(err);
         });
@@ -74,15 +76,19 @@ module.exports = function () {
         } else {
             timestamp = Date.now();
             console.log(timestamp + ' info: Binary content request in');
-            var imageName = config.imageInfo.original.name + '.' + config.imageInfo.original.extension;
-            var imagePath = config.uploadFolderPath + '/' + imageName;
-            var image = {
-                path: imagePath,
-                name: imageName
-            };
-            req.image = image;
-            req.pipe(fs.createWriteStream(imagePath));
-            checkFormatAndStartProcessing(req, res, next);
+            var folder = config.uploadFolderPath + '/' + uuid.v4();
+            var imageName = config.imageInfo.original.name + '.' + config.format;
+            var imagePath = folder + '/' + imageName;
+            mkdirp(config.uploadFolderPath + '/' + folder, function () {
+                var image = {
+                    path: imagePath,
+                    name: imageName,
+                    folder: folder
+                };
+                req.image = image;
+                req.pipe(fs.createWriteStream(imagePath));
+                checkFormatAndStartProcessing(req, res, next);
+            });
         }
     }
 };

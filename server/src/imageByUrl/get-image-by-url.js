@@ -1,7 +1,6 @@
 'use strict';
 
 var config = require('../../config/config.json')
-    , processRequest = require('../process-request')
     , request = require('request')
     , fs = require('fs');
 
