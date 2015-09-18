@@ -17,6 +17,9 @@ module.exports = function (image) {
                 throw new Error(err);
             }
 
+            if (!config.contentTypeFor && !config.contentTypeFor[format.toLowerCase()]) {
+                throw new Error('Incorrect configuration...');
+            }
             if (config.contentTypeFor[format.toLowerCase()]) {
                 image.contentType = config.contentTypeFor[format.toLowerCase()];
                 timestamp = Date.now();
