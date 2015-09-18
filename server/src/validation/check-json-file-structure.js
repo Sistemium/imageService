@@ -20,7 +20,6 @@ module.exports = function (prefix) {
         if (err) {
             timestamp = Date.now();
             console.log(timestamp + ' error: Error occurred... %s', err);
-            throw new Error(err);
             deffered.reject(err);
         } else {
             var parsedData = JSON.parse(data.Body.toString());

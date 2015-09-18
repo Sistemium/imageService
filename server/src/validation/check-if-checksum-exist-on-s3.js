@@ -43,6 +43,7 @@ module.exports = function (req) {
                     }, function (err) {
                         timestamp = Date.now();
                         console.log(timestamp + ' error: %s', err);
+                        console.log(timestamp + ' info: Bad files detected retrying to upload to s3');
                         deffered.resolve();
                     });
             } else {
