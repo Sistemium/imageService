@@ -22,7 +22,7 @@ var express = require('express')
 
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
-//app.use(auth());
+app.use(auth());
 
 app.post('/api/image/', multer(multerConfig), processRequest(), logErrors, function (err, req, res, next) {
     if (err) {
