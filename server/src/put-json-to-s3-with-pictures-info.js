@@ -14,7 +14,7 @@ module.exports = function (metadata, dataForUrlFormation) {
             Bucket: config.s3.Bucket,
             Key: key,
             Body: JSON.stringify(metadata),
-            ContentType: 'json'
+            ContentType: 'application/json'
         };
     s3.putObject(params, function (err, data) {
         if (err) {
