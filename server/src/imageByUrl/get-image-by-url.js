@@ -9,25 +9,24 @@ var config = require('../../config/config.json')
 module.exports = function () {
     return function (req, res, next) {
         if (!req.query.src) next(new Error('Picture link not passed!'));
-        request.get(req.query.src).on('response', function (response) {
-            req.imageFromSrc = true;
-            var folder = config.uploadFolderPath + '/' + uuid.v4();
-            var imageName = config.imageInfo.original.name + '.' + config.format;
-            var imagePath = folder + '/' + imageName;
-            mkdirp(folder, function () {
-                var image = {
-                    path: imagePath,
-                    name: imageName,
-                    folder: folder
-                };
-                req.image = image;
-                var file = response.pipe(fs.createWriteStream(imagePath));
-                file.on('finish', function () {
+        req.imageFromSrc = true;
+        var folder = config.uploadFolderPath + '/' + uuid.v4();
+        var imageName = config.imageInfo.original.name + '.' + config.format;
+        var imagePath = folder + '/' + imageName;
+        mkdirp(folder, function () {
+            var image = {
+                path: imagePath,
+                name: imageName,
+                folder: folder
+            };
+            req.image = image;
+            request(req.query.src)
+                .pipe(fs.createWriteStream(imagePath))
+                .on('finish', function () {
                     next();
+                }).on('error', function (err) {
+                    next(err);
                 });
-            });
-        }).on('error', function (err) {
-            next(err);
         });
     }
 };
