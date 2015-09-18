@@ -21,7 +21,7 @@ module.exports = function (req, options, callback) {
 
     gm(image.path)
         .setFormat(config.format)
-        .resize(width, height)
+        .resize(width, height, '>')
         .write(imagePath, function (err) {
             if (err) {
                 throw err;
