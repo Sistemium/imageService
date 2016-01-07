@@ -6,7 +6,8 @@ var fs = require('fs')
 module.exports = function (directory, filename) {
     var timestamp = Date.now();
     console.log(timestamp + ' info: Deleting files');
-    fs.readdir(directory, function (err, files) {
+    //change this
+    fs.readdir('../uploads/', function (err, files) {
         if (err) {
             timestamp = Date.now();
             console.log(timestamp + ' error: ' + err);
