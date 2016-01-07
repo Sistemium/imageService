@@ -12,6 +12,7 @@ module.exports = function () {
                 'Authorization': req.headers.authorization
             }
         };
+        console.log(options, req.headers);
         request(options, function (error, response, body) {
             if (error) console.log(error);
             if (!error && response.statusCode === 200) {
@@ -20,9 +21,9 @@ module.exports = function () {
                 next();
             } else {
                 timestamp = Date.now();
-                console.log(timestamp + ' info: Response status code %s\nResponse body: %s', response.statusCode, body)
+                console.log(timestamp + ' info: Response status code %s\nResponse body: %s', response.statusCode, body);
                 res.status(response.statusCode);
-                res.send(body);
+                return res.send(body);
             }
         });
     };

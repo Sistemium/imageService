@@ -66,6 +66,7 @@ function checkFormatAndStartProcessing(req, res, next) {
 module.exports = function () {
     return function (req, res, next) {
         if (req.files.file !== undefined) {
+            console.log('Multipart file upload');
             var image = req.files.file;
             var folder = config.uploadFolderPath + '/' + uuid.v4();
             var img = {
