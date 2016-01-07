@@ -67,12 +67,22 @@ module.exports = function () {
     return function (req, res, next) {
         if (req.files.file !== undefined) {
             var image = req.files.file;
-            image = {
+            var folder = config.uploadFolderPath + '/' + uuid.v4();
+            var img = {
                 path: image.path,
-                name: image.name
+                name: image.name,
+                folder: folder
             };
-            req.image = image;
-            checkFormatAndStartProcessing(req, res, next);
+            mkdirp(folder, function () {
+                var image = {
+                    path: img.path,
+                    name: img.name,
+                    folder: img.folder
+                };
+                req.image = image;
+                req.pipe(fs.createWriteStream(folder + '/' + img.name));
+                checkFormatAndStartProcessing(req, res, next);
+            });
         } else if (req.imageFromSrc) {
             timestamp = Date.now();
             console.log(timestamp + ' info: image from src');

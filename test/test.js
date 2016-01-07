@@ -30,4 +30,4 @@ describe('Check json file structure', function () {
             }
         })
     });
-})
+});
