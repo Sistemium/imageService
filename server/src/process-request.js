@@ -81,8 +81,11 @@ module.exports = function () {
                     folder: img.folder
                 };
                 req.image = image;
-                req.pipe(fs.createWriteStream(folder + '/' + img.name));
-                checkFormatAndStartProcessing(req, res, next);
+                var writeStream = fs.createWriteStream(folder + '/' + img.name);
+                req.pipe(writeStream);
+                writeStream.on('finish', function () {
+                    checkFormatAndStartProcessing(req, res, next);
+                });
             });
         } else if (req.imageFromSrc) {
             timestamp = Date.now();
@@ -101,8 +104,11 @@ module.exports = function () {
                     folder: folder
                 };
                 req.image = image;
-                req.pipe(fs.createWriteStream(imagePath));
-                checkFormatAndStartProcessing(req, res, next);
+                var writeStream = fs.createWriteStream(imagePath);
+                req.pipe(writeStream);
+                writeStream.on('finish', function () {
+                    checkFormatAndStartProcessing(req, res, next);
+                });
             });
         }
     }

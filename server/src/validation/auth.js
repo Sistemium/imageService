@@ -12,7 +12,6 @@ module.exports = function () {
                 'Authorization': req.headers.authorization
             }
         };
-        console.log(options, req.headers);
         request(options, function (error, response, body) {
             if (error) console.log(error);
             if (!error && response.statusCode === 200) {
