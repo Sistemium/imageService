@@ -37,7 +37,7 @@ module.exports = function (req, next) {
         , checksum = image.checksum
         , imageNameWithoutExt = image.name.split('.')[0]
         , imageName = image.name.replace(new RegExp(imageNameWithoutExt), checksum)
-        , imagePath = image.path.replace(new RegExp(image.name), imageName)
+        , imagePath = image.folder + '/' + imageName
         , dataForUrlFormation = {
             checksum: checksum,
             folder: folder

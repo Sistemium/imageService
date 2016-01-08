@@ -8,7 +8,6 @@ var config = require('../config/config.json')
     , getResponse = require('./get-response')
     , cleanupFiles = require('./cleanup')
     , fs = require('fs')
-    , Q = require('q')
     , mkdirp = require('mkdirp')
     , uuid = require('node-uuid');
 
