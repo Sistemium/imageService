@@ -4,10 +4,10 @@
   "description": "image service, duplicate image in lower resolution and save to s3 ",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.1.36",
+    "aws-sdk": "^2.6.15",
     "body-parser": "^1.13.2",
     "express": "^4.13.0",
-    "gm": "^1.18.1",
+    "gm": "^1.23.0",
     "image-size": "^0.3.5",
     "imagemagick": "^0.1.3",
     "lodash": "^3.10.0",
@@ -36,6 +36,15 @@
       "data-cover-never": "node_modules"
     }
   },
-  "author": "Albert",
+  "author": "Sistemium UAB <uab@sistemium.com>",
+  "contributors": [
+    {
+      "name": "Alexander Levin",
+      "email": "a@sistemium.com"
+    },
+    {
+      "name": "Albert Kovalevskij"
+    }
+  ],
   "license": "ISC"
 }
