@@ -1,33 +1,34 @@
-'use strict';
-
-var fs = require('fs')
-    , config = require('../config/config.json');
+const fs = require('fs')
+const config = require('../config/config.json');
+const _ = require('lodash');
 
 module.exports = function (directory, filename) {
-    var timestamp = Date.now();
-    console.log(timestamp + ' info: Deleting files');
-    //change this
-    fs.readdir(directory, function (err, files) {
-        if (err) {
+
+  var timestamp = Date.now();
+  console.log(timestamp + ' info: Deleting files');
+
+  fs.readdir(directory, (err, files) => {
+
+    if (err) {
+      timestamp = Date.now();
+      console.log(timestamp + ' error: ' + err);
+      throw new Error(err);
+    } else {
+      _.each(files, file => {
+        if (file.indexOf(filename.slice('.')[0]) === 0) {
+          fs.unlink(directory + '/' + file, function () {
             timestamp = Date.now();
-            console.log(timestamp + ' error: ' + err);
-            throw new Error(err);
+            console.log(timestamp + ' info: Deleted file: ' + file);
+          });
         }
-        else {
-            files.forEach(function (file) {
-                if (file.indexOf(filename.slice('.')[0]) === 0) {
-                    fs.unlink(directory + '/' + file, function () {
-                        timestamp = Date.now();
-                        console.log(timestamp + ' info: Deleted file: ' + file);
-                    });
-                }
-            });
-        }
-        var dir = directory;
-        console.log(dir);
-        fs.rmdir(dir, function () {
-            timestamp = Date.now();
-            console.log(timestamp + ' info: Deleted directory: ', dir);
-        })
+      });
+    }
+
+    fs.rmdir(directory, function () {
+      timestamp = Date.now();
+      console.log(timestamp + ' info: Deleted directory: ', directory);
     });
+
+  });
+
 };
