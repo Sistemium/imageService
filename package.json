@@ -1,8 +1,10 @@
 {
   "name": "imageservice",
   "version": "1.0.0",
-  "description": "image service, duplicate image in lower resolution and save to s3 ",
+
+  "description": "http service that resizes an image with several resolutions then uploads everything to S3",
   "main": "index.js",
+
   "dependencies": {
     "aws-sdk": "^2.6.15",
     "body-parser": "^1.13.2",
@@ -18,16 +20,21 @@
     "request": "^2.58.0",
     "winston": "^1.0.1"
   },
+
   "devDependencies": {
+    "nodemon": "^1.11.0",
     "blanket": "^1.1.7",
     "chai": "^3.2.0",
     "mocha": "^2.2.5",
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0"
   },
+
   "scripts": {
+    "run": "nodemon server/src/index.js",
     "test": "mocha && mocha test --require blanket --reporter html-cov > coverage.html"
   },
+
   "config": {
     "blanket": {
       "pattern": [
@@ -36,6 +43,7 @@
       "data-cover-never": "node_modules"
     }
   },
+
   "author": "Sistemium UAB <uab@sistemium.com>",
   "contributors": [
     {
@@ -46,5 +54,7 @@
       "name": "Albert Kovalevskij"
     }
   ],
+
   "license": "ISC"
+  
 }
