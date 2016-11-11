@@ -1,14 +1,12 @@
 {
   "name": "imageservice",
   "version": "1.0.0",
-
   "description": "http service that resizes an image with several resolutions then uploads everything to S3",
   "main": "index.js",
-
   "dependencies": {
     "aws-sdk": "^2.6.15",
     "body-parser": "^1.13.2",
-    "express": "^4.13.0",
+    "express": "^4.14.0",
     "gm": "^1.23.0",
     "image-size": "^0.3.5",
     "imagemagick": "^0.1.3",
@@ -20,7 +18,6 @@
     "request": "^2.58.0",
     "winston": "^1.0.1"
   },
-
   "devDependencies": {
     "nodemon": "^1.11.0",
     "blanket": "^1.1.7",
@@ -29,12 +26,10 @@
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0"
   },
-
   "scripts": {
     "run": "nodemon server/src/index.js",
     "test": "mocha && mocha test --require blanket --reporter html-cov > coverage.html"
   },
-
   "config": {
     "blanket": {
       "pattern": [
@@ -43,7 +38,6 @@
       "data-cover-never": "node_modules"
     }
   },
-
   "author": "Sistemium UAB <uab@sistemium.com>",
   "contributors": [
     {
@@ -54,7 +48,5 @@
       "name": "Albert Kovalevskij"
     }
   ],
-
   "license": "ISC"
-  
 }
