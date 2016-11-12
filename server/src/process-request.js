@@ -49,28 +49,20 @@ module.exports = function() {
 
     debug('Multipart file upload', req.files);
     var file = _.first(req.files);
+    var folder = config.uploadFolderPath + '/' + uuid.v4();
 
     if (file) {
 
-      debug('Multipart file upload', req.files);
-
-      var image = req.files[0];
-      var folder = config.uploadFolderPath + '/' + uuid.v4();
       var img = {
-        path: image.path,
-        name: image.name,
+        path: file.path,
+        name: file.filename,
         folder: folder
       };
 
       mkdirp(folder, function() {
-        var image = {
-          path: img.path,
-          name: img.name,
-          folder: img.folder
-        };
-        req.image = image;
         var writeStream = fs.createWriteStream(folder + '/' + img.name);
         req.pipe(writeStream);
+        req.image = img;
         writeStream.on('finish', function() {
           checkFormatAndStartProcessing(req, res, next);
         });
@@ -84,7 +76,6 @@ module.exports = function() {
     } else {
 
       debug('Binary content request');
-      var folder = config.uploadFolderPath + '/' + uuid.v4();
       var imageName = config.imageInfo.original.name + '.' + config.format;
       var imagePath = folder + '/' + imageName;
 
