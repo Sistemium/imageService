@@ -1,27 +1,20 @@
 'use strict';
 
-var crypto = require('crypto')
-    , fs = require('fs')
-    , Q = require('q');
+const crypto = require('crypto');
+const fs = require('fs');
 
-module.exports = function (image) {
+module.exports = function(image) {
 
-    var stream = fs.createReadStream(image)
-        , hash = crypto.createHash('md5')
-        , deffered = Q.defer();
+  var stream = fs.createReadStream(image);
+  var hash = crypto.createHash('md5');
 
-    stream.on('data', function (data) {
-        hash.update(data, 'utf8');
-    });
+  stream.on('data', data => hash.update(data, 'utf8'));
 
-    stream.on('end', function () {
-        var checksum = hash.digest('hex');
-        deffered.resolve(checksum);
-    });
+  return new Promise((resolve, reject) => {
 
-    stream.on('error', function (err) {
-        deffered.reject(new Error(err));
-    });
+    stream.on('end', () => resolve(hash.digest('hex')));
+    stream.on('error', err => reject(new Error(err)));
 
-    return deffered.promise;
+  });
+
 }
