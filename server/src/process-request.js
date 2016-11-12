@@ -1,71 +1,52 @@
-'use strict';
+const config = require('../config/config.json')
+const checkFormat = require('./validation/check-format')
+const putAllFilesToS3 = require('./put-all-files-to-s3')
+const notAlreadyUploadedOrBadData = require('./validation/check-if-checksum-exist-on-s3')
+const generateChecksum = require('./generate-checksum')
+const getResponse = require('./get-response')
+const cleanupFiles = require('./cleanup')
+const fs = require('fs')
+const mkdirp = require('mkdirp')
+const uuid = require('node-uuid')
 
-var config = require('../config/config.json')
-    , checkFormat = require('./validation/check-format')
-    , putAllFilesToS3 = require('./put-all-files-to-s3')
-    , notAlreadyUploadedOrBadData = require('./validation/check-if-checksum-exist-on-s3')
-    , generateChecksum = require('./generate-checksum')
-    , getResponse = require('./get-response')
-    , cleanupFiles = require('./cleanup')
-    , fs = require('fs')
-    , mkdirp = require('mkdirp')
-    , uuid = require('node-uuid');
+const debug = require('debug')('stm:ims:process-request');
 
-var timestamp = Date.now();
 function getResponseAndCleanup(req, res, next) {
     var dataForUrlFormation = {
         checksum: req.image.checksum,
         folder: req.body.folder || req.query.folder
     };
     getResponse(req, res, next, dataForUrlFormation)
-        .then(function () {
-            cleanupFiles(req.image.folder ,req.image.name, next);
-        }, function (err) {
-            next(err);
-        });
+        .then(() => cleanupFiles(req.image.folder ,req.image.name, next))
+        .catch(next);
 }
 
 function processImage(req, res, next) {
     generateChecksum(req.image.path)
-        .then(function (checksum) {
+        .then(checksum => {
             req.image.checksum = checksum;
-            // check if already exist on amazon s3 and if it correct
             notAlreadyUploadedOrBadData(req)
-                .then(function () {
-                    putAllFilesToS3(req, next)
-                        .then(function () {
-                            getResponseAndCleanup(req, res, next);
-                        }, function (err) {
-                            timestamp = Date.now();
-                            console.log(timestamp + ' error: %s', err);
-                            next(err);
-                        });
-                }, function () {
-                    getResponseAndCleanup(req, res, next);
-                });
-        }, function (error) {
-            timestamp = Date.now();
-            console.log(timestamp + ' error: %s', error);
-            next(error);
-        });
+                .then(() => putAllFilesToS3(req, next)
+                    .then(() =>getResponseAndCleanup(req, res, next))
+                    .catch(next))
+                .catch(() => getResponseAndCleanup(req, res, next));
+        })
+        .catch(next);
 }
 
 function checkFormatAndStartProcessing(req, res, next) {
-    checkFormat(req.image).then(function (image) {
-        timestamp = Date.now();
-        console.log(timestamp + ' info: Strarting processing image');
+    checkFormat(req.image)
+      .then(image => {
+        debug('checkFormatAndStartProcessing start');
         processImage(req, res, next);
-    }, function (err) {
-        timestamp = Date.now();
-        console.log(timestamp + ' error: %s', err);
-        next(err);
-    });
+      })
+      .catch(next);
 }
 
 module.exports = function () {
     return function (req, res, next) {
         if (req.files.file !== undefined) {
-            console.log('Multipart file upload');
+            debug('Multipart file upload');
             var image = req.files.file;
             var folder = config.uploadFolderPath + '/' + uuid.v4();
             var img = {
@@ -87,16 +68,14 @@ module.exports = function () {
                 });
             });
         } else if (req.imageFromSrc) {
-            timestamp = Date.now();
-            console.log(timestamp + ' info: image from src');
+            debug('image from src');
             checkFormatAndStartProcessing(req, res, next);
         } else {
-            timestamp = Date.now();
-            console.log(timestamp + ' info: Binary content request in');
+            debug('Binary content request');
             var folder = config.uploadFolderPath + '/' + uuid.v4();
             var imageName = config.imageInfo.original.name + '.' + config.format;
             var imagePath = folder + '/' + imageName;
-            mkdirp(folder, function () {
+            mkdirp(folder, () => {
                 var image = {
                     path: imagePath,
                     name: imageName,
@@ -104,10 +83,8 @@ module.exports = function () {
                 };
                 req.image = image;
                 var writeStream = fs.createWriteStream(imagePath);
+                writeStream.on('finish', () => checkFormatAndStartProcessing(req, res, next));
                 req.pipe(writeStream);
-                writeStream.on('finish', function () {
-                    checkFormatAndStartProcessing(req, res, next);
-                });
             });
         }
     }
