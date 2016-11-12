@@ -15,14 +15,8 @@ module.exports = function(directory, filename) {
 
     _.each(files, file => {
       var filePath = `${directory}/${file}`;
-      if (file.indexOf(filename.slice('.')[0]) === 0) {
-        debug('Deleting file: ' + filePath);
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            debug('Delete file error:', err);
-          }
-        });
-      }
+      debug('Deleting file: ' + filePath);
+      fs.unlinkSync(filePath);
     });
 
     fs.rmdir(directory, function(err) {
