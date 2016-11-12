@@ -31,7 +31,7 @@ function formResponse(data, metadata, next) {
                     if (key === filename) {
                         existInConfig = true;
                         // TODO: check if not type error, if is, upload new json file to s3
-                        var searchMetadata = _.findWhere(metadata, {name: key});
+                        var searchMetadata = _.find(metadata, {name: key});
                         imageInfoObject.pictures.push({
                             name: key,
                             src: config.s3.Domain + config.s3.Bucket + '/' + item.Key,

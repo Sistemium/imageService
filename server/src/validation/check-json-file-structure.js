@@ -24,7 +24,7 @@ module.exports = function (prefix) {
         } else {
             var parsedData = JSON.parse(data.Body.toString());
             _.each(config.imageInfo, function (n, key) {
-                var res = _.where(parsedData, {'name': key});
+                var res = _.filter(parsedData, {'name': key});
                 if (res.length !== 1) {
                     deffered.reject(new Error('Incorrect \"' + config.picturesInfoFileName + '\"'));
                 }
