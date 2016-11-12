@@ -32,7 +32,7 @@ function nextOnErrors (err, req, res, next) {
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
-const processor = [multer(multerConfig), processRequest(), logErrors, nextOnErrors];
+const processor = [multer(multerConfig).any(), processRequest(), logErrors, nextOnErrors];
 
 app.post('/api/image', auth(), processor);
 app.get('/api/image', auth(), getImageByUrl(), processor);

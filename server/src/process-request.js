@@ -8,6 +8,7 @@ const cleanupFiles = require('./cleanup')
 const fs = require('fs')
 const mkdirp = require('mkdirp')
 const uuid = require('node-uuid')
+const _ = require('lodash');
 
 const debug = require('debug')('stm:ims:process-request');
 
@@ -45,15 +46,22 @@ function checkFormatAndStartProcessing(req, res, next) {
 
 module.exports = function() {
   return function(req, res, next) {
-    if (req.files.file !== undefined) {
-      debug('Multipart file upload');
-      var image = req.files.file;
+
+    debug('Multipart file upload', req.files);
+    var file = _.first(req.files);
+
+    if (file) {
+
+      debug('Multipart file upload', req.files);
+
+      var image = req.files[0];
       var folder = config.uploadFolderPath + '/' + uuid.v4();
       var img = {
         path: image.path,
         name: image.name,
         folder: folder
       };
+
       mkdirp(folder, function() {
         var image = {
           path: img.path,
@@ -67,14 +75,19 @@ module.exports = function() {
           checkFormatAndStartProcessing(req, res, next);
         });
       });
+
     } else if (req.imageFromSrc) {
+
       debug('image from src');
       checkFormatAndStartProcessing(req, res, next);
+
     } else {
+
       debug('Binary content request');
       var folder = config.uploadFolderPath + '/' + uuid.v4();
       var imageName = config.imageInfo.original.name + '.' + config.format;
       var imagePath = folder + '/' + imageName;
+
       mkdirp(folder, () => {
         var image = {
           path: imagePath,
@@ -86,6 +99,7 @@ module.exports = function() {
         writeStream.on('finish', () => checkFormatAndStartProcessing(req, res, next));
         req.pipe(writeStream);
       });
+
     }
   }
 };
