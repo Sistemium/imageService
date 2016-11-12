@@ -17,34 +17,34 @@ function getResponseAndCleanup(req, res, next) {
     folder: req.body.folder || req.query.folder
   };
   getResponse(req, res, next, dataForUrlFormation)
-  .then(() => cleanupFiles(req.image.folder ,req.image.name, next))
-  .catch(next);
+    .then(() => cleanupFiles(req.image.folder, req.image.name, next))
+    .catch(next);
 }
 
 function processImage(req, res, next) {
   generateChecksum(req.image.path)
-  .then(checksum => {
-    req.image.checksum = checksum;
-    notAlreadyUploadedOrBadData(req)
-    .then(() => putAllFilesToS3(req, next)
-    .then(() =>getResponseAndCleanup(req, res, next))
-    .catch(next))
-    .catch(() => getResponseAndCleanup(req, res, next));
-  })
-  .catch(next);
+    .then(checksum => {
+      req.image.checksum = checksum;
+      notAlreadyUploadedOrBadData(req)
+        .then(() => putAllFilesToS3(req, next)
+          .then(() => getResponseAndCleanup(req, res, next))
+          .catch(next))
+        .catch(() => getResponseAndCleanup(req, res, next));
+    })
+    .catch(next);
 }
 
 function checkFormatAndStartProcessing(req, res, next) {
   checkFormat(req.image)
-  .then(image => {
-    debug('checkFormatAndStartProcessing start');
-    processImage(req, res, next);
-  })
-  .catch(next);
+    .then(image => {
+      debug('checkFormatAndStartProcessing start');
+      processImage(req, res, next);
+    })
+    .catch(next);
 }
 
-module.exports = function () {
-  return function (req, res, next) {
+module.exports = function() {
+  return function(req, res, next) {
     if (req.files.file !== undefined) {
       debug('Multipart file upload');
       var image = req.files.file;
@@ -54,7 +54,7 @@ module.exports = function () {
         name: image.name,
         folder: folder
       };
-      mkdirp(folder, function () {
+      mkdirp(folder, function() {
         var image = {
           path: img.path,
           name: img.name,
@@ -63,7 +63,7 @@ module.exports = function () {
         req.image = image;
         var writeStream = fs.createWriteStream(folder + '/' + img.name);
         req.pipe(writeStream);
-        writeStream.on('finish', function () {
+        writeStream.on('finish', function() {
           checkFormatAndStartProcessing(req, res, next);
         });
       });
