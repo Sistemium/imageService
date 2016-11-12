@@ -55,7 +55,8 @@ module.exports = function() {
 
       var img = {
         path: file.path,
-        name: file.filename,
+        //TODO: refactor s3 saver to use proper extension
+        name: file.filename + '.' + file.mimetype.match(/[^/]+$/)[0],
         folder: folder
       };
 
