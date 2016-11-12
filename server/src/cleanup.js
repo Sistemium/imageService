@@ -25,8 +25,12 @@ module.exports = function(directory, filename) {
       }
     });
 
-    fs.rmdir(directory, function() {
-      debug('Deleted directory: ', directory);
+    fs.rmdir(directory, function(err) {
+      if (err) {
+        debug('Delete directory error:', err);
+      } else {
+        debug('Deleted directory: ', directory);
+      }
     });
 
   });
