@@ -4,6 +4,7 @@ const config = require('../config/config.json');
 const getFileInfo = require('./get-file-info');
 const debug = require('debug')('stm:ims:put-resized-image-to-s3');
 const s3 = new AWS.S3(config.awsCredentials);
+const format = config.format;
 
 module.exports = function (options) {
 
@@ -15,7 +16,7 @@ module.exports = function (options) {
     return name + ext;
   }));
 
-  var key = `${dataForUrlFormation.folder}/${dataForUrlFormation.checksum}/${options.key}.${options.extension}`;
+  var key = `${dataForUrlFormation.folder}/${dataForUrlFormation.checksum}/${options.key}.${format}`;
 
   var filePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
     return name + ext;
