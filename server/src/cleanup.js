@@ -3,7 +3,7 @@ const config = require('../config/config.json');
 const _ = require('lodash');
 const debug = require('debug')('stm:ims:cleanup');
 
-module.exports = function(directory, filename) {
+module.exports = function(directory) {
 
   debug('Deleting files');
 
