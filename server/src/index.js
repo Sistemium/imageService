@@ -14,6 +14,8 @@ const getImageByUrl = require('./imageByUrl/get-image-by-url')
 const app = express()
 const port = config.applicationPort
 
+require('debug').log = console.info.bind(console);
+
 function allowCrossDomain (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'HEAD,GET,PUT,DELETE,POST,OPTIONS,PATCH');
