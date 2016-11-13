@@ -1,50 +1,47 @@
-'use strict';
-
-var AWS = require('aws-sdk')
-    , config = require('../config/config.json')
-    , fs = require('fs')
-    , Q = require('q')
-    , getFileInfo = require('./get-file-info');
+const fs = require('fs');
+const AWS = require('aws-sdk');
+const config = require('../config/config.json');
+const getFileInfo = require('./get-file-info');
+const s3 = new AWS.S3(config.awsCredentials);
 
 module.exports = function (options) {
 
-    var timestamp = Date.now();
-    var image = options.image
-        , imageStream = fs.createReadStream(image.path)
-        , deffered = Q.defer()
-        , dataForUrlFormation = options.dataForUrlFormation
-        , key = dataForUrlFormation.folder + '/'
-            + dataForUrlFormation.checksum + '/'
-            + options.key + '.' + options.extension;
+  var image = options.image;
+  var imageStream = fs.createReadStream(image.path);
 
-    var fileInfo = getFileInfo(image.path);
-    var s3 = new AWS.S3(config.awsCredentials);
-    var params = {
-        Bucket: config.s3.Bucket,
-        Key: key,
-        Body: imageStream,
-        ContentType: image.contentType,
-        Metadata: {
-            'width': fileInfo.width.toString(),
-            'height': fileInfo.height.toString()
-        }
-    };
-    s3.putObject(params, function (err, data) {
-        if (err) {
-            timestamp = Date.now();
-            console.log(timestamp + ' error: %s', err)
-            deffered.reject(err);
-        }
-        else {
-            data = {
-                name: config.imageInfo.original.name,
-                width: fileInfo.width,
-                height: fileInfo.height,
-                bucketKey: key
-            };
-            deffered.resolve(data);
-        }
+  var urlData = options.dataForUrlFormation;
+  var key = `${urlData.folder}/${urlData.checksum}/${options.key}.${options.extension}`;
+  var fileInfo = getFileInfo(image.path);
+
+  var params = {
+    Bucket: config.s3.Bucket,
+    Key: key,
+    Body: imageStream,
+    ContentType: image.contentType,
+    Metadata: {
+      'width': fileInfo.width.toString(),
+      'height': fileInfo.height.toString()
+    }
+  };
+
+  return new Promise((resolve, reject) => {
+
+    s3.putObject(params, err => {
+
+      if (err) {
+        debug('error:', err);
+        return reject(err);
+      }
+
+      resolve({
+        name: config.imageInfo.original.name,
+        width: fileInfo.width,
+        height: fileInfo.height,
+        bucketKey: key
+      });
+
     });
 
-    return deffered.promise;
+  });
+
 };
