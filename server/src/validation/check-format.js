@@ -1,33 +1,35 @@
-'use strict';
+const config = require('../../config/config.json');
+const gm = require('gm').subClass({
+  imageMagick: true
+});
+const _ = require('lodash');
+const debug = require('debug')('stm:ims:check-format');
 
-var config = require('../../config/config.json')
-    , gm = require('gm').subClass({imageMagick: true})
-    , _ = require('lodash')
-    , Q = require('q');
+module.exports = function(image) {
 
-module.exports = function (image) {
-    var deffered = Q.defer();
-    var timestamp = Date.now();
-    console.log(timestamp + ' info: Checking file format');
+  debug('Checking file format');
+
+  return new Promise((resolve, reject) => {
     gm(image.path)
-        .format(function (err, format) {
-            if (err) {
-                timestamp = Date.now();
-                console.log(timestamp + ' error: %s', err);
-                throw new Error(err);
-            }
+      .format(function(err, format) {
 
-            if (!config.contentTypeFor && !config.contentTypeFor[format.toLowerCase()]) {
-                throw new Error('Incorrect configuration...');
-            }
-            if (config.contentTypeFor[format.toLowerCase()]) {
-                image.contentType = config.contentTypeFor[format.toLowerCase()];
-                timestamp = Date.now();
-                console.log(timestamp + ' info: Format is supported, contentType: %s', image.contentType);
-                deffered.resolve();
-            } else {
-                deffered.reject('Unsupported format..');
-            }
-        });
-    return deffered.promise;
+        if (err) {
+          throw new Error(err);
+        }
+
+        if (!config.contentTypeFor && !config.contentTypeFor[format.toLowerCase()]) {
+          throw new Error('Incorrect configuration');
+        }
+
+        if (config.contentTypeFor[format.toLowerCase()]) {
+          image.contentType = config.contentTypeFor[format.toLowerCase()];
+          debug('Format is supported, contentType: %s', image.contentType);
+          resolve();
+        } else {
+          reject('Unsupported format');
+        }
+
+      });
+  });
+
 };

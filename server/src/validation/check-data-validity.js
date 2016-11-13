@@ -1,21 +1,31 @@
-'use strict';
+const config = require('../../config/config.json');
+const imageInfo = config.imageInfo;
+const format = config.format;
+const _ = require('lodash');
+const debug = require('debug')('stm:ims:check-data-validity');
 
-var config = require('../../config/config.json')
-    , imageInfo = config.imageInfo
-    , _ = require('lodash');
+module.exports = function(data) {
 
-module.exports = function (data) {
-    var counter = 0;
-    // check that keys in config.imageInfo equals files uploaded to s3
-    _.each(imageInfo, function (item, key) {
-        data.forEach(function (objFromS3) {
-            var filename = objFromS3.Key.split('/').splice(-1)[0].split('.')[0];
-            if (filename === key) {
-                counter++;
-            }
-        })
+  return new Promise((resolve, reject) => {
+
+    var valid = true;
+    _.each(imageInfo, function(item, key) {
+      if (!_.find(data, objFromS3 => {
+        return !!objFromS3.Key.match(`.*/${key}.${format}$`);
+      })) {
+        debug('Not found file', key);
+        return valid = false;
+      }
     });
-    if (counter !== Object.keys(imageInfo).length) {
-        throw new Error('Count of configured images, does not match count of images on s3');
+
+    if (valid) {
+      debug('S3 data valid');
+      resolve();
+    } else {
+      debug('S3 data invalid');
+      reject();
     }
+
+  });
+
 }
