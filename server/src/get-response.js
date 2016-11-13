@@ -25,9 +25,9 @@ function formResponse(data, metadata, next) {
     };
 
     try {
-      _.each(imageInfo, function(n, key) {
+      _.each(imageInfo, function (n, key) {
         var existInConfig = false;
-        data.forEach(function(item) {
+        data.forEach(function (item) {
           var filename = item.Key.split('/').splice(-1)[0].split('.')[0];
           if (key === filename) {
             existInConfig = true;
@@ -54,18 +54,18 @@ function formResponse(data, metadata, next) {
   }
 }
 
-module.exports = function(req, res, next, urlConfig) {
+module.exports = function (req, res, next, urlConfig) {
 
   var prefix = `${urlConfig.folder}/${urlConfig.checksum}/`;
   var deffered = Q.defer();
 
   var s3 = new AWS.S3(config.awsCredentials);
   var params = {
-      Bucket: config.s3.Bucket,
-      Prefix: prefix
-    };
+    Bucket: config.s3.Bucket,
+    Prefix: prefix
+  };
 
-  s3.listObjects(params, function(err, data) {
+  s3.listObjects(params, function (err, data) {
 
     if (err) {
       return next(err);
@@ -80,7 +80,7 @@ module.exports = function(req, res, next, urlConfig) {
       var contents = data.Contents;
       var matchConfigFileName = false;
       //search json file
-      data.Contents.forEach(function(item) {
+      data.Contents.forEach(function (item) {
         var fileName = item.Key.split('/').splice(-1)[0];
         //json file name must be the same as in config
         if (fileName === config.picturesInfoFileName) {
@@ -90,7 +90,7 @@ module.exports = function(req, res, next, urlConfig) {
             Key: prefix + config.picturesInfoFileName
           };
           //get json file with info about pictures
-          s3.getObject(params, function(err, data) {
+          s3.getObject(params, function (err, data) {
             if (err) {
               debug('Error:', err);
               next(err);
