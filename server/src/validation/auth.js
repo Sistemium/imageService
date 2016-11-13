@@ -1,9 +1,9 @@
 const config = require('../../config/config.json');
 const request = require('request');
+const debug = require('debug')('stm:ims:auth');
 
 module.exports = function () {
 
-  var timestamp = Date.now();
   var url = config.auth && config.auth.url;
 
   if (!url) {
@@ -20,14 +20,12 @@ module.exports = function () {
       }
     };
     request(options, function (error, response, body) {
-      if (error) console.log(error);
+      if (error) console.error(error);
       if (!error && response.statusCode === 200) {
-        timestamp = Date.now();
-        console.log(timestamp + ' info: Body: %s', body);
+        debug('success:', body);
         next();
       } else {
-        timestamp = Date.now();
-        console.log(timestamp + ' info: Response status code %s\nResponse body: %s', response.statusCode, body);
+        debug('error:', response.statusCode, body);
         res.status(response.statusCode);
         return res.send(body);
       }
