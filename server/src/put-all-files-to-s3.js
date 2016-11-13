@@ -1,13 +1,15 @@
+const fs = require('fs');
+const _ = require('lodash');
 const makeImage = require('./make-image');
 const putOriginalImageToS3 = require('./put-original-image-to-s3');
 const putResizedImageToS3 = require('./put-resized-image-to-s3');
-const imageInfo = require('../config/config.json').imageInfo;
-const config = require('../config/config.json');
 const putJSONWithPicturesInfo = require('./put-json-to-s3-with-pictures-info');
-const fs = require('fs');
-const _ = require('lodash');
+const config = require('../config/config.json');
+const imageInfo = config.imageInfo;
 
-function makeImageAndPutToS3(req, next, options, cb) {
+const debug = require('debug')('stm:ims:put-all-files-to-s3');
+
+function makeImageAndPutToS3(req, next, options) {
   var promises = [];
   try {
     _.each(imageInfo, function(n, key) {
@@ -17,7 +19,7 @@ function makeImageAndPutToS3(req, next, options, cb) {
       } else {
         options.imageInfo = n;
         options.image.contentType = config.contentTypeFor[config.format];
-        promises.push(makeImage(req, options, cb));
+        promises.push(makeImage(req, options).then(putResizedImageToS3));
       }
     });
   } catch (err) {
@@ -27,7 +29,7 @@ function makeImageAndPutToS3(req, next, options, cb) {
 }
 
 module.exports = function(req, next) {
-  var timestamp = Date.now();
+
   var image = req.image;
   var folder = req.body.folder || req.query.folder;
   var checksum = image.checksum;
@@ -49,7 +51,7 @@ module.exports = function(req, next) {
     extension: image.name.split('.')[image.name.split('.').length - 1]
   };
 
-  return Promise.all(makeImageAndPutToS3(req, next, options, putResizedImageToS3))
+  return Promise.all(makeImageAndPutToS3(req, next, options))
     .then(data => putJSONWithPicturesInfo(data, dataForUrlFormation)
       .then(data => {
         debug('Data is put to s3:', data);
