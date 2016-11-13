@@ -17,9 +17,11 @@ function getResponseAndCleanup(req, res, next) {
     checksum: req.image.checksum,
     folder: req.body.folder || req.query.folder
   };
-  getResponse(req, res, next, dataForUrlFormation)
-    .then(() => cleanupFiles(req.image.folder, req.image.name, next))
-    .catch(next);
+  getResponse(dataForUrlFormation)
+    .then(data => {
+      res.json(data);
+    }, next)
+    .then(() => cleanupFiles(req.image.folder, req.image.name));
 }
 
 function processImage(req, res, next) {
