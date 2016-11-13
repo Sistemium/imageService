@@ -4,15 +4,16 @@ const format = config.format;
 const _ = require('lodash');
 const debug = require('debug')('stm:ims:check-data-validity');
 
-module.exports = function(data) {
+module.exports = function (data) {
 
   return new Promise((resolve, reject) => {
 
     var valid = true;
-    _.each(imageInfo, function(item, key) {
+    _.each(imageInfo, function (item, key) {
       if (!_.find(data, objFromS3 => {
-        return !!objFromS3.Key.match(`.*/${key}.${format}$`);
-      })) {
+          var ext = key === 'original' ? '.*' : format;
+          return !!objFromS3.Key.match(`.*/${key}.${ext}$`);
+        })) {
         debug('Not found file', key);
         return valid = false;
       }
@@ -23,7 +24,7 @@ module.exports = function(data) {
       resolve();
     } else {
       debug('S3 data invalid');
-      reject();
+      reject('S3 data invalid');
     }
 
   });
