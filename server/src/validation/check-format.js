@@ -21,7 +21,7 @@ module.exports = function (image) {
           return reject('Incorrect configuration');
         }
 
-        let contentType = config.contentTypeFor[format.toLowerCase()];
+        var contentType = config.contentTypeFor[format.toLowerCase()];
 
         if (!contentType) {
           return reject('Unsupported format');
