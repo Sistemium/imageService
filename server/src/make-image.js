@@ -1,19 +1,18 @@
-const gm = require('gm').subClass({imageMagick: true});
-const config = require('../config/config.json');
-const _ = require('lodash');
+import _ from 'lodash';
+
+const gm = require('gm').subClass({ imageMagick: true });
 const debug = require('debug')('stm:ims:make-image');
+const config = require('../config/config.json');
 
-module.exports = function (req, options) {
+export default function (req, options) {
 
-  var opt = _.assign({}, options);
-  var name = options.key || '';
-  var width = opt.imageInfo.width || 100;
-  var height = opt.imageInfo.height || 100;
-  var image = opt.image || {};
+  const opt = _.assign({}, options);
+  const name = options.key || '';
+  const width = opt.imageInfo.width || 100;
+  const height = opt.imageInfo.height || 100;
+  const image = opt.image || {};
 
-  var imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, function (ext) {
-    return name + ext;
-  });
+  const imagePath = image.path.replace(/(\.jpeg|\.jpg|\.png)$/i, ext => `${name}${ext}`);
 
   return new Promise((resolve, reject) => {
     try {
@@ -21,9 +20,10 @@ module.exports = function (req, options) {
         .setFormat(config.format)
         .resize(width, height, '>')
         .autoOrient()
-        .write(imagePath, function (err) {
+        .write(imagePath, err => {
           if (err) {
-            return reject(err);
+            reject(err);
+            return;
           }
           debug('Image is resized and converted:', name);
           resolve(opt);

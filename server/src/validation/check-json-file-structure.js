@@ -1,13 +1,14 @@
-const AWS = require('aws-sdk');
+import _ from 'lodash';
+import AWS from 'aws-sdk';
+
 const config = require('../../config/config.json');
-const _ = require('lodash');
 const debug = require('debug')('stm:ims:check-json-file-structure');
+const s3 = new AWS.S3();
 
-module.exports = function(prefix) {
+export default function (prefix) {
 
-  var s3 = new AWS.S3(config.awsCredentials);
-  var key = prefix + config.picturesInfoFileName;
-  var params = {
+  const key = prefix + config.picturesInfoFileName;
+  const params = {
     Bucket: config.s3.Bucket,
     Key: key
   };
@@ -15,21 +16,19 @@ module.exports = function(prefix) {
   debug('Key: %s', key);
 
   return new Promise((resolve, reject) => {
-    s3.getObject(params, function(err, data) {
+    s3.getObject(params, function (err, data) {
 
       if (err) {
         debug('Error: %s', err);
         return reject(err);
       }
 
-      var parsedData = JSON.parse(data.Body.toString());
+      const parsedData = JSON.parse(data.Body.toString());
 
-      _.each(config.imageInfo, function(n, key) {
-        var res = _.filter(parsedData, {
-          'name': key
-        });
+      _.each(config.imageInfo, function (n, key) {
+        const res = _.filter(parsedData, { name: key });
         if (res.length !== 1) {
-          reject(new Error('Incorrect \"' + config.picturesInfoFileName + '\"'));
+          reject(new Error(`Incorrect "${config.picturesInfoFileName}"`));
         }
       });
 

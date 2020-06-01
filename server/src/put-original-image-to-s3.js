@@ -1,27 +1,26 @@
-const fs = require('fs');
-const AWS = require('aws-sdk');
+import fs from 'fs';
+import AWS from 'aws-sdk';
+import getFileInfo from './get-file-info';
+
 const config = require('../config/config.json');
-const getFileInfo = require('./get-file-info');
-const s3 = new AWS.S3(config.awsCredentials);
+const s3 = new AWS.S3();
 
-module.exports = function (options) {
+export default function (options) {
 
-  var image = options.image;
-  var imageStream = fs.createReadStream(image.path);
+  const { image, dataForUrlFormation: urlData } = options;
+  const imageStream = fs.createReadStream(image.path);
+  const key = `${urlData.folder}/${urlData.checksum}/${options.key}.${options.extension}`;
+  const fileInfo = getFileInfo(image.path);
 
-  var urlData = options.dataForUrlFormation;
-  var key = `${urlData.folder}/${urlData.checksum}/${options.key}.${options.extension}`;
-  var fileInfo = getFileInfo(image.path);
-
-  var params = {
+  const params = {
     Bucket: config.s3.Bucket,
     Key: key,
     Body: imageStream,
     ContentType: image.contentType,
     Metadata: {
-      'width': fileInfo.width.toString(),
-      'height': fileInfo.height.toString()
-    }
+      width: fileInfo.width.toString(),
+      height: fileInfo.height.toString(),
+    },
   };
 
   return new Promise((resolve, reject) => {
@@ -37,7 +36,7 @@ module.exports = function (options) {
         name: config.imageInfo.original.name,
         width: fileInfo.width,
         height: fileInfo.height,
-        bucketKey: key
+        bucketKey: key,
       });
 
     });

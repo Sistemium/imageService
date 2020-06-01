@@ -1,19 +1,70 @@
-const config = require('../config/config.json');
-const checkFormat = require('./validation/check-format');
-const putAllFilesToS3 = require('./put-all-files-to-s3');
-const notAlreadyUploadedOrBadData = require('./validation/check-if-checksum-exist-on-s3');
-const generateChecksum = require('./generate-checksum');
-const getResponse = require('./get-response');
-const cleanupFiles = require('./cleanup');
-const fs = require('fs');
-const mkdirp = require('mkdirp');
-const uuid = require('node-uuid');
-const _ = require('lodash');
+import fs from 'fs';
+import mkdirp from 'mkdirp';
+import uuid from 'uuid';
+import _ from 'lodash';
+
+import config from '../config/config.json';
+import checkFormat from './validation/check-format';
+import putAllFilesToS3 from './put-all-files-to-s3';
+import notAlreadyUploadedOrBadData from './validation/check-if-checksum-exist-on-s3';
+import generateChecksum from './generate-checksum';
+import getResponse from './get-response';
+import cleanupFiles from './cleanup';
 
 const debug = require('debug')('stm:ims:process-request');
 
+export default function (req, res, next) {
+
+  debug('Multipart file upload', req.files);
+  const file = _.first(req.files);
+  const folder = config.uploadFolderPath + '/' + uuid.v4();
+
+  if (file) {
+
+    const img = {
+      path: file.path,
+      //TODO: refactor s3 saver to use proper extension
+      name: file.filename + '.' + file.mimetype.match(/[^/]+$/)[0],
+      folder: folder
+    };
+
+    mkdirp(folder, function () {
+      const writeStream = fs.createWriteStream(folder + '/' + img.name);
+      req.pipe(writeStream);
+      req.image = img;
+      writeStream.on('finish', function () {
+        checkFormatAndStartProcessing(req, res, next);
+      });
+    });
+
+  } else if (req.imageFromSrc) {
+
+    debug('image from src');
+    checkFormatAndStartProcessing(req, res, next);
+
+  } else {
+
+    debug('Binary content request');
+    const imageName = config.imageInfo.original.name + '.' + config.format;
+    const imagePath = folder + '/' + imageName;
+
+    mkdirp(folder, () => {
+      req.image = {
+        path: imagePath,
+        name: imageName,
+        folder: folder
+      };
+      const writeStream = fs.createWriteStream(imagePath);
+      writeStream.on('finish', () => checkFormatAndStartProcessing(req, res, next));
+      req.pipe(writeStream);
+    });
+
+  }
+}
+
+
 function getResponseAndCleanup(req, res, next) {
-  var dataForUrlFormation = {
+  const dataForUrlFormation = {
     checksum: req.image.checksum,
     folder: req.body.folder || req.query.folder
   };
@@ -23,6 +74,7 @@ function getResponseAndCleanup(req, res, next) {
     }, next)
     .then(() => cleanupFiles(req.image.folder, req.image.name));
 }
+
 
 function processImage(req, res, next) {
   generateChecksum(req.image.path)
@@ -37,6 +89,7 @@ function processImage(req, res, next) {
     .catch(next);
 }
 
+
 function checkFormatAndStartProcessing(req, res, next) {
   checkFormat(req.image)
     .then(image => {
@@ -45,55 +98,3 @@ function checkFormatAndStartProcessing(req, res, next) {
     })
     .catch(next);
 }
-
-module.exports = function() {
-  return function(req, res, next) {
-
-    debug('Multipart file upload', req.files);
-    var file = _.first(req.files);
-    var folder = config.uploadFolderPath + '/' + uuid.v4();
-
-    if (file) {
-
-      var img = {
-        path: file.path,
-        //TODO: refactor s3 saver to use proper extension
-        name: file.filename + '.' + file.mimetype.match(/[^/]+$/)[0],
-        folder: folder
-      };
-
-      mkdirp(folder, function() {
-        var writeStream = fs.createWriteStream(folder + '/' + img.name);
-        req.pipe(writeStream);
-        req.image = img;
-        writeStream.on('finish', function() {
-          checkFormatAndStartProcessing(req, res, next);
-        });
-      });
-
-    } else if (req.imageFromSrc) {
-
-      debug('image from src');
-      checkFormatAndStartProcessing(req, res, next);
-
-    } else {
-
-      debug('Binary content request');
-      var imageName = config.imageInfo.original.name + '.' + config.format;
-      var imagePath = folder + '/' + imageName;
-
-      mkdirp(folder, () => {
-        var image = {
-          path: imagePath,
-          name: imageName,
-          folder: folder
-        };
-        req.image = image;
-        var writeStream = fs.createWriteStream(imagePath);
-        writeStream.on('finish', () => checkFormatAndStartProcessing(req, res, next));
-        req.pipe(writeStream);
-      });
-
-    }
-  }
-};

@@ -1,24 +1,25 @@
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
+import checkDataValidity from './check-data-validity';
+import checkJsonFileStructure from './check-json-file-structure';
+
 const config = require('../../config/config.json');
-const checkDataValidity = require('./check-data-validity');
-const checkJsonFileStructure = require('./check-json-file-structure');
-const s3 = new AWS.S3(config.awsCredentials);
+const s3 = new AWS.S3();
 
 const debug = require('debug')('stm:ims:check-if-checksum-exist-on-s3');
 
-module.exports = function(req) {
+export default function (req) {
 
-  var folder = req.body.folder || req.query.folder;
-  var checksum = req.image.checksum;
-  var prefix = `${folder}/${checksum}/`;
-  var params = {
+  const folder = req.body.folder || req.query.folder;
+  const checksum = req.image.checksum;
+  const prefix = `${folder}/${checksum}/`;
+  const params = {
     Bucket: config.s3.Bucket,
     Prefix: prefix
   };
 
   return new Promise((resolve, reject) => {
 
-    s3.listObjects(params, function(err, data) {
+    s3.listObjects(params, function (err, data) {
 
       if (err) {
         throw err;

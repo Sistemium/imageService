@@ -2,16 +2,15 @@ const config = require('../../config/config.json');
 const gm = require('gm').subClass({
   imageMagick: true
 });
-const _ = require('lodash');
 const debug = require('debug')('stm:ims:check-format');
 
-module.exports = function (image) {
+export default function (image) {
 
   debug('Checking file format');
 
   return new Promise((resolve, reject) => {
     gm(image.path)
-      .format(function (err, format) {
+      .format((err, format) => {
 
         if (err) {
           return reject(err)
@@ -21,7 +20,7 @@ module.exports = function (image) {
           return reject('Incorrect configuration');
         }
 
-        var contentType = config.contentTypeFor[format.toLowerCase()];
+        const contentType = config.contentTypeFor[format.toLowerCase()];
 
         if (!contentType) {
           return reject('Unsupported format');

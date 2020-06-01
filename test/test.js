@@ -9,7 +9,7 @@ describe('Check json file structure', function () {
         var AWS = require('aws-sdk')
             , config = require('../server/config/config.json');
 
-        var s3 = new AWS.S3(config.awsCredentials);
+        var s3 = new AWS.S3();
         var params = {
             Bucket: config.s3.Bucket,
             Key: 'undefined/c702282adbaf13f5b331c2059b5cc360/picturesInfo.json'

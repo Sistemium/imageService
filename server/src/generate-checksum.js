@@ -1,12 +1,10 @@
-'use strict';
+import crypto from 'crypto';
+import fs from 'fs';
 
-const crypto = require('crypto');
-const fs = require('fs');
+export default function(image) {
 
-module.exports = function(image) {
-
-  var stream = fs.createReadStream(image);
-  var hash = crypto.createHash('md5');
+  const stream = fs.createReadStream(image);
+  const hash = crypto.createHash('md5');
 
   stream.on('data', data => hash.update(data, 'utf8'));
 

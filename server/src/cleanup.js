@@ -1,9 +1,9 @@
 const fs = require('fs')
-const config = require('../config/config.json');
+// const config = require('../config/config.json');
 const _ = require('lodash');
 const debug = require('debug')('stm:ims:cleanup');
 
-module.exports = function(directory) {
+export default function(directory) {
 
   debug('Deleting files');
 
@@ -14,7 +14,7 @@ module.exports = function(directory) {
     }
 
     _.each(files, file => {
-      var filePath = `${directory}/${file}`;
+      const filePath = `${directory}/${file}`;
       debug('Deleting file: ' + filePath);
       fs.unlinkSync(filePath);
     });

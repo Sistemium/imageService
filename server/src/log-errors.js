@@ -1,9 +1,6 @@
-'use strict';
-
-module.exports = function (err, req, res, next) {
-    var timestamp = Date.now();
+export default function (err, req, res, next) {
+    const timestamp = Date.now();
     console.log(timestamp + ' error: %s', err);
-    timestamp = Date.now();
     console.log(timestamp + ' error: %s', err.stack);
     next(err);
-};
+}

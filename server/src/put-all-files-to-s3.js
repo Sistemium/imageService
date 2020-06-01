@@ -1,16 +1,17 @@
-const fs = require('fs');
-const _ = require('lodash');
-const makeImage = require('./make-image');
-const putOriginalImageToS3 = require('./put-original-image-to-s3');
-const putResizedImageToS3 = require('./put-resized-image-to-s3');
-const putJSONWithPicturesInfo = require('./put-json-to-s3-with-pictures-info');
+import fs from 'fs';
+import _ from 'lodash';
+import makeImage from './make-image';
+import putOriginalImageToS3 from './put-original-image-to-s3';
+import putResizedImageToS3 from './put-resized-image-to-s3';
+import putJSONWithPicturesInfo from './put-json-to-s3-with-pictures-info';
+
 const config = require('../config/config.json');
 const imageInfo = config.imageInfo;
 
 const debug = require('debug')('stm:ims:put-all-files-to-s3');
 
 function makeImageAndPutToS3(req, next, options) {
-  var promises = [];
+  const promises = [];
   try {
     _.each(imageInfo, function(n, key) {
       options.key = key;
@@ -28,27 +29,27 @@ function makeImageAndPutToS3(req, next, options) {
   return promises;
 }
 
-module.exports = function(req, next) {
+export default function(req, next) {
 
-  var image = req.image;
-  var folder = req.body.folder || req.query.folder;
-  var checksum = image.checksum;
-  var imageNameWithoutExt = image.name.split('.')[0];
-  var imageName = image.name.replace(new RegExp(imageNameWithoutExt), checksum);
-  var imagePath = image.folder + '/' + imageName;
-  var dataForUrlFormation = {
+  const { image } = req;
+  const folder = req.body.folder || req.query.folder;
+  const { checksum } = image;
+  const imageNameWithoutExt = image.name.split('.')[0];
+  const imageName = image.name.replace(new RegExp(imageNameWithoutExt), checksum);
+  const imagePath = `${image.folder}/${imageName}`;
+  const dataForUrlFormation = {
     checksum: checksum,
-    folder: folder
+    folder: folder,
   };
 
   fs.renameSync(image.path, imagePath);
   image.name = imageName;
   image.path = imagePath;
 
-  var options = {
-    dataForUrlFormation: dataForUrlFormation,
-    image: image,
-    extension: image.name.split('.')[image.name.split('.').length - 1]
+  const options = {
+    image,
+    dataForUrlFormation,
+    extension: image.name.split('.')[image.name.split('.').length - 1],
   };
 
   return Promise.all(makeImageAndPutToS3(req, next, options))
