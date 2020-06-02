@@ -28,7 +28,7 @@ export default function (req, res, next) {
       folder: folder
     };
 
-    mkdirp(folder, function () {
+    mkdirp(folder).then(() => {
       const writeStream = fs.createWriteStream(folder + '/' + img.name);
       req.pipe(writeStream);
       req.image = img;
@@ -48,16 +48,17 @@ export default function (req, res, next) {
     const imageName = config.imageInfo.original.name + '.' + config.format;
     const imagePath = folder + '/' + imageName;
 
-    mkdirp(folder, () => {
-      req.image = {
-        path: imagePath,
-        name: imageName,
-        folder: folder
-      };
-      const writeStream = fs.createWriteStream(imagePath);
-      writeStream.on('finish', () => checkFormatAndStartProcessing(req, res, next));
-      req.pipe(writeStream);
-    });
+    mkdirp(folder, {})
+      .then(() => {
+        req.image = {
+          path: imagePath,
+          name: imageName,
+          folder: folder
+        };
+        const writeStream = fs.createWriteStream(imagePath);
+        writeStream.on('finish', () => checkFormatAndStartProcessing(req, res, next));
+        req.pipe(writeStream);
+      });
 
   }
 }

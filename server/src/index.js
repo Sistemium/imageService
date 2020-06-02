@@ -10,13 +10,13 @@ import multerConfig from '../config/multer-config';
 import processRequest from './process-request';
 import logErrors from './log-errors';
 import getImageByUrl from './imageByUrl/get-image-by-url';
-
+import debug from 'debug';
 
 const config = require('../config/config.json');
 const app = express();
 const port = config.applicationPort;
 
-require('debug').log = console.info.bind(console);
+debug.log = console.info.bind(console);
 
 AWS.config.update({
   region: 'eu-west-1',
@@ -33,7 +33,7 @@ app.post('/api/image', auth(), processor);
 app.get('/api/image', auth(), getImageByUrl, processor);
 
 app.listen(port, function () {
-  console.log('Server listening on port %d', port);
+  debug('stm:ims')('Server listening on port %d', port);
 });
 
 function allowCrossDomain(req, res, next) {

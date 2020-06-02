@@ -28,12 +28,13 @@ export default function (req) {
       if (data && data.Contents && data.Contents.length > 0) {
 
         debug('Image with checksum %s already uploaded', checksum);
+        // debug(data.Contents);
 
         checkJsonFileStructure(prefix)
           .then(() => checkDataValidity(data.Contents))
           .then(reject)
           .catch(err => {
-            debug('error: %s', err);
+            debug('error: %s', err.message);
             resolve();
           });
 

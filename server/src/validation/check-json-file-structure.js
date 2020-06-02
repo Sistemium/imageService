@@ -16,11 +16,11 @@ export default function (prefix) {
   debug('Key: %s', key);
 
   return new Promise((resolve, reject) => {
-    s3.getObject(params, function (err, data) {
+    s3.getObject(params, (err, data) => {
 
       if (err) {
-        debug('Error: %s', err);
-        return reject(err);
+        debug('Error:', err.message);
+        return reject(new Error(err.message));
       }
 
       const parsedData = JSON.parse(data.Body.toString());

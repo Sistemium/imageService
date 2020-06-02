@@ -14,7 +14,7 @@ export default function (req, res, next) {
   const imageName = `${config.imageInfo.original.name}.${config.format}`;
   const imagePath = `${folder}/${imageName}`;
 
-  mkdirp(folder, function () {
+  mkdirp(folder).then(() => {
 
     req.image = {
       path: imagePath,
