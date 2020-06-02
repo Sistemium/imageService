@@ -20,24 +20,10 @@
     "uuid": "^1.4.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4",
-    "blanket": "^1.1.7",
-    "chai": "^3.2.0",
-    "mocha": "^2.2.5",
-    "sinon": "^1.15.4",
-    "sinon-chai": "^2.8.0"
+    "nodemon": "^2.0.4"
   },
   "scripts": {
-    "serve": "nodemon --exec 'node -r esm' -- server/src",
-    "test": "mocha && mocha test --require blanket --reporter html-cov > coverage.html"
-  },
-  "config": {
-    "blanket": {
-      "pattern": [
-        "server/src/check-json-file-structure.js"
-      ],
-      "data-cover-never": "node_modules"
-    }
+    "serve": "nodemon --exec 'node -r esm' -- server/src"
   },
   "author": "Sistemium UAB <uab@sistemium.com>",
   "contributors": [
