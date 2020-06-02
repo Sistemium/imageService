@@ -1,6 +1,6 @@
 {
   "name": "imageservice",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "http service that resizes an image with several resolutions then uploads everything to S3",
   "main": "server/src/index.js",
   "repository": "Sistemium/imageService",
