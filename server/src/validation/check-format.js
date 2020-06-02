@@ -1,10 +1,6 @@
 import sharp from 'sharp';
 
 const config = require('../../config/config.json');
-
-const gm = require('gm').subClass({
-  imageMagick: true
-});
 const debug = require('debug')('stm:ims:check-format');
 
 export default async function (image) {
@@ -12,9 +8,6 @@ export default async function (image) {
   debug('Checking file format');
 
   const md = await sharp(image.path).metadata();
-
-  debug(md);
-
   const { format } = md;
 
   if (!config.contentTypeFor && !config.contentTypeFor[format.toLowerCase()]) {
