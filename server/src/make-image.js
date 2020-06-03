@@ -13,11 +13,10 @@ export default async function (req, options) {
 
   const thumbnail = sharp(image.path)
     .resize({ width, height, fit: 'inside', withoutEnlargement: true })
-    // .max()
     .png();
 
   opt.buffer = await thumbnail.toBuffer();
-  opt.metadata = { width, height };
+  opt.metadata = await sharp(opt.buffer).metadata();
 
   return opt;
 
