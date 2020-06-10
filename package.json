@@ -23,6 +23,7 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
+    "build": "rm -rf dist && cp -rv server/src dist && cp package.json dist",
     "serve": "nodemon --exec 'node -r esm' -- server/src"
   },
   "author": "Sistemium UAB <uab@sistemium.com>",

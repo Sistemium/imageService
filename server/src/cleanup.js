@@ -1,6 +1,6 @@
-const fs = require('fs')
-// const config = require('../config/config.json');
-const _ = require('lodash');
+import fs from 'fs';
+import _ from 'lodash';
+
 const debug = require('debug')('stm:ims:cleanup');
 
 export default function(directory) {
@@ -10,7 +10,7 @@ export default function(directory) {
   fs.readdir(directory, (err, files) => {
 
     if (err) {
-      throw new Error(err);
+      throw err;
     }
 
     _.each(files, file => {
@@ -19,9 +19,9 @@ export default function(directory) {
       fs.unlinkSync(filePath);
     });
 
-    fs.rmdir(directory, function(err) {
-      if (err) {
-        debug('Delete directory error:', err);
+    fs.rmdir(directory, rmErr => {
+      if (rmErr) {
+        debug('Delete directory error:', rmErr);
       } else {
         debug('Deleted directory: ', directory);
       }

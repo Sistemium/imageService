@@ -6,3 +6,4 @@ server/src/logs
 bower_components
 coverage.html
 .idea/
+dist

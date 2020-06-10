@@ -1,8 +1,7 @@
 import sharp from 'sharp';
 
-// const gm = require('gm').subClass({ imageMagick: true });
-const debug = require('debug')('stm:ims:make-image');
-const config = require('../config/config.json');
+// const debug = require('debug')('stm:ims:make-image');
+// const config = require('../config/config.json');
 
 export default async function (req, options) {
 
