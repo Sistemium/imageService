@@ -15,11 +15,12 @@ const debug = require('debug')('stm:ims:process-request');
 
 export default function (req, res, next) {
 
-  debug('Multipart file upload', req.files);
   const file = _.first(req.files);
   const folder = config.uploadFolderPath + '/' + uuid.v4();
 
   if (file) {
+
+    debug('Multipart file upload', file);
 
     const img = {
       path: file.path,
