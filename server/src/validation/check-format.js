@@ -5,8 +5,6 @@ const debug = require('debug')('stm:ims:check-format');
 
 export default async function (image) {
 
-  debug('Checking file format');
-
   const md = await sharp(image.path).metadata();
   const { format } = md;
 
@@ -20,8 +18,9 @@ export default async function (image) {
     throw new Error('Unsupported format');
   }
 
+  debug('supported:', contentType);
+
   image.contentType = contentType;
-  debug('Format is supported, contentType: %s', image.contentType);
   image.matadata = md;
 
   return image;

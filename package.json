@@ -7,7 +7,7 @@
   "dependencies": {
     "aws-sdk": "^2.686.0",
     "body-parser": "^1.19.0",
-    "debug": "^2.6.9",
+    "debug": "^4.1.1",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "image-size": "^0.8.3",
