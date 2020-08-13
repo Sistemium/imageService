@@ -94,8 +94,7 @@ function processImage(req, res, next) {
 
 function checkFormatAndStartProcessing(req, res, next) {
   checkFormat(req.image)
-    .then(image => {
-      debug('checkFormatAndStartProcessing start');
+    .then(() => {
       processImage(req, res, next);
     })
     .catch(next);
