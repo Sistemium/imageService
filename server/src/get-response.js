@@ -25,33 +25,33 @@ function formResponse(data, metadata) {
     pictures: [],
   };
 
-  _.each(imageInfo, (n, key) => {
+  _.each(imageInfo, (n, name) => {
 
     let existInConfig = false;
 
-    data.forEach(function (item) {
+    data.forEach(item => {
 
       const filename = item.Key.split('/').splice(-1)[0].split('.')[0];
 
-      if (key !== filename) {
+      if (name !== filename) {
         return;
       }
 
       existInConfig = true;
       // TODO: check if not type error, if is, upload new json file to s3
-      const searchMetadata = _.find(metadata, { name: key });
+      const { height, width } = _.find(metadata, { name });
 
       imageInfoObject.pictures.push({
-        name: key,
-        src: config.s3.Domain + config.s3.Bucket + '/' + item.Key,
-        height: searchMetadata.height,
-        width: searchMetadata.width
+        name,
+        height,
+        width,
+        src: `${config.s3.Domain + config.s3.Bucket}/${item.Key}`,
       });
 
     });
 
     if (!existInConfig) {
-      throw new Error('No such key \"' + key + '\" in config file...')
+      throw new Error(`No such key "${name}" in config file...`)
     }
 
   });
@@ -116,7 +116,9 @@ export default function (urlConfig) {
                   return reject('Empty response');
                 }
 
-                debug('Will respond:', response);
+                const [imgSample] = response.pictures
+
+                debug('done:', imgSample.name, imgSample.src);
                 resolve(response);
 
               } catch (e) {

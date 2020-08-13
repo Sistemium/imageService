@@ -22,13 +22,19 @@ export default function () {
       },
     };
 
-    request(options, function (error, response, body) {
+    request(options, (error, response, body) => {
 
       if (error) console.error(error);
 
       if (!error && response.statusCode === 200) {
-        debug('success:', body);
-        next();
+        try {
+          const { account } = JSON.parse(body);
+          debug('auth:success:', account.org, account.name);
+          next();
+        } catch (e) {
+          debug('auth:error:', e);
+          next(e);
+        }
       } else {
         debug('error:', response.statusCode, body);
         res.status(response.statusCode);

@@ -5,8 +5,6 @@ const debug = require('debug')('stm:ims:cleanup');
 
 export default function(directory) {
 
-  debug('Deleting files');
-
   fs.readdir(directory, (err, files) => {
 
     if (err) {
