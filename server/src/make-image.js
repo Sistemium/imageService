@@ -11,6 +11,7 @@ export default async function (req, options) {
   const { image = {} } = opt;
 
   const thumbnail = sharp(image.path)
+    .rotate()
     .resize({ width, height, fit: 'inside', withoutEnlargement: true })
     .png();
 
