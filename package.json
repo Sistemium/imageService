@@ -7,6 +7,7 @@
   "dependencies": {
     "aws-sdk": "^2.772.0",
     "body-parser": "^1.19.0",
+    "content-disposition": "^0.5.3",
     "debug": "^4.3.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
@@ -22,7 +23,7 @@
     "nodemon": "^2.0.5"
   },
   "scripts": {
-    "build": "rm -rf dist && cp -rv server/src dist && cp package.json dist",
+    "build": "rm -rf dist && mkdir dist && mkdir dist/server && cp -rv server/src dist/server && cp package.json dist",
     "serve": "nodemon --exec 'node -r esm' -- server/src"
   },
   "author": "Sistemium UAB <uab@sistemium.com>",

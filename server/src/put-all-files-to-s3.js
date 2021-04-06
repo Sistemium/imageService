@@ -49,6 +49,7 @@ export default function(req, next) {
   const options = {
     image,
     dataForUrlFormation,
+    trim: !!req.query.trim,
     extension: image.name.split('.')[image.name.split('.').length - 1],
   };
 

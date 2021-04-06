@@ -12,10 +12,15 @@ export default async function (req, options) {
 
   const thumbnail = sharp(image.path)
     .rotate()
-    .resize({ width, height, fit: 'inside', withoutEnlargement: true })
-    .png();
+    .resize({ width, height, fit: 'inside', withoutEnlargement: true });
 
-  opt.buffer = await thumbnail.toBuffer();
+  if (options.trim) {
+    thumbnail.trim();
+  }
+
+  const png = thumbnail.png();
+
+  opt.buffer = await png.toBuffer();
   opt.metadata = await sharp(opt.buffer).metadata();
 
   return opt;

@@ -10,6 +10,7 @@ import multerConfig from '../config/multer-config';
 import processRequest from './process-request';
 import logErrors from './log-errors';
 import getImageByUrl from './imageByUrl/get-image-by-url';
+import downloader from './imageByUrl/downloader';
 import debug from 'debug';
 
 const config = require('../config/config.json');
@@ -30,6 +31,7 @@ app.use(bodyParser.json());
 const processor = [multer(multerConfig).any(), processRequest, logErrors, nextOnErrors];
 
 app.post('/api/image', auth(), processor);
+app.get('/api/image/download', downloader);
 app.get('/api/image', auth(), getImageByUrl, processor);
 
 app.listen(port, function () {

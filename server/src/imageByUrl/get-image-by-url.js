@@ -4,9 +4,17 @@ import fs from 'fs';
 import uuid from 'uuid';
 import mkdirp from 'mkdirp';
 
+const debug = require('debug')('stm:ims:get-image-by-url');
+
 export default function (req, res, next) {
 
-  if (!req.query.src) next(new Error('Picture link not passed!'));
+  if (!req.query.src) {
+
+    debug(req.query);
+
+    next(new Error('Picture link not passed!'));
+    return;
+  }
 
   req.imageFromSrc = true;
 
