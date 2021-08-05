@@ -60,7 +60,7 @@ function formResponse(data, metadata) {
 
 }
 
-export default function (urlConfig) {
+export default function (urlConfig, raw) {
 
   const prefix = `${urlConfig.folder}/${urlConfig.checksum}/`;
   const s3 = new AWS.S3();

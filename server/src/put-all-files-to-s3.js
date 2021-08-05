@@ -13,7 +13,12 @@ const debug = require('debug')('stm:ims:put-all-files-to-s3');
 function makeImageAndPutToS3(req, next, options) {
   const promises = [];
   try {
-    _.each(imageInfo, function(n, key) {
+
+    if (req.image.raw) {
+      return [putOriginalImageToS3({ ...options, raw: req.image.raw })];
+    }
+
+    _.each(imageInfo, function (n, key) {
       options.key = key;
       if (key === 'original') {
         promises.push(putOriginalImageToS3(options));
@@ -29,7 +34,7 @@ function makeImageAndPutToS3(req, next, options) {
   return promises;
 }
 
-export default function(req, next) {
+export default function (req, next) {
 
   const { image } = req;
   const folder = req.body.folder || req.query.folder;

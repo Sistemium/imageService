@@ -68,9 +68,18 @@ export default function (req, res, next) {
 function getResponseAndCleanup(req, res, next) {
   const dataForUrlFormation = {
     checksum: req.image.checksum,
-    folder: req.body.folder || req.query.folder
+    folder: req.body.folder || req.query.folder || 'undefined',
   };
-  getResponse(dataForUrlFormation)
+
+  if (req.image.raw) {
+    const { ext, mime } = req.image.raw;
+    const { folder, checksum: name } = dataForUrlFormation;
+    const url = `${config.s3.Domain}${config.s3.Bucket}/${folder}/${name}/file.${ext}`;
+    res.json({ name, ext, url, folder, mime });
+    return;
+  }
+
+  getResponse(dataForUrlFormation, req.image.raw)
     .then(data => {
       res.json(data);
     }, next)

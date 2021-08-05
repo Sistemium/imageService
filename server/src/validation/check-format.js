@@ -1,9 +1,19 @@
 import sharp from 'sharp';
+import { checkIfRaw } from '../rawFile';
 
 const config = require('../../config/config.json');
 const debug = require('debug')('stm:ims:check-format');
 
 export default async function (image) {
+
+  const raw = await checkIfRaw(image);
+
+  debug('raw', raw);
+
+  if (raw) {
+    image.raw = raw;
+    return;
+  }
 
   const md = await sharp(image.path).metadata();
   const { format } = md;
@@ -21,7 +31,7 @@ export default async function (image) {
   debug('supported:', contentType);
 
   image.contentType = contentType;
-  image.matadata = md;
+  // image.metadata = md;
 
   return image;
 

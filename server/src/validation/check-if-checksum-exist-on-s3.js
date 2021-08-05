@@ -30,6 +30,14 @@ export default function (req) {
         debug('Image with checksum %s already uploaded', checksum);
         // debug(data.Contents);
 
+        const { raw } = req.image;
+
+        if (raw) {
+          // debug('raw:contents', data.Contents);
+          resolve();
+          return;
+        }
+
         checkJsonFileStructure(prefix)
           .then(() => checkDataValidity(data.Contents))
           .then(reject)
