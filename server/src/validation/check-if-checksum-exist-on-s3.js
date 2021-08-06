@@ -10,7 +10,7 @@ const debug = require('debug')('stm:ims:check-if-checksum-exist-on-s3');
 export default function (req) {
 
   const folder = req.body.folder || req.query.folder;
-  const checksum = req.image.checksum;
+  const { checksum, filename } = req.image;
   const prefix = `${folder}/${checksum}/`;
   const params = {
     Bucket: config.s3.Bucket,

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import pick from 'lodash/pick'
 import AWS from 'aws-sdk';
+import contentDisposition from 'content-disposition';
 import getFileInfo from './get-file-info';
 
 const config = require('../config/config.json');
@@ -8,7 +9,7 @@ const s3 = new AWS.S3();
 
 export default function (options) {
 
-  const { image, dataForUrlFormation: urlData, raw } = options;
+  const { image, dataForUrlFormation: urlData, raw, filename } = options;
   const imageStream = fs.createReadStream(image.path);
   const name = raw ? `file.${raw.ext}` : `${options.key}.${options.extension}`;
   const key = `${urlData.folder}/${urlData.checksum}/${name}`;
@@ -24,6 +25,10 @@ export default function (options) {
       height: fileInfo.height.toString(),
     },
   };
+
+  if (raw && filename) {
+    params.ContentDisposition = contentDisposition(filename, { fallback: false });
+  }
 
   return new Promise((resolve, reject) => {
 

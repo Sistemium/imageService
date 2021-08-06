@@ -14,8 +14,11 @@ function makeImageAndPutToS3(req, next, options) {
   const promises = [];
   try {
 
-    if (req.image.raw) {
-      return [putOriginalImageToS3({ ...options, raw: req.image.raw })];
+    const { image } = req;
+
+    if (image.raw) {
+      const { filename, raw } = image;
+      return [putOriginalImageToS3({ ...options, raw, filename })];
     }
 
     _.each(imageInfo, function (n, key) {

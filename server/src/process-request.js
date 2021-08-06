@@ -26,7 +26,8 @@ export default function (req, res, next) {
       path: file.path,
       //TODO: refactor s3 saver to use proper extension
       name: file.filename + '.' + file.mimetype.match(/[^/]+$/)[0],
-      folder: folder
+      folder: folder,
+      filename: file.originalname,
     };
 
     mkdirp(folder).then(() => {
