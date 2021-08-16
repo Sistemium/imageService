@@ -8,7 +8,7 @@ export default async function (image) {
 
   const raw = await checkIfRaw(image);
 
-  debug('raw', raw);
+  // debug('raw', raw);
 
   if (raw) {
     image.raw = raw;
