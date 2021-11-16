@@ -5,7 +5,7 @@
   "main": "server/src/index.js",
   "repository": "Sistemium/imageService",
   "dependencies": {
-    "aws-sdk": "^2.772.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.19.0",
     "content-disposition": "^0.5.3",
     "debug": "^4.3.0",
