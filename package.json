@@ -10,7 +10,7 @@
     "content-disposition": "^0.5.3",
     "debug": "^4.3.0",
     "esm": "^3.2.25",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-type": "^16.5.2",
     "image-size": "^0.8.3",
     "lodash": "^4.17.20",
